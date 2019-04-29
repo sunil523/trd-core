@@ -34,12 +34,13 @@ class CrossPost
 
   final public static function save_post( $post_id, $post, $update )
   {
-    if( $post->post_status != 'publish' ) return;
-    // TODO: Save the post in the given crosspost.
-    
-    $crosspost = new ApiPost( $post, $update );
-    $crosspost->save();
-    return true;
+    // https://codex.wordpress.org/Post_Status
+    // if( in_array( $post->post_status, array( 'auto-draft', 'inherit', 'trash', 'pending', 'private' ) ) return;
+    if( in_array( $post->post_status, array( 'draft', 'publish', 'future' ) ) ){
+      $crosspost = new ApiPost( $post, $update );
+      $crosspost->save();
+      return true;
+    }
   }
 
   final public static function register_taxonomy()
