@@ -134,7 +134,9 @@ class Feature_Posts extends \WP_Widget {
         // Display
         $link  = get_the_permalink( $post->ID );
         $title = get_the_title( $post->ID );
+        $f_title = get_post_meta( $post->ID, 'Featured Image Headline', true );
         $image = get_field('second_featured_image', $post->ID ); // custom fields plugins
+        if( empty( $f_title) ) $f_title = $title;
         if( !empty( $image ) )
         {
             // setup the image tag
@@ -151,7 +153,7 @@ class Feature_Posts extends \WP_Widget {
             <div class="cover-story">
                 <div class="meta">
                     <h3 class="top-slider-title">
-                        <?php echo sprintf( '<a href="%s" title="%s">%s</a>', $link, $title, $title ); ?>
+                        <?php echo sprintf( '<a href="%s" title="%s">%s</a>', $link, $title, $f_title ); ?>
                     </h3>
                 </div>
                 <div class="image"><?php
