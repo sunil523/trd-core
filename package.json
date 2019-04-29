@@ -1,0 +1,34 @@
+{
+  "name": "trd-core",
+  "version": "1.0.0",
+  "description": "TRD Core Plugin",
+  "main": "N/A",
+  "scripts": {
+    "test": "N/A"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "TRD"
+  ],
+  "author": "Sunil Patel",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "https://www.therealdeal.com",
+  "devDependencies": {
+    "del": "^4.1.1",
+    "gulp": "^4.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-csso": "^3.0.1",
+    "gulp-imagemin": "^5.0.3",
+    "gulp-newer": "^1.4.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2"
+  }
+}
