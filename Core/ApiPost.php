@@ -122,7 +122,7 @@ class ApiPost extends ApiConfig
   {
     $fields = array(
       'title' => get_the_title( $this->post ),
-      'status' => 'publish',
+      'status' => 'draft',
       'content' => $this->post->post_content,
       'meta' => array(
         $this->crosspost_field       => array( 1 ),
