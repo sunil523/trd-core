@@ -180,7 +180,7 @@ class Feature_Posts extends \WP_Widget {
                     }
                 ?>
             </table>
-            <?php if( $this->newsletter ) signup_form(); ?>
+            <?php signup_form(); ?>
         </div>
         <?php
     }
