@@ -9,6 +9,7 @@ class ApiPost extends ApiConfig
   private $update          = null;
   private $crosspost       = null;
   private $crosspost_field = null;
+  private $default_status  = 'draft';
 
   public function __construct( $post, $update=false )
   {
@@ -122,7 +123,7 @@ class ApiPost extends ApiConfig
   {
     $fields = array(
       'title' => get_the_title( $this->post ),
-      'status' => 'draft',
+      'status' => $this->default_status,
       'content' => $this->post->post_content,
       'meta' => array(
         $this->crosspost_field       => array( 1 ),
