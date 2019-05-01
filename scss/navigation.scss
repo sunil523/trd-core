@@ -1,0 +1,172 @@
+.promo-popup-btn-wrapper,
+.nav-container{
+  display: none;
+}
+header{
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: block;
+  height: 100px;
+  margin-bottom: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 10;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+}
+.admin-bar .nav-primary{
+  top: 32px;
+}
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1600px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.nav-primary,
+.nav-second{
+  height: 50px;
+}
+.nav-primary{
+  position: sticky;
+  top: 0;
+  background-color: red;
+  color: #fff;
+  z-index: 2;
+}
+.nav-second{
+  background-color: #eee;
+  color: red;
+  z-index: 1;
+}
+.nav-second .nav-right a{
+  color: #444;
+  font-weight: normal;
+}
+.nav-primary nav a,
+.nav-second nav a{
+  color: inherit;
+  padding: 1.6rem 1rem;
+  text-transform: uppercase;
+  display: inline-block;
+  font-weight: bold;
+  position: relative;
+}
+.nav-primary nav a:hover,
+.nav-second nav a:hover{
+  text-decoration: none;
+  color: #222;
+}
+.nav-primary nav a.current,
+.nav-second nav a.current{
+  color: #222;
+}
+
+.nav-second nav a:hover::after,
+.nav-second nav a.current::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #666;
+}
+.nav-logo{
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0 !important;
+}
+.nav-logo img{
+  width: 100px;
+}
+.nav-left{
+  position: relative;
+}
+.nav-left nav{
+  margin-left: 120px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.nav-right{
+  position: relative;
+}
+.nav-right nav{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav-second .nav-left a:last-child{
+  position: relative;
+}
+.nav-second .nav-left a:last-child::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 30%;
+  top: 35%;
+  background-color: red;
+  width: 1px;
+}
+
+.nav-primary .nav-right{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.nav-search{
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  width: 90px;
+  padding: 1.5rem 0.5rem;
+  height: 100%;
+  transition: all ease-in-out 500ms;
+}
+.nav-search:focus{
+  background-color: #fff;
+  color: #222;
+  width: 250px;
+  outline: none;
+  margin-right: 1rem;
+  text-align: left;
+  padding: 1.5rem 1rem;
+}
+.nav-search:focus::placeholder{
+  color: #666;
+  text-align: left;
+}
+.nav-search::placeholder{
+  color: #eee;
+  text-transform: uppercase;
+  text-align: right;
+}
+.nav-account a{
+  font-weight: normal;
+}
+.nav-account a::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 30%;
+  top: 35%;
+  background-color: #222;
+  width: 1px;
+}
+
+nav.nav-social a{
+  padding: 1.5rem 1.5rem;
+}
+
+.nav-social .fab{
+  font-size: 2.4rem;
+}
