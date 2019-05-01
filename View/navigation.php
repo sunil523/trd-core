@@ -15,7 +15,13 @@
         </nav>
       </div>
       <div class="nav-right">
-        <form><input class="nav-search" type="search" placeholder="Search"></form>
+        <form class="nav-search-form" autocomplete="off">
+          <input class="nav-search" type="search" id="nav-search" name="s" autocomplete="off">
+          <button type="submit"><i class="fa fa-search"></i></button>
+          <label class="nav-search-label" for="nav-search">
+            <i class="fa fa-search"></i>
+          </label>
+        </form>
         <nav class="nav-account">
           <a href="#">Subscribe</a>
           <a href="#">Login</a>
@@ -39,11 +45,11 @@
       </div>
       <div class="nav-right">
         <nav class="nav-social">
-          <a href="#"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fa fab fa-facebook"></i></a>
+          <a href="#"><i class="fa fab fa-twitter"></i></a>
+          <a href="#"><i class="fa fab fa-youtube"></i></a>
+          <a href="#"><i class="fa fab fa-instagram"></i></a>
+          <a href="#"><i class="fa fab fa-linkedin"></i></a>
         </nav>
       </div>
     </div>

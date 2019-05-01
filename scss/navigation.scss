@@ -1,3 +1,25 @@
+/*
+$twitter: #00aced;
+$facebook: #3b5998;
+$googleplus: #dd4b39;
+$pinterest: #cb2027;
+$linkedin: #007bb6;
+$youtube: #bb0000;
+$vimeo: #aad450;
+$tumblr: #32506d;
+$instagram: #517fa4;
+$flickr: #ff0084;
+$dribbble: #ea4c89;
+$quora: #a82400;
+$foursquare: #0072b1;
+$forrst: #5B9A68;
+$vk: #45668e;
+$wordpress: #21759b;
+$stumbleupon: #EB4823;
+$yahoo: #7B0099;
+$blogger: #fb8f3d;
+$soundcloud: #ff3a00; */
+
 .promo-popup-btn-wrapper,
 .nav-container{
   display: none;
@@ -33,7 +55,7 @@ header{
 .nav-primary{
   position: sticky;
   top: 0;
-  background-color: red;
+  background-color: #000;
   color: #fff;
   z-index: 2;
 }
@@ -54,13 +76,22 @@ header{
   display: inline-block;
   font-weight: bold;
   position: relative;
+  font-size: 1.3rem;
 }
+
+.nav-primary nav a{
+  font-size: 1.6rem;
+}
+
 .nav-primary nav a:hover,
 .nav-second nav a:hover{
   text-decoration: none;
-  color: #222;
 }
-.nav-primary nav a.current,
+.nav-primary nav a:hover,
+.nav-primary nav a.current{
+  color: red;
+}
+.nav-second nav a:hover,
 .nav-second nav a.current{
   color: #222;
 }
@@ -77,18 +108,18 @@ header{
 }
 .nav-logo{
   position: absolute;
-  top: 0;
+  top: 5px;
   left: 0;
   padding: 0 !important;
 }
 .nav-logo img{
-  width: 100px;
+  width: 90px;
 }
 .nav-left{
   position: relative;
 }
 .nav-left nav{
-  margin-left: 120px;
+  margin-left: 100px;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -123,35 +154,69 @@ header{
   justify-content: flex-end;
 }
 
+.nav-search-form{
+  position: relative;
+}
+.nav-search-form button{
+  display: none;
+  position: absolute;
+  top: 28%;
+  right: 10px;
+  background-color: #000;
+  border: none;
+}
+.nav-search-form .fa{
+  color: #fff;
+  font-size: 2rem;
+}
+
+.nav-search-label{
+  display: block;
+  position: absolute;
+  top: 30%;
+  right: 17px;
+}
+
+.nav-search:focus ~ .nav-search-label,
+.nav-search:active ~ .nav-search-label{
+  display: none;
+}
+.nav-search:focus ~ button,
+.nav-search:active ~ button{
+  display: block;
+}
+
 .nav-search{
   background-color: transparent;
   border-radius: 0;
   border: none;
-  width: 90px;
-  padding: 1.5rem 0.5rem;
-  height: 100%;
+  width: 125px;
+  max-width: 400px;
+  margin-right: 1rem;
+  padding: 1.5rem 40px 1.5rem 1rem;
   transition: all ease-in-out 500ms;
+  text-transform: uppercase;
+  color: #fff;
 }
 .nav-search:focus{
-  background-color: #fff;
-  color: #222;
-  width: 250px;
+  color: #fff;
   outline: none;
-  margin-right: 1rem;
+  width: 350px;
   text-align: left;
-  padding: 1.5rem 1rem;
+  border-bottom: 1px solid #eee;
 }
 .nav-search:focus::placeholder{
-  color: #666;
+  color: #888;
   text-align: left;
 }
 .nav-search::placeholder{
   color: #eee;
   text-transform: uppercase;
-  text-align: right;
+  text-align: left;
 }
-.nav-account a{
+nav.nav-account a{
   font-weight: normal;
+  font-size: 1.3rem;
 }
 .nav-account a::before{
   content: '';
@@ -159,14 +224,30 @@ header{
   left: 0;
   height: 30%;
   top: 35%;
-  background-color: #222;
+  background-color: #999;
   width: 1px;
 }
 
 nav.nav-social a{
-  padding: 1.5rem 1.5rem;
+  padding: 1.3rem 1.5rem;
 }
 
-.nav-social .fab{
+.nav-social .fa{
   font-size: 2.4rem;
+}
+
+.nav-social a:hover .fa-facebook{
+  color: #3b5998;
+}
+.nav-social a:hover .fa-twitter{
+  color: #00aced;
+}
+.nav-social a:hover .fa-youtube{
+  color: #bb0000;
+}
+.nav-social a:hover .fa-instagram{
+  color: #517fa4;
+}
+.nav-social a:hover .fa-linkedin{
+  color: #007bb6;
 }
