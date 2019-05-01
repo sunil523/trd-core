@@ -4,7 +4,7 @@
   <div class="nav-primary">
     <div class="container">
       <div class="nav-left">
-        <a class="nav-logo" href="/"><img src="<?php echo TRD_CORE_URL.'trd-1x1.svg'; ?>"></a>
+        <a class="nav-logo" href="/"><img src="<?php echo TRD_CORE_URL.'trd-logo.svg'; ?>"></a>
         <nav class="nav-regions">
           <a href="#" class="current">New York</a>
           <a href="#">National</a>

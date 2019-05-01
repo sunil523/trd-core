@@ -55,18 +55,14 @@ header{
 .nav-primary{
   position: sticky;
   top: 0;
-  background-color: #000;
-  color: #fff;
+  background-color: #f9f9f9;
+  color: #000;
   z-index: 2;
 }
 .nav-second{
-  background-color: #eee;
-  color: red;
+  background-color: #111;
+  color: #fff;
   z-index: 1;
-}
-.nav-second .nav-right a{
-  color: #444;
-  font-weight: normal;
 }
 .nav-primary nav a,
 .nav-second nav a{
@@ -89,11 +85,11 @@ header{
 }
 .nav-primary nav a:hover,
 .nav-primary nav a.current{
-  color: red;
+  color: #f00;
 }
 .nav-second nav a:hover,
 .nav-second nav a.current{
-  color: #222;
+  color: #f00;
 }
 
 .nav-second nav a:hover::after,
@@ -102,24 +98,21 @@ header{
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #666;
+  // width: 100%;
+  // height: 1px;
+  // background-color: #666;
 }
 .nav-logo{
-  position: absolute;
-  top: 5px;
-  left: 0;
-  padding: 0 !important;
+  padding: 5px 0 !important;
 }
 .nav-logo img{
-  width: 90px;
+  height: 40px;
 }
 .nav-left{
   position: relative;
+  display: flex;
 }
 .nav-left nav{
-  margin-left: 100px;
   height: 100%;
   display: flex;
   flex-direction: row;
@@ -144,7 +137,7 @@ header{
   left: 0;
   height: 30%;
   top: 35%;
-  background-color: red;
+  background-color: #f1f1f1;
   width: 1px;
 }
 
@@ -162,11 +155,11 @@ header{
   position: absolute;
   top: 28%;
   right: 10px;
-  background-color: #000;
+  background-color: #f1f1f1;
   border: none;
 }
 .nav-search-form .fa{
-  color: #fff;
+  color: #000;
   font-size: 2rem;
 }
 
@@ -196,10 +189,10 @@ header{
   padding: 1.5rem 40px 1.5rem 1rem;
   transition: all ease-in-out 500ms;
   text-transform: uppercase;
-  color: #fff;
+  color: #000;
 }
 .nav-search:focus{
-  color: #fff;
+  color: #000;
   outline: none;
   width: 350px;
   text-align: left;
@@ -230,6 +223,8 @@ nav.nav-account a{
 
 nav.nav-social a{
   padding: 1.3rem 1.5rem;
+  color: #eee;
+  font-weight: normal;
 }
 
 .nav-social .fa{
