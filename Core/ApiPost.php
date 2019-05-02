@@ -242,7 +242,7 @@ class ApiPost extends ApiConfig
 
     $url     = sprintf( '%s/media', $this->api->root );
     $headers = array(
-      'Content-Disposition' => 'attachment; filename="'.$filename.'"',
+      'Content-Disposition' => 'attachment; filename="crosspost-'.$filename.'"',
       'content-type'        => 'application/binary',
       'accept'              => 'application/json',
     );
