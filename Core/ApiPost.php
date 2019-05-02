@@ -141,7 +141,7 @@ class ApiPost extends ApiConfig
     // copy the curret post meta
     $fields['meta'] = get_post_meta( $this->post->ID );
     // only set the city crosspost when national and tristate fields are not set
-    if( !isset( $fields['meta']['A3_trd_national'] ) && !isset( $fields['meta']['A3_trd_tristate'] ) ){
+    if( !isset( $fields['meta']['A3_trd_national'] ) && !isset( $fields['meta']['A3_tri_state'] ) ){
       $fields['meta'][ $this->crosspost_field ] = array( 1 );
     }
     // update other meta fields
