@@ -238,7 +238,9 @@ class ApiPost extends ApiConfig
   {
     $image_file = get_attached_file( $image_id );
     $filename   = basename( $image_file );
-    $file_data  = file_get_contents( $image_file );
+    $f = fopen( $image_file, 'rb');
+    $file_data  = fread( $f, filesize($image_file) );
+    fclose($f);
 
     $url     = sprintf( '%s/media', $this->api->root );
     $headers = array(
