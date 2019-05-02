@@ -1,0 +1,256 @@
+/*
+$twitter: #00aced;
+$facebook: #3b5998;
+$googleplus: #dd4b39;
+$pinterest: #cb2027;
+$linkedin: #007bb6;
+$youtube: #bb0000;
+$vimeo: #aad450;
+$tumblr: #32506d;
+$instagram: #517fa4;
+$flickr: #ff0084;
+$dribbble: #ea4c89;
+$quora: #a82400;
+$foursquare: #0072b1;
+$forrst: #5B9A68;
+$vk: #45668e;
+$wordpress: #21759b;
+$stumbleupon: #EB4823;
+$yahoo: #7B0099;
+$blogger: #fb8f3d;
+$soundcloud: #ff3a00; */
+
+.promo-popup-btn-wrapper,
+.nav-container{
+  display: none;
+}
+header{
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: block;
+  height: 100px;
+  margin-bottom: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  z-index: 10;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+}
+.admin-bar .nav-primary{
+  top: 32px;
+}
+.container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1600px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.nav-primary{
+  height: 60px;
+}
+.nav-second{
+  height: 50px;
+}
+.nav-primary{
+  position: sticky;
+  top: 0;
+  background-color: #f9f9f9;
+  color: #000;
+  z-index: 2;
+}
+.nav-second{
+  background-color: #111;
+  color: #fff;
+  z-index: 1;
+}
+.nav-primary nav a,
+.nav-second nav a{
+  color: inherit;
+  padding: 1.6rem 1rem;
+  text-transform: uppercase;
+  display: inline-block;
+  font-weight: bold;
+  position: relative;
+  font-size: 1.3rem;
+}
+
+.nav-primary nav a{
+  font-size: 1.6rem;
+}
+
+.nav-primary nav a:hover,
+.nav-second nav a:hover{
+  text-decoration: none;
+}
+.nav-primary nav a:hover,
+.nav-primary nav a.current{
+  color: #f00;
+}
+.nav-second nav a:hover,
+.nav-second nav a.current{
+  color: #f00;
+}
+
+.nav-second nav a:hover::after,
+.nav-second nav a.current::after{
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  // width: 100%;
+  // height: 1px;
+  // background-color: #666;
+}
+.nav-logo{
+  padding: 10px 0 !important;
+}
+.nav-logo img{
+  height: 40px;
+}
+.nav-left{
+  position: relative;
+  display: flex;
+}
+.nav-left nav{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.nav-right{
+  position: relative;
+}
+.nav-right nav{
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.nav-second .nav-left a:last-child{
+  position: relative;
+}
+.nav-second .nav-left a:last-child::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 30%;
+  top: 35%;
+  background-color: #f1f1f1;
+  width: 1px;
+}
+
+.nav-primary .nav-regions{
+  margin-left: 50px;
+}
+.nav-second .nav-pages{
+  margin-left: 235px;
+}
+.nav-primary .nav-right{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.nav-search-form{
+  position: relative;
+}
+.nav-search-form button{
+  display: none;
+  position: absolute;
+  top: 28%;
+  right: 10px;
+  background-color: #f1f1f1;
+  border: none;
+}
+.nav-search-form .fa{
+  color: #000;
+  font-size: 2rem;
+}
+
+.nav-search-label{
+  display: block;
+  position: absolute;
+  top: 30%;
+  right: 17px;
+}
+
+.nav-search:focus ~ .nav-search-label,
+.nav-search:active ~ .nav-search-label{
+  display: none;
+}
+.nav-search:focus ~ button,
+.nav-search:active ~ button{
+  display: block;
+}
+
+.nav-search{
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  width: 125px;
+  max-width: 400px;
+  margin-right: 1rem;
+  padding: 1.5rem 40px 1.5rem 1rem;
+  transition: all ease-in-out 500ms;
+  text-transform: uppercase;
+  color: #000;
+}
+.nav-search:focus{
+  color: #000;
+  outline: none;
+  width: 350px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+.nav-search:focus::placeholder{
+  color: #888;
+  text-align: left;
+}
+.nav-search::placeholder{
+  color: #eee;
+  text-transform: uppercase;
+  text-align: left;
+}
+nav.nav-account a{
+  font-weight: normal;
+  font-size: 1.3rem;
+}
+.nav-account a::before{
+  content: '';
+  position: absolute;
+  left: 0;
+  height: 30%;
+  top: 35%;
+  background-color: #999;
+  width: 1px;
+}
+
+nav.nav-social a{
+  padding: 1.3rem 1.5rem;
+  color: #eee;
+  font-weight: normal;
+}
+
+.nav-social .fa{
+  font-size: 2.4rem;
+}
+
+.nav-social a:hover .fa-facebook{
+  color: #3b5998;
+}
+.nav-social a:hover .fa-twitter{
+  color: #00aced;
+}
+.nav-social a:hover .fa-youtube{
+  color: #bb0000;
+}
+.nav-social a:hover .fa-instagram{
+  color: #517fa4;
+}
+.nav-social a:hover .fa-linkedin{
+  color: #007bb6;
+}
