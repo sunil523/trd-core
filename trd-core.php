@@ -10,6 +10,7 @@ Text Domain: trd
 */
 
 define('TRD_CORE_PATH', plugin_dir_path( __FILE__ ) );
+define('TRD_CORE_URL', plugin_dir_url( __FILE__ ) );
 
 // autoload the class from the plugin
 spl_autoload_register(function($className){
