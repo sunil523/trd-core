@@ -17,7 +17,6 @@ class ApiPost extends ApiConfig
     $this->post      = $post;
     $this->update    = $update;
     $this->crosspost = array();
-    $this->update_crosspost_field();
   }
 
   /**
@@ -38,6 +37,7 @@ class ApiPost extends ApiConfig
       // set API params
       $this->api = (OBJECT) $api_args;
       $key = '_crosspost_id_'.$this->slug;
+      $this->update_crosspost_field();
       // set the username and password if they are not set
       if(!isset($this->api->user)) $this->api->user = $this->api_user;
       if(!isset($this->api->pass)) $this->api->pass = $this->api_pass;
@@ -150,6 +150,11 @@ class ApiPost extends ApiConfig
       'comment_status' => $this->post->comment_status,
       'ping_status' => $this->post->ping_status,
     );
+    $national = get_post_meta( $this->post->ID, 'A3_trd_national', true);
+    $tristate = get_post_meta( $this->post->ID, 'A3_trd_tristate', true);
+    if( !empty( $national ) || !empty( $tristate ) ){
+      unset( $fields['meta'][ $this->crosspost_field ] );
+    }
     $this->crosspost = array_merge( $this->crosspost, $fields );
   }
 
@@ -170,11 +175,6 @@ class ApiPost extends ApiConfig
       '_thumbnail_id'          => array( $thumbnail_id ),
     );
     $this->crosspost['meta'] = array_merge( $this->crosspost['meta'], $metas );
-    if( (
-        isset( $this->crosspost['meta']['A3_trd_national'] ) || isset( $this->crosspost['meta']['A3_trd_tristate'] )
-    ) && isset( $this->crosspost['meta'][ $this->crosspost_field ] ) ){
-      unset( $this->crosspost['meta'][ $this->crosspost_field ] );
-    }
     $this->crosspost = array_merge( $this->crosspost, $fields );
   }
 
