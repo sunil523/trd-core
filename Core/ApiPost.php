@@ -47,6 +47,7 @@ class ApiPost extends ApiConfig
       // change the url when it's update and we have crosspost ID
       if( $this->update && !empty( $crosspost_id ) ) {
         $url = sprintf("%s/posts/%s", $this->api->root, $crosspost_id );
+        unset($this->crosspost['status']);
       } else {
         $url = sprintf("%s/posts", $this->api->root );
       }
