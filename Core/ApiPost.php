@@ -46,7 +46,7 @@ class ApiPost extends ApiConfig
     $this->api = (OBJECT) $api_args;
     // set the API Header
     $this->api->headers = array(
-      'Authorization' => 'Basic ' . base64_encode( $this->api_user . ':' . $this->api_pass ),
+      'authorization' => 'Basic ' . base64_encode( $this->api_user . ':' . $this->api_pass ),
     );
     // set the fields
     $this->update_crosspost_field();
@@ -136,6 +136,7 @@ class ApiPost extends ApiConfig
       'ping_status' => $this->post->ping_status,
       'categories' => $this->get_taxonomy_terms( 'category', 'categories', array('cross-post') ),
       'tags' => $this->get_taxonomy_terms( 'post_tag', 'tags' ),
+      'meta' => array()
     );
     // copy the curret post meta
     $fields['meta'] = get_post_meta( $this->post->ID );
@@ -237,27 +238,43 @@ class ApiPost extends ApiConfig
   private function get_upload_image_id( $image_id )
   {
     $image_file = get_attached_file( $image_id );
-    $filename   = basename( $image_file );
-    $f = fopen( $image_file, 'rb');
-    $file_data  = fread( $f, filesize($image_file) );
+    $f          = @fopen( $image_file, 'rb');
+    $fsize      = filesize($image_file);
+    $file_data  = fread( $f, $fsize );
     fclose($f);
+    
+    $url  = sprintf( '%s/media', $this->api->root );
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => $url,
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => "",
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_SSL_VERIFYHOST => 0,
+      CURLOPT_SSL_VERIFYPEER => 0,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "POST",
+      CURLOPT_HTTPHEADER => array(
+        "authorization: Basic ".base64_encode( $this->api_user.':'.$this->api_pass ),
+        "cache-control: no-cache",
+        "content-disposition: attachment; filename=crosspost-".date('Ymdhis').".".pathinfo($image_file, PATHINFO_EXTENSION),
+        "content-type: ".mime_content_type($image_file),
+      ),
+      CURLOPT_POSTFIELDS => $file_data,
+    ));
 
-    $url     = sprintf( '%s/media', $this->api->root );
-    $headers = array(
-      'Content-Disposition' => 'attachment; filename="crosspost-'.$filename.'"',
-      'content-type'        => 'application/binary',
-      'accept'              => 'application/json',
-    );
-    $headers  = array_merge( $this->api->headers, $headers );
-    $response = wp_remote_post( $url, array( 'headers' => $headers, 'body' => $file_data ) );
-    if( is_wp_error($response) ) return null;
-    if( in_array($response[ 'response' ][ 'code' ], array( 200, 201 ) ) ){
-      $body = wp_remote_retrieve_body( $response );
-      if( !is_wp_error( $body ) ){
-        $body = json_decode( $body );
-        return $body->id;
-      }
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+
+    curl_close($curl);
+    if ($err) {
+      // echo "cURL Error #:" . $err;
+      return null;
+    } else {
+      // echo $response;
+      $body = json_decode( $response );
+      return $body->id;
     }
-    return null;
   }
 }
