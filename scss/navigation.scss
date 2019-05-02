@@ -48,7 +48,9 @@ header{
   margin: 0 auto;
 }
 
-.nav-primary,
+.nav-primary{
+  height: 60px;
+}
 .nav-second{
   height: 50px;
 }
@@ -103,7 +105,7 @@ header{
   // background-color: #666;
 }
 .nav-logo{
-  padding: 5px 0 !important;
+  padding: 10px 0 !important;
 }
 .nav-logo img{
   height: 40px;
@@ -141,6 +143,12 @@ header{
   width: 1px;
 }
 
+.nav-primary .nav-regions{
+  margin-left: 50px;
+}
+.nav-second .nav-pages{
+  margin-left: 235px;
+}
 .nav-primary .nav-right{
   display: flex;
   flex-direction: row;

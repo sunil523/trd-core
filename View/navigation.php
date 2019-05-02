@@ -32,7 +32,7 @@
   <div class="nav-second">
     <div class="container">
       <div class="nav-left">
-        <nav>
+        <nav class="nav-pages">
           <a href="#" class="current">Home</a>
           <a href="#">Residential</a>
           <a href="#">Commercial</a>
