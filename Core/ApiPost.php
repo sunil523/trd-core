@@ -29,9 +29,9 @@ class ApiPost extends ApiConfig
     // save which crosspost was created and which crosspost didn't get created.
     $result = array( 'success' => array(), 'error' => array() );
     // Crosspost to different citys
-    // foreach ($crossposts as $crosspost) {
+    foreach ($crossposts as $crosspost) {
       $this->cp( $crosspost, $result );
-    // }
+    }
     update_option('trd_apipost_notices', $result);
     return true;
   }
@@ -39,7 +39,6 @@ class ApiPost extends ApiConfig
   public function cp( $crosspost, &$result )
   {
     $this->slug = $crosspost->slug;
-    $this->slug = 'ny';
     $key = '_crosspost_id_'.$this->slug;
     $api_args = $this->apis[ $this->slug ];
     if( empty( $api_args ) ) return false;
