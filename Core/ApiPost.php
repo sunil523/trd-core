@@ -50,6 +50,7 @@ class ApiPost extends ApiConfig
         unset($this->crosspost['status']);
       } else {
         $url = sprintf("%s/posts", $this->api->root );
+        $this->crosspost['status'] = $this->default_status;
       }
       // set the API Header
       $this->api->headers = array(
