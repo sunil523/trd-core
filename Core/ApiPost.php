@@ -10,6 +10,7 @@ class ApiPost extends ApiConfig
   private $crosspost       = null;
   private $crosspost_field = null;
   private $default_status  = 'draft';
+  private $result          = array('success' => array(), 'error' => array(), 'info' => array(), 'warning' => array());
 
   public function __construct( $post, $update=false )
   {
@@ -26,17 +27,15 @@ class ApiPost extends ApiConfig
   {
     $crossposts = get_the_terms( $this->post, CrossPost::TAXONOMY_NAME );
     if( is_wp_error( $crossposts ) || empty( $crossposts ) ) return;
-    // save which crosspost was created and which crosspost didn't get created.
-    $result = array( 'success' => array(), 'error' => array() );
     // Crosspost to different citys
     foreach ($crossposts as $crosspost) {
-      $this->cp( $crosspost, $result );
+      $this->cp( $crosspost );
     }
-    update_option('trd_apipost_notices', $result);
+    update_option('trd_apipost_notices', $this->result);
     return true;
   }
 
-  public function cp( $crosspost, &$result )
+  public function cp( $crosspost )
   {
     $this->slug = $crosspost->slug;
     $key = '_crosspost_id_'.$this->slug;
@@ -63,17 +62,18 @@ class ApiPost extends ApiConfig
     }
     // Save the post to APIs
     $response = wp_remote_post( $url, array( 'headers' => $this->api->headers, 'body' => $this->crosspost ) );
+    $body     = wp_remote_retrieve_body( $response );
+    $code     = wp_remote_retrieve_response_code( $response );
     // request was success so save the result
-    if( !is_wp_error($response) && in_array($response[ 'response' ][ 'code' ], array( 200, 201 ) ) ){
-      $result[ 'success' ][] = $this->slug;
-      $body = wp_remote_retrieve_body( $response );
-      if( !is_wp_error( $body ) ){
-        $body = json_decode( $body );
-        // save the corsspost id in the current post 
-        update_post_meta( $this->post->ID, $key, $body->id );
-      }
+    if( !is_wp_error( $response ) && !is_wp_error( $body ) && in_array( $code, array( 200, 201 ) ) ){
+      $this->result[ 'success' ][] = $this->slug;
+      $body = json_decode( $response['body'] );
+      // save the corsspost id in the current post 
+      update_post_meta( $this->post->ID, $key, $body->id );
     } else {
-      $result[ 'error' ][] = $this->slug;
+      $error = is_wp_error( $body ) ? $body : $response;
+      $this->result[ 'error' ][] = $this->slug;
+      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] %s - %s</p>', $this->slug, $code, $error->get_error_code(), $error->get_error_message() );
     }
   }
 
@@ -89,6 +89,9 @@ class ApiPost extends ApiConfig
       }
       else if( $key=='error' ){
         $message = sprintf( 'Can not create crosspost under <strong>%s</strong>.', implode(', ', $values) );
+      }
+      else{
+        $message = implode('<br>', $values );
       }
       if( !empty($message) ){
         ?>
@@ -219,17 +222,18 @@ class ApiPost extends ApiConfig
 
     $url = sprintf( '%s/media/%s', $this->api->root, $upload_id );
     $response = wp_remote_post( $url, array( 'headers' => $this->api->headers, 'body' => $fields ) );
-    if( is_wp_error($response) ) return null;
-    if( in_array( $response[ 'response' ][ 'code' ], array( 200, 201 ) ) ){
-      $body = wp_remote_retrieve_body( $response );
-      if( !is_wp_error( $body ) ){
-        $body = json_decode( $body );
-        // save the corsspost id in the current post 
-        update_post_meta( $image->ID, $key, $body->id );
-        return $body->id;
-      }
+    $body     = wp_remote_retrieve_body( $response );
+    $code     = wp_remote_retrieve_response_code( $response );
+    if( !is_wp_error( $response ) && !is_wp_error( $body ) && in_array( $code, array( 200, 201 ) ) ){
+      $body = json_decode( $body );
+      // save the corsspost id in the current post 
+      update_post_meta( $image->ID, $key, $body->id );
+      return $body->id;
+    }else{
+      $error = is_wp_error( $body ) ? $body : $response;
+      $this->result[ 'warning' ][] = sprintf( '<p><strong>%s</strong>: [%s] %s - %s</p>', $this->slug, $code, $error->get_error_code(), $error->get_error_message() );
+      return null;
     }
-    return null;
   }
 
   /**
@@ -263,17 +267,15 @@ class ApiPost extends ApiConfig
       ),
       CURLOPT_POSTFIELDS => $file_data,
     ));
-
     $response = curl_exec($curl);
     $err = curl_error($curl);
-
     curl_close($curl);
+    $body = json_decode( $response );
     if ($err) {
-      // echo "cURL Error #:" . $err;
+      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] %s - %s</p>', $this->slug, $body->data->status, $body->code, $body->message);
       return null;
     } else {
-      // echo $response;
-      $body = json_decode( $response );
+      $this->result[ 'info' ][] = sprintf('<p><strong>%s</strong>: %s is uploaded.</p>', $this->slug, basename($image_file));
       return $body->id;
     }
   }
