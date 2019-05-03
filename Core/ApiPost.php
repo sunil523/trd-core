@@ -74,7 +74,7 @@ class ApiPost extends ApiConfig
     } else {
       $error = is_wp_error( $body ) ? $body : $response;
       $this->result[ 'error' ][] = $this->slug;
-      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] %s - %s</p>', $this->slug, $code, $error->get_error_code(), $error->get_error_message() );
+      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] %s - %s (%s)</p>', $this->slug, $code, $error->get_error_code(), $error->get_error_message(), $url );
     }
   }
 
@@ -92,7 +92,7 @@ class ApiPost extends ApiConfig
         $message = sprintf( 'Can not create crosspost under <strong>%s</strong>.', implode(', ', $values) );
       }
       else{
-        $message = implode('<br>', $values );
+        $message = implode('', $values );
       }
       if( !empty($message) ){
         ?>
