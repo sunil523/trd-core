@@ -50,6 +50,7 @@ class ApiPost extends ApiConfig
         unset($this->crosspost['status']);
       } else {
         $url = sprintf("%s/posts", $this->api->root );
+        $this->crosspost['status'] = $this->default_status;
       }
       // set the API Header
       $this->api->headers = array(
@@ -169,6 +170,11 @@ class ApiPost extends ApiConfig
       '_thumbnail_id'          => array( $thumbnail_id ),
     );
     $this->crosspost['meta'] = array_merge( $this->crosspost['meta'], $metas );
+    if( (
+        isset( $this->crosspost['meta']['A3_trd_national'] ) || isset( $this->crosspost['meta']['A3_trd_tristate'] )
+    ) && isset( $this->crosspost['meta'][ $this->crosspost_field ] ) ){
+      unset( $this->crosspost['meta'][ $this->crosspost_field ] );
+    }
     $this->crosspost = array_merge( $this->crosspost, $fields );
   }
 
