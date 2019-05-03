@@ -70,10 +70,11 @@ class ApiPost extends ApiConfig
       $body = json_decode( $response['body'] );
       // save the corsspost id in the current post 
       update_post_meta( $this->post->ID, $key, $body->id );
+      $this->result[ 'info' ][] = sprintf('<p><strong>%s</strong>: <a href="%s/wp-admin/post.php?post=%s&action=edit">Edit Crosspost</p>', $this->slug, site_url($this->api->base), $body->id );
     } else {
       $error = is_wp_error( $body ) ? $body : $response;
       $this->result[ 'error' ][] = $this->slug;
-      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] %s - %s</p>', $this->slug, $code, $error->get_error_code(), $error->get_error_message() );
+      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] %s - %s (%s)</p>', $this->slug, $code, $error->get_error_code(), $error->get_error_message(), $url );
     }
   }
 
@@ -91,7 +92,7 @@ class ApiPost extends ApiConfig
         $message = sprintf( 'Can not create crosspost under <strong>%s</strong>.', implode(', ', $values) );
       }
       else{
-        $message = implode('<br>', $values );
+        $message = implode('', $values );
       }
       if( !empty($message) ){
         ?>
@@ -275,7 +276,7 @@ class ApiPost extends ApiConfig
       $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] %s - %s</p>', $this->slug, $body->data->status, $body->code, $body->message);
       return null;
     } else {
-      $this->result[ 'info' ][] = sprintf('<p><strong>%s</strong>: %s is uploaded.</p>', $this->slug, basename($image_file));
+      $this->result[ 'info' ][] = sprintf('<p><strong>%s</strong>: %s is uploaded. <a href="%s/wp-admin/upload.php?item=%s" target="_blank">Media ID: %s</a></p>', $this->slug, basename($image_file), site_url($this->api->base), $body->id, $body->id);
       return $body->id;
     }
   }
