@@ -10,6 +10,7 @@ class ApiPost extends ApiConfig
   private $crosspost       = null;
   private $crosspost_field = null;
   private $default_status  = 'draft';
+  private $result          = array('success' => array(), 'error' => array(), 'info' => array(), 'warning' => array());
 
   public function __construct( $post, $update=false )
   {
@@ -17,7 +18,6 @@ class ApiPost extends ApiConfig
     $this->post      = $post;
     $this->update    = $update;
     $this->crosspost = array();
-    $this->update_crosspost_field();
   }
 
   /**
@@ -27,54 +27,54 @@ class ApiPost extends ApiConfig
   {
     $crossposts = get_the_terms( $this->post, CrossPost::TAXONOMY_NAME );
     if( is_wp_error( $crossposts ) || empty( $crossposts ) ) return;
-    // save which crosspost was created and which crosspost didn't get created.
-    $result = array( 'success' => array(), 'error' => array() );
-    // set the commen fields
-    $this->set_fields();
+    // Crosspost to different citys
     foreach ($crossposts as $crosspost) {
-      $this->slug = $crosspost->slug;
-      $api_args = $this->apis[ $this->slug ];
-      if( empty( $api_args ) ) continue;
-      // set API params
-      $this->api = (OBJECT) $api_args;
-      $key = '_crosspost_id_'.$this->slug;
-      // set the username and password if they are not set
-      if(!isset($this->api->user)) $this->api->user = $this->api_user;
-      if(!isset($this->api->pass)) $this->api->pass = $this->api_pass;
-
-      // get saved crosspost ID
-      $crosspost_id = get_post_meta( $this->post->ID, $key, true );
-      // change the url when it's update and we have crosspost ID
-      if( $this->update && !empty( $crosspost_id ) ) {
-        $url = sprintf("%s/posts/%s", $this->api->root, $crosspost_id );
-        unset($this->crosspost['status']);
-      } else {
-        $url = sprintf("%s/posts", $this->api->root );
-        $this->crosspost['status'] = $this->default_status;
-      }
-      // set the API Header
-      $this->api->headers = array(
-        'Authorization' => 'Basic ' . base64_encode( $this->api->user . ':' . $this->api->pass ),
-      );
-      // Update the fields
-      $this->update_fields();
-      // Save the post to APIs
-      $response = wp_remote_post( $url, array( 'headers' => $this->api->headers, 'body' => $this->crosspost ) );
-      // request was success so save the result
-      if( !is_wp_error($response) && in_array($response[ 'response' ][ 'code' ], array( 200, 201 ) ) ){
-        $result[ 'success' ][] = $this->slug;
-        $body = wp_remote_retrieve_body( $response );
-        if( !is_wp_error( $body ) ){
-          $body = json_decode( $body );
-          // save the corsspost id in the current post 
-          update_post_meta( $this->post->ID, $key, $body->id );
-        }
-      } else {
-        $result[ 'error' ][] = $this->slug;
-      }
+      $this->cp( $crosspost );
     }
-    update_option('trd_apipost_notices', $result);
+    update_option('trd_apipost_notices', $this->result);
     return true;
+  }
+
+  public function cp( $crosspost )
+  {
+    $this->slug = $crosspost->slug;
+    $key = '_crosspost_id_'.$this->slug;
+    $api_args = $this->apis[ $this->slug ];
+    if( empty( $api_args ) ) return false;
+    // set API params
+    $this->api = (OBJECT) $api_args;
+    // set the API Header
+    $this->api->headers = array(
+      'authorization' => 'Basic ' . base64_encode( $this->api_user . ':' . $this->api_pass ),
+    );
+    // set the fields
+    $this->update_crosspost_field();
+    $this->set_fields();
+    // get saved crosspost ID
+    $crosspost_id = get_post_meta( $this->post->ID, $key, true );
+    // change the url when it's update and we have crosspost ID
+    if( $this->update && !empty( $crosspost_id ) ) {
+      $url = sprintf("%s/posts/%s", $this->api->root, $crosspost_id );
+      unset($this->crosspost['status']);
+    } else {
+      $url = sprintf("%s/posts", $this->api->root );
+      $this->crosspost['status'] = $this->default_status;
+    }
+    // Save the post to APIs
+    $response = wp_remote_post( $url, array( 'headers' => $this->api->headers, 'body' => $this->crosspost ) );
+    $body     = wp_remote_retrieve_body( $response );
+    $code     = wp_remote_retrieve_response_code( $response );
+    // request was success so save the result
+    if( !is_wp_error( $response ) && !is_wp_error( $body ) && in_array( $code, array( 200, 201 ) ) ){
+      $this->result[ 'success' ][] = $this->slug;
+      $body = json_decode( $response['body'] );
+      // save the corsspost id in the current post 
+      update_post_meta( $this->post->ID, $key, $body->id );
+    } else {
+      $error = is_wp_error( $body ) ? $body : $response;
+      $this->result[ 'error' ][] = $this->slug;
+      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] %s - %s</p>', $this->slug, $code, $error->get_error_code(), $error->get_error_message() );
+    }
   }
 
   public static function admin_notices()
@@ -89,6 +89,9 @@ class ApiPost extends ApiConfig
       }
       else if( $key=='error' ){
         $message = sprintf( 'Can not create crosspost under <strong>%s</strong>.', implode(', ', $values) );
+      }
+      else{
+        $message = implode('<br>', $values );
       }
       if( !empty($message) ){
         ?>
@@ -123,58 +126,40 @@ class ApiPost extends ApiConfig
    */
   private function set_fields()
   {
+    // get the image id
+    $thumbnail_id = $this->get_media_id( get_post_meta( $this->post->ID, '_thumbnail_id', true ) );
+    $sf_image_id  = $this->get_media_id( get_post_meta( $this->post->ID, 'second_featured_image', true ) );
+
     $fields = array(
       'title' => get_the_title( $this->post ),
       'status' => $this->default_status,
       'content' => $this->post->post_content,
-      'meta' => array(
-        $this->crosspost_field       => array( 1 ),
-        '_crosspost'                 => array( 1 ), // to hide the crosspost taxonomy box on crosspost.
-        '_links_to'                  => array( get_the_permalink( $this->post->ID ) ),
-        '_links_to_target'           => array( "_blank" ),
-        'Dock-News'                  => get_post_meta( $this->post->ID, 'Dock-News' ),
-        'amp_exclude'                => get_post_meta( $this->post->ID, 'amp_exclude' ),
-        'twitterCardType'            => get_post_meta( $this->post->ID, 'twitterCardType' ),
-        '_bitly_permalink'           => get_post_meta( $this->post->ID, '_bitly_permalink' ),
-        '_bitly_shorturl'            => get_post_meta( $this->post->ID, '_bitly_shorturl' ),
-        '_aioseop_title'             => get_post_meta( $this->post->ID, '_aioseop_title' ),
-        '_aioseop_description'       => get_post_meta( $this->post->ID, '_aioseop_description' ),
-        '_aioseop_keywords'          => get_post_meta( $this->post->ID, '_aioseop_keywords' ),
-        '_aioseop_custom_link'       => array( get_the_permalink( $this->post->ID ) ),
-        '_aioseop_noindex'           => get_post_meta( $this->post->ID, '_aioseop_noindex' ),
-        '_aioseop_nofollow'          => get_post_meta( $this->post->ID, '_aioseop_nofollow' ),
-        '_aioseop_disable'           => get_post_meta( $this->post->ID, '_aioseop_disable' ),
-        '_aioseop_disable_analytics' => get_post_meta( $this->post->ID, '_aioseop_disable_analytics' ),
-      ),
       'author' => $this->post->post_author,
       'comment_status' => $this->post->comment_status,
       'ping_status' => $this->post->ping_status,
-    );
-    $this->crosspost = array_merge( $this->crosspost, $fields );
-  }
-
-  /**
-   * 
-   */
-  private function update_fields()
-  {
-    $thumbnail_id          = $this->get_media_id( get_post_meta( $this->post->ID, '_thumbnail_id', true ) );
-    $second_featured_image = $this->get_media_id( get_post_meta( $this->post->ID, 'second_featured_image', true ) );
-    $fields = array(
       'categories' => $this->get_taxonomy_terms( 'category', 'categories', array('cross-post') ),
       'tags' => $this->get_taxonomy_terms( 'post_tag', 'tags' ),
+      'meta' => array()
     );
-    // set meta fields
-    $metas = array(
-      'second_featured_image'  => array( $second_featured_image ),
-      '_thumbnail_id'          => array( $thumbnail_id ),
-    );
-    $this->crosspost['meta'] = array_merge( $this->crosspost['meta'], $metas );
-    if( (
-        isset( $this->crosspost['meta']['A3_trd_national'] ) || isset( $this->crosspost['meta']['A3_trd_tristate'] )
-    ) && isset( $this->crosspost['meta'][ $this->crosspost_field ] ) ){
-      unset( $this->crosspost['meta'][ $this->crosspost_field ] );
+    // copy the curret post meta
+    $fields['meta'] = get_post_meta( $this->post->ID );
+    // only set the city crosspost when national and tristate fields are not set
+    if( !isset( $fields['meta']['A3_trd_national'] ) && !isset( $fields['meta']['A3_tri_state'] ) ){
+      $fields['meta'][ $this->crosspost_field ] = array( 1 );
     }
+    // update other meta fields
+    $fields['meta']['_crosspost']            = array( 1 ); // to hide the crosspost taxonomy box on crosspost.
+    $fields['meta']['_links_to']             = array( get_the_permalink( $this->post->ID ) );
+    $fields['meta']['_links_to_target']      = array( "_blank" );
+    $fields['meta']['second_featured_image'] = array( $sf_image_id );
+    $fields['meta']['_thumbnail_id']         = array( $thumbnail_id );
+    $fields['meta']['_aioseop_custom_link']  = array( get_the_permalink( $this->post->ID ) );
+    // unset the other meta fields
+    unset($fields['meta']['_edit_lock']);
+    unset($fields['meta']['_edit_last']);
+    unset($fields['meta']['_encloseme']);
+    unset($fields['meta']['_second_featured_image']);
+    unset($fields['meta']['_headline_2']);
     $this->crosspost = array_merge( $this->crosspost, $fields );
   }
 
@@ -237,17 +222,18 @@ class ApiPost extends ApiConfig
 
     $url = sprintf( '%s/media/%s', $this->api->root, $upload_id );
     $response = wp_remote_post( $url, array( 'headers' => $this->api->headers, 'body' => $fields ) );
-    if( is_wp_error($response) ) return null;
-    if( in_array( $response[ 'response' ][ 'code' ], array( 200, 201 ) ) ){
-      $body = wp_remote_retrieve_body( $response );
-      if( !is_wp_error( $body ) ){
-        $body = json_decode( $body );
-        // save the corsspost id in the current post 
-        update_post_meta( $image->ID, $key, $body->id );
-        return $body->id;
-      }
+    $body     = wp_remote_retrieve_body( $response );
+    $code     = wp_remote_retrieve_response_code( $response );
+    if( !is_wp_error( $response ) && !is_wp_error( $body ) && in_array( $code, array( 200, 201 ) ) ){
+      $body = json_decode( $body );
+      // save the corsspost id in the current post 
+      update_post_meta( $image->ID, $key, $body->id );
+      return $body->id;
+    }else{
+      $error = is_wp_error( $body ) ? $body : $response;
+      $this->result[ 'warning' ][] = sprintf( '<p><strong>%s</strong>: [%s] %s - %s</p>', $this->slug, $code, $error->get_error_code(), $error->get_error_message() );
+      return null;
     }
-    return null;
   }
 
   /**
@@ -256,25 +242,41 @@ class ApiPost extends ApiConfig
   private function get_upload_image_id( $image_id )
   {
     $image_file = get_attached_file( $image_id );
-    $filename   = basename( $image_file );
-    $file_data  = file_get_contents( $image_file );
-
-    $url     = sprintf( '%s/media', $this->api->root );
-    $headers = array(
-      'Content-Disposition' => 'attachment; filename="'.$filename.'"',
-      'content-type'        => 'application/binary',
-      'accept'              => 'application/json',
-    );
-    $headers  = array_merge( $this->api->headers, $headers );
-    $response = wp_remote_post( $url, array( 'headers' => $headers, 'body' => $file_data ) );
-    if( is_wp_error($response) ) return null;
-    if( in_array($response[ 'response' ][ 'code' ], array( 200, 201 ) ) ){
-      $body = wp_remote_retrieve_body( $response );
-      if( !is_wp_error( $body ) ){
-        $body = json_decode( $body );
-        return $body->id;
-      }
+    $f          = @fopen( $image_file, 'rb');
+    $fsize      = filesize($image_file);
+    $file_data  = fread( $f, $fsize );
+    fclose($f);
+    
+    $url  = sprintf( '%s/media', $this->api->root );
+    $curl = curl_init();
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => $url,
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => "",
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 30,
+      CURLOPT_SSL_VERIFYHOST => 0,
+      CURLOPT_SSL_VERIFYPEER => 0,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => "POST",
+      CURLOPT_HTTPHEADER => array(
+        "authorization: Basic ".base64_encode( $this->api_user.':'.$this->api_pass ),
+        "cache-control: no-cache",
+        "content-disposition: attachment; filename=crosspost-".date('Ymdhis').".".pathinfo($image_file, PATHINFO_EXTENSION),
+        "content-type: ".mime_content_type($image_file),
+      ),
+      CURLOPT_POSTFIELDS => $file_data,
+    ));
+    $response = curl_exec($curl);
+    $err = curl_error($curl);
+    curl_close($curl);
+    $body = json_decode( $response );
+    if ($err) {
+      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] %s - %s</p>', $this->slug, $body->data->status, $body->code, $body->message);
+      return null;
+    } else {
+      $this->result[ 'info' ][] = sprintf('<p><strong>%s</strong>: %s is uploaded.</p>', $this->slug, basename($image_file));
+      return $body->id;
     }
-    return null;
   }
 }
