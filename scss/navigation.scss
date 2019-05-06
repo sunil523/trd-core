@@ -52,7 +52,7 @@ $nav-max-width: 1600px;
     color: inherit;
     padding: 2rem 1rem;
     text-transform: uppercase;
-    display: inline-block;
+    display: block;
     font-weight: bold;
     position: relative;
     font-size: 1.3rem;
@@ -89,23 +89,8 @@ $nav-max-width: 1600px;
     background-color: #111;
     color: #fff;
     z-index: 1;
-    .nav-left{
-      a,
-      span{
-        margin-left: 10%;
-        &:last-child{
-          position: relative;
-          // &::before{
-          //   content: '';
-          //   position: absolute;
-          //   left: 0;
-          //   height: 30%;
-          //   top: 35%;
-          //   background-color: $color-nav-secondry-txt;
-          //   width: 1px;
-          // }
-        }
-      }
+    .nav-left > nav > .nav-item{
+      margin-right: 10%;
     }
     .nav-sections{
       margin-left: 235px;
@@ -164,13 +149,15 @@ $nav-max-width: 1600px;
   }
 
   .nav-account{
-    // display: none;
     a, span{
       color: $color-nav-primary-txt !important;
       font-size: 1.3rem;
       &:hover{
         color: $color-nav-highlight !important;
       }
+    }
+    &-logout{
+      display: none;
     }
   }
   .current{

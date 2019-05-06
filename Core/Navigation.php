@@ -18,10 +18,11 @@ class Navigation
   public static function Register_Location()
   {
     register_nav_menus( array(
-      'header_primary'  => 'Header Primary',
-      'header_secondry' => 'Header Secondry',
-      'header_social'   => 'Header Social',
-      'header_account'  => 'Header My Account',
+      'header_primary'        => 'Header Primary',
+      'header_secondry'       => 'Header Secondry',
+      'header_social'         => 'Header Social',
+      'header_account_login'  => 'Header My Account Login',
+      'header_account_logout' => 'Header My Account Logout',
     ) );
   }
 
@@ -60,10 +61,16 @@ class Navigation
           'https://linkedin.com/'  => 'Linkedin',
         )
       ),
-      'My Account' => array(
-        'location' => 'header_account',
+      'My Account Login' => array(
+        'location' => 'header_account_login',
         'items' => array(
           '/subscribe/'  => 'Subscribe',
+          '/my-account/' => 'My Account',
+        )
+      ),
+      'My Account Logout' => array(
+        'location' => 'header_account_logout',
+        'items' => array(
           '/my-account/' => 'My Account',
         )
       ),

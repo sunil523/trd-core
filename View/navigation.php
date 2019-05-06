@@ -25,12 +25,20 @@
         </form>
         <?php
           wp_nav_menu( array(
-            'menu'       => 'my-account',
-            'menu_class' => 'nav-account',
+            'menu'       => 'my-account-login',
+            'menu_class' => 'nav-account nav-account-login',
             'container'  => '',
             'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
             'walker'     => new \TRD\Core\WP\Nav_Walker(),
-            'location'   => 'header_account',
+            'location'   => 'header_account_login',
+          ) );
+          wp_nav_menu( array(
+            'menu'       => 'my-account-login',
+            'menu_class' => 'nav-account nav-account-logout',
+            'container'  => '',
+            'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
+            'walker'     => new \TRD\Core\WP\Nav_Walker(),
+            'location'   => 'header_account_login',
           ) );
         ?>
       </div>
