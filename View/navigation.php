@@ -1,18 +1,19 @@
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/fontawesome.css" integrity="sha384-vd1e11sR28tEK9YANUtpIOdjGW14pS87bUBuOIoBILVWLFnS+MCX9T6MMf0VdPGq" crossorigin="anonymous">
-<header class="trd-header">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<header class="trd-header nav">
   <div class="nav-primary">
     <div class="container">
       <div class="nav-left">
         <a class="nav-logo" href="/"><img src="<?php echo TRD_CORE_URL.'trd-logo.svg'; ?>"></a>
-        <nav class="nav-regions">
-          <a href="#" class="current">New York</a>
-          <a href="#">National</a>
-          <a href="#">South Florida</a>
-          <a href="#">Los Angeles</a>
-          <a href="#">Chicago</a>
-          <a href="#">Tri-State</a>
-        </nav>
+        <?php
+          wp_nav_menu( array(
+            'menu'       => 'nav-regions',
+            'menu_class' => 'nav-regions',
+            'container'  => '',
+            'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
+            'walker'     => new \TRD\Core\WP\Nav_Walker(),
+            'location'   => 'header_primary',
+          ) );
+        ?>
       </div>
       <div class="nav-right">
         <form class="nav-search-form" autocomplete="off">
@@ -22,36 +23,41 @@
             <i class="fa fa-search"></i>
           </label>
         </form>
-        <nav class="nav-account">
-          <a href="#">Subscribe</a>
-          <a href="#">Login</a>
-        </nav>
+        <?php
+          wp_nav_menu( array(
+            'menu'       => 'my-account',
+            'menu_class' => 'nav-account',
+            'container'  => '',
+            'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
+            'walker'     => new \TRD\Core\WP\Nav_Walker(),
+            'location'   => 'header_account',
+          ) );
+        ?>
       </div>
     </div>
   </div>
-  <div class="nav-second">
+  <div class="nav-secondry">
     <div class="container">
-      <div class="nav-left">
-        <nav class="nav-pages">
-          <a href="#" class="current">Home</a>
-          <a href="#">Residential</a>
-          <a href="#">Commercial</a>
-          <a href="#">Politics</a>
-          <a href="#">Videos</a>
-          <a href="#">Listings</a>
-          <a href="#">Events</a>
-          <a href="#">More</a>
-        </nav>
-      </div>
-      <div class="nav-right">
-        <nav class="nav-social">
-          <a href="#"><i class="fa fab fa-facebook"></i></a>
-          <a href="#"><i class="fa fab fa-twitter"></i></a>
-          <a href="#"><i class="fa fab fa-youtube"></i></a>
-          <a href="#"><i class="fa fab fa-instagram"></i></a>
-          <a href="#"><i class="fa fab fa-linkedin"></i></a>
-        </nav>
-      </div>
+      <div class="nav-left"><?php
+        wp_nav_menu( array(
+          'menu'       => 'nav-sections',
+          'menu_class' => 'nav-sections',
+          'container'  => '',
+          'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
+          'walker'     => new \TRD\Core\WP\Nav_Walker(),
+          'location'   => 'header_secondry',
+        ) );
+      ?></div>
+      <div class="nav-right"><?php
+          wp_nav_menu( array(
+            'menu'       => 'nav-social',
+            'menu_class' => 'nav-social',
+            'container'  => '',
+            'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
+            'walker'     => new \TRD\Core\WP\Nav_Walker(),
+            'location'   => 'header_social',
+          ) );
+      ?></div>
     </div>
   </div>
 </header>

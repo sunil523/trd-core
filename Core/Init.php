@@ -10,5 +10,6 @@ class Init
   public function register()
   {
     CrossPost::Register();
+    Navigation::Register();
   }
 }
