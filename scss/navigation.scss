@@ -92,6 +92,7 @@ $nav-max-width: 1600px;
     .nav-left{
       a,
       span{
+        margin-left: 10%;
         &:last-child{
           position: relative;
           // &::before{
@@ -137,7 +138,7 @@ $nav-max-width: 1600px;
     min-width: 150px;
     padding-top: 1rem;
     transition: all ease-in-out 300ms;
-    a{
+    a,span{
       display: block;
       padding: 1.5rem 1rem;
     }
@@ -192,6 +193,10 @@ $nav-max-width: 1600px;
         font-family: "Font Awesome 5 Brands", "Font Awesome 5 Free";
         font-size: 3rem;
       }
+      &[href*="newsletter"]::before{
+        content: '\f0e0';
+        font-family: "Font Awesome 5 Free";
+      }
       &[href*="facebook.com"]::before{
         content: '\f09a';
       }
@@ -208,6 +213,9 @@ $nav-max-width: 1600px;
         content: '\f08c';
       }
 
+      &[href*="newsletter"]:hover::before{
+        color: $color-trd-ny;
+      }
       &[href*="facebook.com"]:hover::before{
         color: $color-facebook;
       }

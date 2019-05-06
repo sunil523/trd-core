@@ -42,10 +42,10 @@ class Navigation
       'Nav Sections' => array(
         'location' => 'header_secondry',
         'items' => array(
-          '/#' => 'News',
-          '/#' => 'Nagazine',
-          '/#' => 'Research',
-          '/#' => 'Events',
+          '/#news' => 'News',
+          '/#magazine' => 'Magazine',
+          '/#research' => 'Research',
+          '/#events' => 'Events',
           // '/#' => 'Videos',
           // '/#' => 'Listing',
         )
