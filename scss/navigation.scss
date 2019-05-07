@@ -410,7 +410,7 @@ $nav-max-width: 1600px;
     }
   }
   .admin-bar .nav-secondry{
-    // top: 32px;
+    top: 32px;
   }
   .nav-secondry{
     display: none;
@@ -431,7 +431,6 @@ $nav-max-width: 1600px;
       position: relative;
       overflow: auto;
     }
-    .container,
     .mobile,
     nav{
       flex-direction: column;
