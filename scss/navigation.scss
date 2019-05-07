@@ -409,8 +409,12 @@ $nav-max-width: 1600px;
       margin-left: 0;
     }
   }
-  .admin-bar .nav-secondry{
-    top: 32px;
+  .admin-bar{
+    .nav-secondry,
+    .nav-secondry .nav-mobile,
+    .nav-secondry .nav-left{
+      top: 32px;
+    }
   }
   .nav-secondry{
     display: none;
