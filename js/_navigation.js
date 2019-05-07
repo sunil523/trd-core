@@ -32,10 +32,10 @@ function init_trd_nav() {
   $('.nav-menu-btn').on('click', function(){
     console.log($(this).hasClass('close'));
     if($(this).hasClass('close')){
-      $('.nav-secondry').removeClass('show');
+      $('.nav-secondary').removeClass('show');
       $('html,body').removeClass('overflow-off');
     }else{
-      $('.nav-secondry').addClass('show');
+      $('.nav-secondary').addClass('show');
       $('html,body').addClass('overflow-off');
     }
   });
