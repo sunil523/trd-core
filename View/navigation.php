@@ -65,7 +65,7 @@
       </div>
     </div>
   </div>
-  <div class="nav-secondry">
+  <div class="nav-secondary">
     <div class="container">
       <div class="nav-mobile">
         <div class="nav-menu-btn close"><i class="fa fas fa-window-close"></i></div>
@@ -97,7 +97,7 @@
           'container'  => '',
           'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
           'walker'     => new \TRD\Core\WP\Nav_Walker(),
-          'location'   => 'header_secondry',
+          'location'   => 'header_secondary',
         ) );
       ?></div>
       <div class="nav-right"><?php

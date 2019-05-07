@@ -8,19 +8,19 @@ $color-nav-primary-sub-bg: #eee;
 $color-nav-primary-sub-txt: $color-nav-primary-txt;
 $color-nav-primary-sub-sub-bg: #ddd;
 $color-nav-primary-sub-sub-txt: $color-nav-primary-txt;
-$color-nav-secondry-highlight: $color-nav-highlight;
-$color-nav-secondry-bg: #000;
-$color-nav-secondry-txt: #fff;
-$color-nav-secondry-sub-bg: #222;
-$color-nav-secondry-sub-txt: $color-nav-secondry-txt;
-$color-nav-secondry-sub-sub-bg: #222;
-$color-nav-secondry-sub-sub-txt: $color-nav-secondry-txt;
+$color-nav-secondary-highlight: $color-nav-highlight;
+$color-nav-secondary-bg: #000;
+$color-nav-secondary-txt: #fff;
+$color-nav-secondary-sub-bg: #222;
+$color-nav-secondary-sub-txt: $color-nav-secondary-txt;
+$color-nav-secondary-sub-sub-bg: #222;
+$color-nav-secondary-sub-sub-txt: $color-nav-secondary-txt;
 $color-nav-primary-highlight: $color-nav-highlight;
-$color-nav-secondry-highlight: $color-nav-highlight;
+$color-nav-secondary-highlight: $color-nav-highlight;
 $nav-font-family: Arial, Helvetica, sans-serif;
 $nav-height: auto;
 $nav-primary-height: auto;
-$nav-secondry-height: auto;
+$nav-secondary-height: auto;
 $nav-max-width: 1600px;
 
 .promo-popup-btn-wrapper,
@@ -145,8 +145,8 @@ $nav-max-width: 1600px;
       }
     }
   }
-  &-secondry{
-    height: $nav-secondry-height;
+  &-secondary{
+    height: $nav-secondary-height;
     background-color: #111;
     color: #fff;
     z-index: 1;
@@ -168,7 +168,7 @@ $nav-max-width: 1600px;
         &.sub{
           &:hover{
             &.sub > .nav-link{
-              background-color: $color-nav-secondry-sub-bg;
+              background-color: $color-nav-secondary-sub-bg;
             }
             > .nav-sub{
               display: block !important;
@@ -177,12 +177,12 @@ $nav-max-width: 1600px;
         }
       }
       &-sub{
-        background-color: $color-nav-secondry-sub-bg;
-        color: $color-nav-secondry-sub-txt;
+        background-color: $color-nav-secondary-sub-bg;
+        color: $color-nav-secondary-sub-txt;
         .sub{
           &:hover > .nav-link{
-            background-color: $color-nav-secondry-sub-sub-bg !important;
-            color: $color-nav-secondry-highlight;
+            background-color: $color-nav-secondary-sub-sub-bg !important;
+            color: $color-nav-secondary-highlight;
           }
           > .nav-link{
             &::after{
@@ -190,8 +190,8 @@ $nav-max-width: 1600px;
             }
           }
           .nav-sub{
-            background-color: $color-nav-secondry-sub-sub-bg;
-            color: $color-nav-secondry-sub-sub-txt;
+            background-color: $color-nav-secondary-sub-sub-bg;
+            color: $color-nav-secondary-sub-sub-txt;
             position: absolute;
             left: 100%;
             top: 0;
@@ -247,7 +247,7 @@ $nav-max-width: 1600px;
   &-sub{
     display: none !important;
     position: absolute;
-    top: $nav-secondry-height;
+    top: $nav-secondary-height;
     width: max-content;
     min-width: 150px;
     padding-top: 1rem;
@@ -274,7 +274,7 @@ $nav-max-width: 1600px;
     .nav-link{
       position: relative;
       padding: 1.3rem 1.5rem;
-      color: $color-nav-secondry-sub-txt;
+      color: $color-nav-secondary-sub-txt;
       font-weight: normal;
       font-size: 0;
       &::before{
@@ -352,7 +352,7 @@ $nav-max-width: 1600px;
   .nav-primary .nav-regions{
     margin-left: 10px;
   }
-  .nav-secondry .nav-mid{
+  .nav-secondary .nav-mid{
     margin-left: 195px;
   }
 }
@@ -371,7 +371,7 @@ $nav-max-width: 1600px;
   }
 }
 @media (max-width: 1065px){
-  .nav-secondry .nav-mid{
+  .nav-secondary .nav-mid{
     margin-left: 0;
   }
 }
@@ -410,13 +410,12 @@ $nav-max-width: 1600px;
     }
   }
   .admin-bar{
-    .nav-secondry,
-    .nav-secondry .nav-mobile,
-    .nav-secondry .nav-left{
+    .nav-secondary .nav-mobile,
+    .nav-secondary .nav-left{
       top: 32px;
     }
   }
-  .nav-secondry{
+  .nav-secondary{
     display: none;
     position: fixed;
     top: 0;
