@@ -33,8 +33,10 @@ function init_trd_nav() {
     console.log($(this).hasClass('close'));
     if($(this).hasClass('close')){
       $('.nav-secondry').removeClass('show');
+      $('html,body').removeClass('overflow-off');
     }else{
       $('.nav-secondry').addClass('show');
+      $('html,body').addClass('overflow-off');
     }
   });
 }

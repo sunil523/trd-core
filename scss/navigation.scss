@@ -30,6 +30,10 @@ $nav-max-width: 1600px;
 .admin-bar .nav-primary{
   top: 32px;
 }
+
+.overflow-off{
+  overflow: hidden;
+}
 .container{
   display: flex;
   flex-direction: row;
@@ -423,9 +427,11 @@ $nav-max-width: 1600px;
       display: block;
     }
     .container{
-      height: auto;
+      height: inherit;
       position: relative;
+      overflow: auto;
     }
+    .container,
     .mobile,
     nav{
       flex-direction: column;
@@ -436,11 +442,26 @@ $nav-max-width: 1600px;
       display: flex;
     }
     .nav-left{
-      flex: 1 0 auto;
       justify-content: center;
+      background-color: $color-nav-primary-bg;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1;
       .nav-logo{
-        margin-left: -64px;
+        margin-left: -4px;
       }
+    }
+    .nav-mobile{
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 2;
+    }
+    .nav-mid{
+      flex: 1 0 auto;
+      margin-top: 60px;
     }
     .nav-item{
       &.sub{
@@ -493,6 +514,8 @@ $nav-max-width: 1600px;
     .nav-social{
       color: $color-nav-primary-txt;
       flex-direction: row;
+      width: 100%;
+      justify-content: space-around;
       .nav-link{
         color: inherit;
       }
