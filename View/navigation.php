@@ -2,8 +2,13 @@
 <header class="trd-header nav">
   <div class="nav-primary">
     <div class="container">
+      <div class="nav-mobile">
+        <div class="nav-menu-btn"><i class="fa fas fa-bars"></i></div>
+      </div>
       <div class="nav-left">
         <a class="nav-logo" href="/"><img src="<?php echo TRD_CORE_URL.'trd-logo.svg'; ?>"></a>
+      </div>
+      <div class="nav-mid">
         <?php
           wp_nav_menu( array(
             'menu'       => 'nav-regions',
@@ -12,6 +17,22 @@
             'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
             'walker'     => new \TRD\Core\WP\Nav_Walker(),
             'location'   => 'header_primary',
+          ) );
+          wp_nav_menu( array(
+            'menu'       => 'my-account-login',
+            'menu_class' => 'nav-account nav-account-login tablet ',
+            'container'  => '',
+            'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
+            'walker'     => new \TRD\Core\WP\Nav_Walker(),
+            'location'   => 'header_account_login',
+          ) );
+          wp_nav_menu( array(
+            'menu'       => 'my-account-logout',
+            'menu_class' => 'nav-account nav-account-logout tablet hide',
+            'container'  => '',
+            'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
+            'walker'     => new \TRD\Core\WP\Nav_Walker(),
+            'location'   => 'header_account_logout',
           ) );
         ?>
       </div>
@@ -33,12 +54,12 @@
             'location'   => 'header_account_login',
           ) );
           wp_nav_menu( array(
-            'menu'       => 'my-account-login',
-            'menu_class' => 'nav-account nav-account-logout',
+            'menu'       => 'my-account-logout',
+            'menu_class' => 'nav-account nav-account-logout hide',
             'container'  => '',
             'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
             'walker'     => new \TRD\Core\WP\Nav_Walker(),
-            'location'   => 'header_account_login',
+            'location'   => 'header_account_logout',
           ) );
         ?>
       </div>
@@ -46,7 +67,30 @@
   </div>
   <div class="nav-secondry">
     <div class="container">
-      <div class="nav-left"><?php
+      <div class="nav-mobile">
+        <div class="nav-menu-btn close"><i class="fa fas fa-window-close"></i></div>
+      </div>
+      <div class="nav-left">
+        <a class="nav-logo" href="/"><img src="<?php echo TRD_CORE_URL.'trd-logo.svg'; ?>"></a>
+      </div>
+      <div class="nav-mid">
+        <?php
+        wp_nav_menu( array(
+          'menu'       => 'my-account-login',
+          'menu_class' => 'nav-account nav-account-login mobile ',
+          'container'  => '',
+          'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
+          'walker'     => new \TRD\Core\WP\Nav_Walker(),
+          'location'   => 'header_account_login',
+        ) );
+        wp_nav_menu( array(
+          'menu'       => 'my-account-logout',
+          'menu_class' => 'nav-account nav-account-logout mobile hide',
+          'container'  => '',
+          'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
+          'walker'     => new \TRD\Core\WP\Nav_Walker(),
+          'location'   => 'header_account_logout',
+        ) );
         wp_nav_menu( array(
           'menu'       => 'nav-sections',
           'menu_class' => 'nav-sections',

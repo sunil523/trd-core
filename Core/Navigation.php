@@ -108,11 +108,23 @@ class Navigation
     }
   }
 
+  public function load_script()
+  {
+    $file = TRD_CORE_PATH.'/js/_navigation.js';
+    if( file_exists( $file ) ){
+      $content = file_get_contents( $file );
+      echo sprintf('<script type="text/javascript">%s</script>', $content );
+    }
+  }
+
   public function display()
   {
-    $this->load_style();
     $file = TRD_CORE_PATH.'/View/navigation.php';
-    if( file_exists( $file ) ) require_once $file;
+    if( file_exists( $file ) ){
+      $this->load_style();
+      require_once $file;
+      $this->load_script();
+    }
   }
 }
 
