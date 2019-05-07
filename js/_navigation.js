@@ -29,8 +29,7 @@ function init_piano() {
   }]);
 }
 function init_trd_nav() {
-  $('.nav-menu-btn').on('click', function(){
-    console.log($(this).hasClass('close'));
+  $('.nav-menu-btn').on('click', function() {
     if($(this).hasClass('close')){
       $('.nav-secondary').removeClass('show');
       $('html,body').removeClass('overflow-off');
@@ -38,6 +37,9 @@ function init_trd_nav() {
       $('.nav-secondary').addClass('show');
       $('html,body').addClass('overflow-off');
     }
+  });
+  $('.nav-search-btn').on('click', () => {
+    $('.nav-search').toggleClass('show');
   });
 }
 let piano_timer = setInterval(() => {

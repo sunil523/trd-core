@@ -37,13 +37,12 @@
         ?>
       </div>
       <div class="nav-right">
-        <form class="nav-search-form" autocomplete="off">
-          <input class="nav-search" type="search" id="nav-search" name="s" autocomplete="off">
-          <button type="submit"><i class="fa fa-search"></i></button>
-          <label class="nav-search-label" for="nav-search">
-            <i class="fa fa-search"></i>
-          </label>
-        </form>
+        <div class="nav-search">
+          <div class="nav-search-btn"><i class="fa fa-search"></i></div>
+          <form class="nav-search-form" autocomplete="off">
+            <input class="nav-search-input" type="search" id="nav-search-input" name="s" autocomplete="off" placeholder="search">
+          </form>
+        </div>
         <?php
           wp_nav_menu( array(
             'menu'       => 'my-account-login',
