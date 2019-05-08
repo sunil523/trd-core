@@ -19,14 +19,15 @@ $color-nav-search-bg: #222;
 $color-nav-search-txt: #fff;
 $color-nav-primary-highlight: $color-nav-highlight;
 $color-nav-secondary-highlight: $color-nav-highlight;
-$nav-font-family: Arial, Helvetica, sans-serif;
+$nav-font-family: 'Open Sans', sans-serif;
 $nav-height: auto;
 $nav-primary-height: auto;
 $nav-secondary-height: auto;
 $nav-max-width: 1600px;
 
 .promo-popup-btn-wrapper,
-.nav-container{
+.nav-container,
+.nav-holder{
   display: none;
 }
 .admin-bar .nav-primary{
@@ -440,7 +441,7 @@ $nav-max-width: 1600px;
 
     &-search{
       &-form{
-        height: 70px;
+        height: 50px;
       }
     }
   }
@@ -450,6 +451,7 @@ $nav-max-width: 1600px;
     }
     .nav-link{
       font-size: 1.6rem;
+      padding: 1.2rem 1rem;
     }
     .nav-left{
       order: 1;
@@ -590,7 +592,7 @@ $nav-max-width: 1600px;
     }
   }
 }
-@media only screen and (max-width: 850px){
+@media (max-width: 850px){
   body {
     margin-top: 0;
   }
@@ -599,11 +601,13 @@ $nav-max-width: 1600px;
   .nav{
     &-primary{
       .nav-mid{
+        position: relative;
         justify-content: flex-start;
         .tablet{
           display: none;
         }
         .nav-regions{
+          margin-right: 3.8rem;
           width: 100%;
           overflow: auto;
           &::-webkit-scrollbar{
@@ -615,5 +619,44 @@ $nav-max-width: 1600px;
         }
       }
     }
+  }
+}
+@media(max-width: 782px){
+  .nav-mid{
+    .mobile{
+      display: block;
+    }
+    &-left,
+    &-right{
+      display: block;
+      position: absolute;
+      top: 0;
+      background-color: $color-nav-primary-bg;
+      .fa{
+        font-size: 2.5rem;
+        color: #ddd;
+      }
+    }
+    &-left{
+      display: none !important;
+      left: 0;
+      padding: 1rem 0.5rem 1rem 1.5rem;
+    }
+    &-right{
+      right: 0;
+      padding: 1rem 1.5rem 1rem 0.5rem;
+      animation: nav-more infinite 1.5s;
+    }
+  }
+}
+
+@keyframes nav-more{
+  0%,100%{
+    padding-left: 0.5rem;
+    padding-right: 1.5rem;
+  }
+  25%,30%{
+    padding-left: 1.5rem;
+    padding-right: 0.5rem;
   }
 }

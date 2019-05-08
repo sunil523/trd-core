@@ -9,6 +9,7 @@
         <a class="nav-logo" href="/"><img src="<?php echo TRD_CORE_URL.'trd-logo.svg'; ?>"></a>
       </div>
       <div class="nav-mid">
+        <div class="nav-mid-left mobile"><i class="fa fas fa-chevron-left"></i></div>
         <?php
           wp_nav_menu( array(
             'menu'       => 'nav-regions',
@@ -35,12 +36,13 @@
             'location'   => 'header_account_logout',
           ) );
         ?>
+        <div class="nav-mid-right mobile"><i class="fa fas fa-chevron-right"></i></div>
       </div>
       <div class="nav-right">
         <div class="nav-search">
           <div class="nav-search-btn"><i class="fa fa-search"></i></div>
           <form class="nav-search-form" autocomplete="off">
-            <input class="nav-search-input" type="search" id="nav-search-input" name="s" autocomplete="off" placeholder="search">
+            <input class="nav-search-input" type="search" id="nav-search-input" name="s" autocomplete="off" placeholder="search" autofocus>
           </form>
         </div>
         <?php
@@ -67,7 +69,7 @@
   <div class="nav-secondary">
     <div class="container">
       <div class="nav-mobile">
-        <div class="nav-menu-btn close"><i class="fa fas fa-window-close"></i></div>
+        <div class="nav-menu-btn close"><i class="fa fas fa-close"></i></div>
       </div>
       <div class="nav-left">
         <a class="nav-logo" href="/"><img src="<?php echo TRD_CORE_URL.'trd-logo.svg'; ?>"></a>
