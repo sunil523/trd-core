@@ -46,6 +46,7 @@ class ApiPost extends ApiConfig
     // set the API Header
     $this->api->headers = array(
       'authorization' => 'Basic ' . base64_encode( $this->api_user . ':' . $this->api_pass ),
+      'Cookie' => 'wordpress_apipass=1;',
     );
     // set the fields
     $this->update_crosspost_field();
