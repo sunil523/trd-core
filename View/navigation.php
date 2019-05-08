@@ -6,7 +6,7 @@
         <div class="nav-menu-btn"><i class="fa fas fa-bars"></i></div>
       </div>
       <div class="nav-left">
-        <a class="nav-logo" href="/"><img src="<?php echo TRD_CORE_URL.'trd-logo.svg'; ?>"></a>
+        <a class="nav-logo" href="/"><img src="<?php echo \TRD\Core\Navigation::Logo(); ?>"></a>
       </div>
       <div class="nav-mid">
         <div class="nav-mid-left mobile"><i class="fa fas fa-chevron-left"></i></div>
@@ -72,7 +72,7 @@
         <div class="nav-menu-btn close"><i class="fa fas fa-close"></i></div>
       </div>
       <div class="nav-left">
-        <a class="nav-logo" href="/"><img src="<?php echo TRD_CORE_URL.'trd-logo.svg'; ?>"></a>
+        <a class="nav-logo" href="/"><img src="<?php echo \TRD\Core\Navigation::Logo(); ?>"></a>
       </div>
       <div class="nav-mid">
         <?php

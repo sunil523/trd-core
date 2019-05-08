@@ -99,6 +99,23 @@ class Navigation
     }
   }
 
+  public static function Logo()
+  {
+    $regions = array('chicago', 'national', 'la', 'miami', 'tristate');
+    $current = __DIR__;
+    $folders = explode('/', $current);
+    $folders = array_splice($folders, 6);
+    $region  = $folders[0];
+    $logo_path = '/assets/images/trd-ny-logo.svg';
+    if( in_array($region, $regions) ) {
+      $logo_path = sprintf('/assets/images/trd-%s-logo.svg', $region);
+      if ( file_exists(TRD_CORE_PATH.$logo_path) ){
+        return TRD_CORE_URL.$logo_path;
+      }
+    }
+    return TRD_CORE_URL.$logo_path;
+  }
+
   public function load_style()
   {
     $file = TRD_CORE_PATH.'/assets/css/navigation.min.css';
