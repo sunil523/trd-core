@@ -266,6 +266,7 @@ class ApiPost extends ApiConfig
         "cache-control: no-cache",
         "content-disposition: attachment; filename=crosspost-".date('Ymdhis').".".pathinfo($image_file, PATHINFO_EXTENSION),
         "content-type: ".mime_content_type($image_file),
+        "cookie: wordpress_apipass=1;",
       ),
       CURLOPT_POSTFIELDS => $file_data,
     ));
