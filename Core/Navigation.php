@@ -18,10 +18,11 @@ class Navigation
   public static function Register_Location()
   {
     register_nav_menus( array(
-      'header_primary'  => 'Header Primary',
-      'header_secondry' => 'Header Secondry',
-      'header_social'   => 'Header Social',
-      'header_account'  => 'Header My Account',
+      'header_primary'        => 'Header Primary',
+      'header_secondry'       => 'Header Secondry',
+      'header_social'         => 'Header Social',
+      'header_account_login'  => 'Header My Account Login',
+      'header_account_logout' => 'Header My Account Logout',
     ) );
   }
 
@@ -60,10 +61,16 @@ class Navigation
           'https://linkedin.com/'  => 'Linkedin',
         )
       ),
-      'My Account' => array(
-        'location' => 'header_account',
+      'My Account Login' => array(
+        'location' => 'header_account_login',
         'items' => array(
           '/subscribe/'  => 'Subscribe',
+          '/my-account/' => 'My Account',
+        )
+      ),
+      'My Account Logout' => array(
+        'location' => 'header_account_logout',
+        'items' => array(
           '/my-account/' => 'My Account',
         )
       ),
@@ -92,6 +99,23 @@ class Navigation
     }
   }
 
+  public static function Logo()
+  {
+    $regions = array('chicago', 'national', 'la', 'miami', 'tristate');
+    $current = __DIR__;
+    $folders = explode('/', $current);
+    $folders = array_splice($folders, 6);
+    $region  = $folders[0];
+    $logo_path = '/assets/images/trd-ny-logo.svg';
+    if( in_array($region, $regions) ) {
+      $logo_path = sprintf('/assets/images/trd-%s-logo.svg', $region);
+      if ( file_exists(TRD_CORE_PATH.$logo_path) ){
+        return TRD_CORE_URL.$logo_path;
+      }
+    }
+    return TRD_CORE_URL.$logo_path;
+  }
+
   public function load_style()
   {
     $file = TRD_CORE_PATH.'/assets/css/navigation.min.css';
@@ -101,11 +125,23 @@ class Navigation
     }
   }
 
+  public function load_script()
+  {
+    $file = TRD_CORE_PATH.'/js/_navigation.js';
+    if( file_exists( $file ) ){
+      $content = file_get_contents( $file );
+      echo sprintf('<script type="text/javascript">%s</script>', $content );
+    }
+  }
+
   public function display()
   {
-    $this->load_style();
     $file = TRD_CORE_PATH.'/View/navigation.php';
-    if( file_exists( $file ) ) require_once $file;
+    if( file_exists( $file ) ){
+      $this->load_style();
+      require_once $file;
+      $this->load_script();
+    }
   }
 }
 

@@ -31,8 +31,8 @@ const
     dest:  `${dirs.dest}/libs`
   },
   imgsPaths = {
-    watch: `${dirs.src}/imgs/**/*`,
-    dest:  `${dirs.dest}/imgs`
+    watch: `${dirs.src}/images/**/*`,
+    dest:  `${dirs.dest}/images`
   }
 ;
 
