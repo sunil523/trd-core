@@ -39,7 +39,7 @@ class Nav_Walker extends \Walker_Nav_Menu
 
     $href = trim(str_replace(site_url(), '', $item->url), '/');
     $item_output  = $args->before;
-    $item_output .= ( !empty($href) && $href != '#' ) ? '<a' . $attributes . '>' : '<span>';
+    $item_output .= ( !empty($href) && $href != '#' ) ? '<a' . $attributes . ' class="nav-link">' : '<span class="nav-link">';
     $item_output .= $args->link_before . $title . $args->link_after;
     $item_output .= ( !empty($href) && $href != '#' ) ? '</a>' : '</span>';
     $item_output .= $args->after;
