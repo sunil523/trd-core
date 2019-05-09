@@ -139,6 +139,7 @@ class Feature_Posts extends \WP_Widget {
         if( empty( $f_title) ) $f_title = $title;
         if( !empty( $image ) )
         {
+            if(!is_array($image)) $image = array('url' => wp_get_attachment_url($image));
             // setup the image tag
             $image['tag'] = sprintf( '<img class="lazyload" src="%s" alt="">', $image['url'] );
             // lazyload image if layload function exists
