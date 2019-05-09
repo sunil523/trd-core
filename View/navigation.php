@@ -8,7 +8,7 @@
       <div class="nav-left">
         <a class="nav-logo" href="/"><img src="<?php echo \TRD\Core\Navigation::Logo(); ?>"></a>
       </div>
-      <div class="nav-mid">
+      <div class="nav-mid show-right">
         <div class="nav-mid-left mobile"><i class="fa fas fa-chevron-left"></i></div>
         <?php
           wp_nav_menu( array(
@@ -18,22 +18,6 @@
             'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
             'walker'     => new \TRD\Core\WP\Nav_Walker(),
             'location'   => 'header_primary',
-          ) );
-          wp_nav_menu( array(
-            'menu'       => 'my-account-login',
-            'menu_class' => 'nav-account nav-account-login tablet ',
-            'container'  => '',
-            'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
-            'walker'     => new \TRD\Core\WP\Nav_Walker(),
-            'location'   => 'header_account_login',
-          ) );
-          wp_nav_menu( array(
-            'menu'       => 'my-account-logout',
-            'menu_class' => 'nav-account nav-account-logout tablet hide',
-            'container'  => '',
-            'items_wrap' => '<nav id="%1$s" class="%2$s">%3$s</nav>',
-            'walker'     => new \TRD\Core\WP\Nav_Walker(),
-            'location'   => 'header_account_logout',
           ) );
         ?>
         <div class="nav-mid-right mobile"><i class="fa fas fa-chevron-right"></i></div>
