@@ -444,6 +444,23 @@ $nav-max-width: 1600px;
         height: 50px;
       }
     }
+    &-item{
+      &.sub{
+        > .nav-link{
+          &::after{
+            top: 35%;
+          }
+        }
+      }
+    }
+    &-account{
+      .nav-link{
+        padding-right: 2.5rem;
+      }
+      .nav-sub{
+        right: 0;
+      }
+    }
   }
   .nav-primary{
     .nav-mobile{
@@ -500,7 +517,8 @@ $nav-max-width: 1600px;
     .container{
       height: inherit;
       position: relative;
-      overflow: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
     .mobile,
     nav{
@@ -523,6 +541,9 @@ $nav-max-width: 1600px;
         margin-left: -4px;
       }
     }
+    .nav-right{
+      margin-bottom: 10rem;
+    }
     .nav-mobile{
       position: fixed;
       top: 0;
@@ -541,6 +562,7 @@ $nav-max-width: 1600px;
           }
         }
         .nav-link{
+          padding-bottom: 1rem;
           &::after{
             display: none;
           }
@@ -565,11 +587,12 @@ $nav-max-width: 1600px;
       color: inherit;
       position: static;
       width: inherit;
-      padding-left: 1rem;
     }
     .nav-sub{
+      padding-top: 0;
       .nav-link{
         position: relative;
+        margin-left: 1rem;
         &::before{
           content: '';
           position: absolute;
@@ -607,7 +630,6 @@ $nav-max-width: 1600px;
           display: none;
         }
         .nav-regions{
-          margin-right: 3.8rem;
           width: 100%;
           overflow: auto;
           &::-webkit-scrollbar{
@@ -621,31 +643,39 @@ $nav-max-width: 1600px;
     }
   }
 }
-@media(max-width: 782px){
+@media(max-width: 670px){
   .nav-mid{
-    .mobile{
-      display: block;
-    }
     &-left,
     &-right{
-      display: block;
       position: absolute;
       top: 0;
       background-color: $color-nav-primary-bg;
+      z-index: 1;
+      cursor: pointer;
       .fa{
         font-size: 2.5rem;
         color: #ddd;
       }
     }
     &-left{
-      display: none !important;
       left: 0;
       padding: 1rem 0.5rem 1rem 1.5rem;
+      animation: nav-more infinite 1.5s;
     }
     &-right{
       right: 0;
       padding: 1rem 1.5rem 1rem 0.5rem;
       animation: nav-more infinite 1.5s;
+    }
+    &.show-left{
+      .nav-mid-left.mobile{
+        display: block;
+      }
+    }
+    &.show-right{
+      .nav-mid-right.mobile{
+        display: block;
+      }
     }
   }
 }
