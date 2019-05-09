@@ -26,11 +26,11 @@ $nav-secondary-height: auto;
 $nav-max-width: 1600px;
 
 .promo-popup-btn-wrapper,
-.nav-container,
-.nav-holder{
+.trd-nav-container,
+.trd-nav-holder{
   display: none;
 }
-.admin-bar .nav-primary{
+.admin-bar .trd-nav-primary{
   top: 32px;
 }
 
@@ -47,7 +47,7 @@ $nav-max-width: 1600px;
   flex-wrap: wrap;
 }
 
-.nav{
+.trd-nav{
   position: relative;
   top: 0;
   left: 0;
@@ -96,9 +96,9 @@ $nav-max-width: 1600px;
     background-color: $color-nav-primary-bg;
     color: $color-nav-primary-txt;
     z-index: 2;
-    .nav{
+    .trd-nav{
       &-link{
-        font-size: 1.6rem;
+        font-size: 1.8rem;
         padding: 2.5rem 1rem;
       }
       &-regions{
@@ -115,10 +115,10 @@ $nav-max-width: 1600px;
       &-item{
         &.sub{
           &:hover{
-            &.sub > .nav-link{
+            &.sub > .trd-nav-link{
               background-color: $color-nav-primary-sub-bg;
             }
-            > .nav-sub{
+            > .trd-nav-sub{
               display: block !important;
             }
           }
@@ -128,16 +128,16 @@ $nav-max-width: 1600px;
         background-color: $color-nav-primary-sub-bg;
         color: $color-nav-primary-sub-txt;
         .sub{
-          &:hover > .nav-link{
+          &:hover > .trd-nav-link{
             background-color: $color-nav-primary-sub-sub-bg;
             color: $color-nav-primary-highlight;
           }
-          > .nav-link{
+          > .trd-nav-link{
             &::after{
               content: "\f054" !important;
             }
           }
-          .nav-sub{
+          .trd-nav-sub{
             background-color: $color-nav-primary-sub-sub-bg;
             color: $color-nav-primary-sub-sub-txt;
             position: absolute;
@@ -153,27 +153,27 @@ $nav-max-width: 1600px;
     background-color: #111;
     color: #fff;
     z-index: 1;
-    .nav{
+    .trd-nav{
       &-left{
         display: none;
       }
       &-mid{
-        margin-left: 235px;
+        margin-left: 287px;
         flex: 1 0 auto;
       }
       &-sections{
         width: 100%;
-        > .nav-item{
+        > .trd-nav-item{
           margin-right: 10px;
         }
       }
       &-item{
         &.sub{
           &:hover{
-            &.sub > .nav-link{
+            &.sub > .trd-nav-link{
               background-color: $color-nav-secondary-sub-bg;
             }
-            > .nav-sub{
+            > .trd-nav-sub{
               display: block !important;
             }
           }
@@ -183,16 +183,16 @@ $nav-max-width: 1600px;
         background-color: $color-nav-secondary-sub-bg;
         color: $color-nav-secondary-sub-txt;
         .sub{
-          &:hover > .nav-link{
+          &:hover > .trd-nav-link{
             background-color: $color-nav-secondary-sub-sub-bg !important;
             color: $color-nav-secondary-highlight;
           }
-          > .nav-link{
+          > .trd-nav-link{
             &::after{
               content: "\f054" !important;
             }
           }
-          .nav-sub{
+          .trd-nav-sub{
             background-color: $color-nav-secondary-sub-sub-bg;
             color: $color-nav-secondary-sub-sub-txt;
             position: absolute;
@@ -205,9 +205,9 @@ $nav-max-width: 1600px;
     
   }
   &-logo{
-    padding: 10px 0 !important;
+    padding-top: 8px !important;
     img{
-      height: 40px;
+      height: 55px;
     }
   }
   &-mobile,
@@ -227,8 +227,9 @@ $nav-max-width: 1600px;
     }
   }
   &-search{
+    position: relative;
     &.show{
-      .nav-search{
+      .trd-nav-search{
         &-form{
           display: block;
         }
@@ -239,7 +240,7 @@ $nav-max-width: 1600px;
       }
     }
     &-btn{
-      padding: 2rem 1.5rem;
+      padding: 2.1rem 1.5rem;
       cursor: pointer;
       .fa{
         font-size: 3rem;
@@ -248,10 +249,10 @@ $nav-max-width: 1600px;
     &-form{
       display: none;
       position: absolute;
-      top: 68px;
-      left: 0;
-      width: 100%;
-      height: 60px;
+      top: 72px;
+      right: -110px;
+      width: 360px;
+      height: 58px;
       background-color: $color-nav-search-bg;
       transition: none;
     }
@@ -284,7 +285,7 @@ $nav-max-width: 1600px;
   }
   &-mobile{
     display: none;
-    .nav-menu-btn{
+    .trd-nav-menu-btn{
       padding: 1rem 1.5rem;
       cursor: pointer;
       .fa{
@@ -293,12 +294,12 @@ $nav-max-width: 1600px;
     }
   }
   &-left{
-    .nav-sub{
+    .trd-nav-sub{
       left: 0;
     }
   }
   &-right{
-    .nav-sub{
+    .trd-nav-sub{
       right: 0;
     }
   }
@@ -310,7 +311,7 @@ $nav-max-width: 1600px;
     min-width: 150px;
     padding-top: 1rem;
     transition: all ease-in-out 300ms;
-    .nav-link{
+    .trd-nav-link{
       display: block;
       padding: 1.5rem 1rem;
     }
@@ -320,7 +321,7 @@ $nav-max-width: 1600px;
     &.hide{
       display: none !important;
     }
-    .nav-link{
+    .trd-nav-link{
       color: $color-nav-primary-txt !important;
       font-size: 1.3rem;
       &:hover{
@@ -329,7 +330,7 @@ $nav-max-width: 1600px;
     }
   }
   &-social{
-    .nav-link{
+    .trd-nav-link{
       position: relative;
       padding: 1.3rem 1.5rem;
       color: $color-nav-secondary-sub-txt;
@@ -387,7 +388,7 @@ $nav-max-width: 1600px;
 
   &-item{
     position: relative;
-    &.sub > .nav-link{
+    &.sub > .trd-nav-link{
       position: relative;
       padding-right: 2rem;
       &::after{
@@ -406,47 +407,65 @@ $nav-max-width: 1600px;
     }
   }
 }
-@media (max-width: 1268px){
-  .nav-primary .nav-regions{
+@media (max-width: 1275px){
+  .trd-nav-primary .trd-nav-regions{
     margin-left: 10px;
   }
-  .nav-secondary .nav-mid{
-    margin-left: 195px;
+  .trd-nav-secondary .trd-nav-mid{
+    margin-left: 250px;
   }
 }
-@media (max-width: 1160px){
-  .nav-primary{
-    .nav-link{
+@media (max-width: 1235px){
+  .trd-nav-primary{
+    .trd-nav-link{
       font-size: 1.4rem;
     }
   }
 }
-@media (max-width: 1095px){
-  .nav-primary{
-    .nav-link{
-      font-size: 1.3rem;
+@media (max-width: 1160px){
+  .trd-nav-primary{
+    .trd-nav-link{
+      font-size: 1.4rem;
     }
   }
 }
-@media (max-width: 1065px){
-  .nav-secondary .nav-mid{
+@media (max-width: 1110px){
+  .trd-nav-primary{
+    .trd-nav-link{
+      font-size: 1.3rem;
+      padding: 2.5rem 0.8rem;
+    }
+  }
+  .trd-nav-search-btn{
+    padding: 2.1rem 1rem;
+  }
+  .trd-nav-secondary .trd-nav-mid{
     margin-left: 0;
   }
 }
 @media (max-width: 1050px){
-  .nav{
+  .trd-nav{
     *{
       transition: none;
     }
 
     &-search{
+      position: initial;
+      &-btn{
+        padding: 2rem 1.5rem;
+      }
       &-form{
-        height: 50px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 46px;
+        top: 70px;
+        z-index: 2;
       }
     }
     &-item{
       &.sub{
-        > .nav-link{
+        > .trd-nav-link{
           &::after{
             top: 35%;
           }
@@ -454,35 +473,35 @@ $nav-max-width: 1600px;
       }
     }
     &-account{
-      .nav-link{
+      .trd-nav-link{
         padding-right: 2.5rem;
       }
-      .nav-sub{
+      .trd-nav-sub{
         right: 0;
       }
     }
   }
-  .nav-primary{
-    .nav-mobile{
+  .trd-nav-primary{
+    .trd-nav-mobile{
       display: flex;
     }
-    .nav-link{
+    .trd-nav-link{
       font-size: 1.6rem;
       padding: 1.2rem 1rem;
     }
-    .nav-left{
+    .trd-nav-left{
       order: 1;
       justify-content: center;
       flex: 1 0 auto;
     }
-    .nav-right{
+    .trd-nav-right{
       order: 2;
       flex-direction: column;
-      .nav-account{
+      .trd-nav-account{
         display: none !important;
       }
     }
-    .nav-mid{
+    .trd-nav-mid{
       order: 3;
       width: 100%;
       justify-content: center;
@@ -490,17 +509,17 @@ $nav-max-width: 1600px;
         display: flex;
       }
     }
-    .nav-regions{
+    .trd-nav-regions{
       margin-left: 0;
     }
   }
   .admin-bar{
-    .nav-secondary .nav-mobile,
-    .nav-secondary .nav-left{
+    .trd-nav-secondary .trd-nav-mobile,
+    .trd-nav-secondary .trd-nav-left{
       top: 32px;
     }
   }
-  .nav-secondary{
+  .trd-nav-secondary{
     display: none;
     position: fixed;
     top: 0;
@@ -524,12 +543,12 @@ $nav-max-width: 1600px;
     nav{
       flex-direction: column;
     }
-    .nav-left,
-    .nav-mobile,
+    .trd-nav-left,
+    .trd-nav-mobile,
     .mobile{
       display: flex;
     }
-    .nav-left{
+    .trd-nav-left{
       justify-content: center;
       background-color: $color-nav-primary-bg;
       position: fixed;
@@ -537,31 +556,31 @@ $nav-max-width: 1600px;
       left: 0;
       width: 100%;
       z-index: 1;
-      .nav-logo{
+      .trd-nav-logo{
         margin-left: -4px;
       }
     }
-    .nav-right{
+    .trd-nav-right{
       margin-bottom: 10rem;
     }
-    .nav-mobile{
+    .trd-nav-mobile{
       position: fixed;
       top: 0;
       left: 0;
       z-index: 2;
     }
-    .nav-mid{
+    .trd-nav-mid{
       flex: 1 0 auto;
       margin-top: 60px;
     }
-    .nav-item{
+    .trd-nav-item{
       &.sub{
         &:hover{
-          .nav-link{
+          .trd-nav-link{
             background-color: transparent !important;
           }
         }
-        .nav-link{
+        .trd-nav-link{
           padding-bottom: 1rem;
           &::after{
             display: none;
@@ -569,28 +588,28 @@ $nav-max-width: 1600px;
         }
       } 
     }
-    .nav-mid,
-    .nav-right{
+    .trd-nav-mid,
+    .trd-nav-right{
       width: 100%;
     }
-    .nav-mid{
+    .trd-nav-mid{
       flex-direction: column;
-      .nav-item{
+      .trd-nav-item{
         width: 100%;
         margin-right: 0 !important;
       }
     }
-    .nav-sub,
-    .nav-sub .sub .nav-sub{
+    .trd-nav-sub,
+    .trd-nav-sub .sub .trd-nav-sub{
       display: block !important;
       background-color: transparent;
       color: inherit;
       position: static;
       width: inherit;
     }
-    .nav-sub{
+    .trd-nav-sub{
       padding-top: 0;
-      .nav-link{
+      .trd-nav-link{
         position: relative;
         margin-left: 1rem;
         &::before{
@@ -604,12 +623,12 @@ $nav-max-width: 1600px;
         }
       }
     }
-    .nav-social{
+    .trd-nav-social{
       color: $color-nav-primary-txt;
       flex-direction: row;
       width: 100%;
       justify-content: space-around;
-      .nav-link{
+      .trd-nav-link{
         color: inherit;
       }
     }
@@ -621,21 +640,21 @@ $nav-max-width: 1600px;
   }
 }
 @media (max-width: 800px){
-  .nav{
+  .trd-nav{
     &-primary{
-      .nav-mid{
+      .trd-nav-mid{
         position: relative;
         justify-content: flex-start;
         .tablet{
           display: none;
         }
-        .nav-regions{
+        .trd-nav-regions{
           width: 100%;
           overflow: auto;
           &::-webkit-scrollbar{
             display: none;
           }
-          .nav-item{
+          .trd-nav-item{
             min-width: max-content;
           }
         }
@@ -644,7 +663,7 @@ $nav-max-width: 1600px;
   }
 }
 @media(max-width: 670px){
-  .nav-mid{
+  .trd-nav-mid{
     &-left,
     &-right{
       position: absolute;
@@ -668,12 +687,12 @@ $nav-max-width: 1600px;
       animation: nav-more infinite 1.5s;
     }
     &.show-left{
-      .nav-mid-left.mobile{
+      .trd-nav-mid-left.mobile{
         display: block;
       }
     }
     &.show-right{
-      .nav-mid-right.mobile{
+      .trd-nav-mid-right.mobile{
         display: block;
       }
     }

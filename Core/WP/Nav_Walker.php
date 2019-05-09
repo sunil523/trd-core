@@ -14,7 +14,7 @@ class Nav_Walker extends \Walker_Nav_Menu
       $n = "\n";
     }
     $indent = ( $depth ) ? str_repeat( $t, $depth ) : '';
-    $class_names = array('nav-item');
+    $class_names = array('trd-nav-item');
     if( in_array('menu-item-has-children', $item->classes) ) array_push($class_names, 'sub');
     $item->current ? array_push($class_names, 'current') : '';
     $class_names = $class_names ? ' class="' . esc_attr( implode(" ", $class_names) ) . '"' : '';
@@ -39,7 +39,7 @@ class Nav_Walker extends \Walker_Nav_Menu
 
     $href = trim(str_replace(site_url(), '', $item->url), '/');
     $item_output  = $args->before;
-    $item_output .= ( !empty($href) && $href != '#' ) ? '<a' . $attributes . ' class="nav-link">' : '<span class="nav-link">';
+    $item_output .= ( !empty($href) && $href != '#' ) ? '<a' . $attributes . ' class="trd-nav-link">' : '<span class="trd-nav-link">';
     $item_output .= $args->link_before . $title . $args->link_after;
     $item_output .= ( !empty($href) && $href != '#' ) ? '</a>' : '</span>';
     $item_output .= $args->after;
@@ -70,7 +70,7 @@ class Nav_Walker extends \Walker_Nav_Menu
   $indent = str_repeat( $t, $depth );
 
   // Default class.
-  $classes = array( 'nav-sub' );
+  $classes = array( 'trd-nav-sub' );
   $class_names = join( ' ', apply_filters( 'nav_menu_submenu_css_class', $classes, $args, $depth ) );
   $class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
 
