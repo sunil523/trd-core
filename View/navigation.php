@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 <header class="trd-header trd-nav">
   <div class="trd-nav-primary">
-    <div class="container">
+    <div class="trd-nav-container">
       <div class="trd-nav-mobile">
         <div class="trd-nav-menu-btn"><i class="fa fas fa-bars"></i></div>
       </div>
@@ -51,7 +51,7 @@
     </div>
   </div>
   <div class="trd-nav-secondary">
-    <div class="container">
+    <div class="trd-nav-container">
       <div class="trd-nav-mobile">
         <div class="trd-nav-menu-btn close"><i class="fa fas fa-close"></i></div>
       </div>

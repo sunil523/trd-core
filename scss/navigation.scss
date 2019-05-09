@@ -25,11 +25,6 @@ $nav-primary-height: auto;
 $nav-secondary-height: auto;
 $nav-max-width: 1600px;
 
-.promo-popup-btn-wrapper,
-.trd-nav-container,
-.trd-nav-holder{
-  display: none;
-}
 .admin-bar .trd-nav-primary{
   top: 32px;
 }
@@ -37,7 +32,7 @@ $nav-max-width: 1600px;
 .overflow-off{
   overflow: hidden;
 }
-.container{
+.trd-nav-container{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -533,7 +528,7 @@ $nav-max-width: 1600px;
     &.show{
       display: block;
     }
-    .container{
+    .trd-nav-container{
       height: inherit;
       position: relative;
       overflow-y: auto;
