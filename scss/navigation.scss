@@ -517,7 +517,8 @@ $nav-max-width: 1600px;
     .container{
       height: inherit;
       position: relative;
-      overflow: auto;
+      overflow-y: auto;
+      overflow-x: hidden;
     }
     .mobile,
     nav{
@@ -540,6 +541,9 @@ $nav-max-width: 1600px;
         margin-left: -4px;
       }
     }
+    .nav-right{
+      margin-bottom: 10rem;
+    }
     .nav-mobile{
       position: fixed;
       top: 0;
@@ -558,6 +562,7 @@ $nav-max-width: 1600px;
           }
         }
         .nav-link{
+          padding-bottom: 1rem;
           &::after{
             display: none;
           }
@@ -582,11 +587,12 @@ $nav-max-width: 1600px;
       color: inherit;
       position: static;
       width: inherit;
-      padding-left: 1rem;
     }
     .nav-sub{
+      padding-top: 0;
       .nav-link{
         position: relative;
+        margin-left: 1rem;
         &::before{
           content: '';
           position: absolute;
