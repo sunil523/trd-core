@@ -40,20 +40,21 @@ class Navigation
           '/tristate' => 'Tri-State',
         )
       ),
-      'Nav Sections' => array(
-        'location' => 'header_secondry',
-        'items' => array(
-          '/#news' => 'News',
-          '/#magazine' => 'Magazine',
-          '/#research' => 'Research',
-          '/#events' => 'Events',
-          // '/#' => 'Videos',
-          // '/#' => 'Listing',
-        )
-      ),
+      // 'Nav Sections' => array(
+      //   'location' => 'header_secondry',
+      //   'items' => array(
+      //     '/#news' => 'News',
+      //     '/#magazine' => 'Magazine',
+      //     '/#research' => 'Research',
+      //     '/#events' => 'Events',
+      //     // '/#' => 'Videos',
+      //     // '/#' => 'Listing',
+      //   )
+      // ),
       'Nav Social' => array(
         'location' => 'header_social',
         'items' => array(
+          '/newsletter/'           => 'Newsletter',
           'https://facebook.com/'  => 'Facebook',
           'https://twitter.com/'   => 'Twitter',
           'https://youtube.com/'   => 'YouTube',
