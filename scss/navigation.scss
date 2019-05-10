@@ -685,12 +685,12 @@ $nav-max-width: 1600px;
     &-left{
       left: 0;
       padding: 1rem 0.5rem 1rem 1.5rem;
-      animation: nav-more infinite 1.5s;
+      animation: nav-left-more infinite 1.5s;
     }
     &-right{
       right: 0;
       padding: 1rem 1.5rem 1rem 0.5rem;
-      animation: nav-more infinite 1.5s;
+      animation: nav-right-more infinite 1.5s;
     }
     &.show-left{
       .trd-nav-mid-left.mobile{
@@ -713,7 +713,18 @@ $nav-max-width: 1600px;
   }
 }
 
-@keyframes nav-more{
+@keyframes nav-left-more{
+  0%,100%{
+    padding-left: 1.5rem;
+    padding-right: 0.5rem;
+  }
+  25%,30%{
+    padding-left: 0.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@keyframes nav-right-more{
   0%,100%{
     padding-left: 0.5rem;
     padding-right: 1.5rem;
