@@ -32,12 +32,12 @@ class Navigation
       'Nav Regions' => array(
         'location' => 'header_primary',
         'items' => array(
-          '/'         => 'New York',
-          '/la'       => 'Los Angeles',
-          '/miami'    => 'South Florida',
-          '/chicago'  => 'Chicago',
-          '/national' => 'National',
-          '/tristate' => 'Tri-State',
+          '/'          => 'New York',
+          '/la/'       => 'Los Angeles',
+          '/miami/'    => 'South Florida',
+          '/chicago/'  => 'Chicago',
+          '/national/' => 'National',
+          '/tristate/' => 'Tri-State',
         )
       ),
       // 'Nav Sections' => array(
@@ -47,32 +47,34 @@ class Navigation
       //     '/#magazine' => 'Magazine',
       //     '/#research' => 'Research',
       //     '/#events' => 'Events',
-      //     // '/#' => 'Videos',
+      //     '/tag/trd-video/' => 'Video',
       //     // '/#' => 'Listing',
       //   )
       // ),
       'Nav Social' => array(
         'location' => 'header_social',
         'items' => array(
-          '/newsletter/'           => 'Newsletter',
-          'https://facebook.com/'  => 'Facebook',
-          'https://twitter.com/'   => 'Twitter',
-          'https://youtube.com/'   => 'YouTube',
-          'https://instagram.com/' => 'Instagram',
-          'https://linkedin.com/'  => 'Linkedin',
+          '/newsletter/' => 'Newsletter',
+          'https://www.facebook.com/' => 'Facebook',
+          'https://www.twitter.com/' => 'Twitter',
+          'https://www.youtube.com/TheRealDealMagazineNewYork' => 'YouTube',
+          'https://www.instagram.com/therealdeal' => 'Instagram',
+          'https://www.linkedin.com/company/therealdeal' => 'Linkedin',
         )
       ),
       'My Account Login' => array(
         'location' => 'header_account_login',
         'items' => array(
           '/subscribe/'  => 'Subscribe',
-          '/my-account/' => 'My Account',
+          '/#login' => 'My Account',
         )
       ),
       'My Account Logout' => array(
         'location' => 'header_account_logout',
         'items' => array(
-          '/my-account/' => 'My Account',
+          '/#' => 'My Account',
+          '/my-account/' => 'Manage My Account',
+          '/#logout' => 'Logout',
         )
       ),
     );
@@ -119,10 +121,14 @@ class Navigation
 
   public function load_style()
   {
-    $file = TRD_CORE_PATH.'/assets/css/navigation.min.css';
-    if( file_exists( $file ) ){
-      $content = file_get_contents( $file );
-      echo sprintf('<style type="text/css">%s</style>', $content );
+    $file = 'assets/css/navigation.min.css';
+    $path = TRD_CORE_PATH.'/'.$file;
+    if( file_exists( $path ) ){
+      if( getenv('WP_ENV') == 'local' ){
+        echo sprintf('<link rel="stylesheet" href="%s%s">', TRD_CORE_URL, $file);
+      } else {
+        echo sprintf('<style type="text/css">%s</style>', file_get_contents( $path ) );
+      }
     }
   }
 
