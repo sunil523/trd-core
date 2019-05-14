@@ -214,11 +214,11 @@ class ApiPost extends ApiConfig
       'status' => 'publish',
       'title' => $image->post_title,
       'author' => $image->post_author,
-      'comment_status' => $image->comment_status,
-      'ping_status' => $image->ping_status,
+      'comment_status' => 'closed',
+      'ping_status' => 'closed',
       'alt_text' => $image->alt_text,
       'description' => $image->post_content,
-      'excerpt' => $image->post_excerpt,
+      'caption' => $image->post_excerpt,
       'meta' => array(
         '_crosspost' => array( 1 )
       ),
