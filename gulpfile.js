@@ -9,34 +9,30 @@ const
   newer      = require("gulp-newer"),
   rename     = require('gulp-rename'),
   sass       = require('gulp-sass'),
-  sourcemaps = require('gulp-sourcemaps'),
-  uglify     = require('gulp-uglify')
+  sourcemaps = require('gulp-sourcemaps')
 ;
 
 const
   dirs = {
-    src: './src',
-    dest: './dist'
+    src: '.',
+    dest: './assets'
   },
   cssPaths = {
-    watch:  `${dirs.src}/styles/*.scss`,
-    src:    `${dirs.src}/styles/main.scss`,
-    dest:   `${dirs.dest}/assets`
+    watch:  `${dirs.src}/scss/**/*.scss`,
+    src:    `${dirs.src}/scss/**/*.scss`,
+    dest:   `${dirs.dest}/css`
   },
   jsPaths = {
-    watch: `${dirs.src}/scripts/**/*.js`,
-    src:   `${dirs.src}/scripts/**/*.js`,
-    dest:  `${dirs.dest}/assets`
+    watch: `${dirs.src}/js/**/*.js`,
+    dest:  `${dirs.dest}/js`
   },
   libsPaths = {
-    watch: `${dirs.src}/libraries/**/*`,
-    src:   `${dirs.src}/libraries/**/*`,
-    dest:  `${dirs.dest}/assets/libraries`
+    watch: `${dirs.src}/libs/**/*`,
+    dest:  `${dirs.dest}/libs`
   },
   imgsPaths = {
     watch: `${dirs.src}/images/**/*`,
-    src:   `${dirs.src}/images/**/*`,
-    dest:  `${dirs.dest}/assets/images`
+    dest:  `${dirs.dest}/images`
   }
 ;
 
@@ -89,8 +85,7 @@ function js() {
 
 function cleaner() {
   return del([
-    `${dirs.dest}/**`,
-    `!${dirs.dest}`,
+    `${dirs.dest}/**`
   ])
   ;
 }
@@ -104,7 +99,7 @@ function watchFiles() {
 
 // define complex tasks
 const build = gulp.series(cleaner, gulp.parallel(libs, css, images, js));
-const watch = gulp.parallel(browserSync, watchFiles);
+const watch = gulp.parallel(watchFiles);
 const serve = gulp.series(build, watch);
 
 exports.build   = build;
