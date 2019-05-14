@@ -241,7 +241,7 @@ $nav-max-width: 1600px;
       }
     }
     &-btn{
-      padding: 2.1rem 1.5rem;
+      padding: 2.2rem 1.5rem;
       cursor: pointer;
       .fa{
         font-size: 3rem;
@@ -250,7 +250,7 @@ $nav-max-width: 1600px;
     &-form{
       display: none;
       position: absolute;
-      top: 72px;
+      top: 74px;
       right: -110px;
       width: 360px;
       height: 58px;
@@ -422,13 +422,14 @@ $nav-max-width: 1600px;
       font-size: 1.4rem;
     }
   }
+  .trd-nav-search-btn{
+    padding: 2.1rem 1rem;
+  }
+  .trd-nav-search-form{
+    top: 72px;
+  }
 }
 @media (max-width: 1160px){
-  .trd-nav-primary{
-    .trd-nav-link{
-      font-size: 1.4rem;
-    }
-  }
   .trd-nav-secondary .trd-nav-mid{
     margin-left: 0;
   }
