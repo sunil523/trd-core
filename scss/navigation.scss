@@ -206,7 +206,7 @@ $nav-max-width: 1600px;
   }
   &-logo{
     padding-top: 8px !important;
-    padding-right: 10px;
+    padding-left: 10px;
     img{
       height: 55px;
     }
@@ -429,6 +429,9 @@ $nav-max-width: 1600px;
       font-size: 1.4rem;
     }
   }
+  .trd-nav-secondary .trd-nav-mid{
+    margin-left: 0;
+  }
 }
 @media (max-width: 1110px){
   .trd-nav-primary{
@@ -439,9 +442,6 @@ $nav-max-width: 1600px;
   }
   .trd-nav-search-btn{
     padding: 2.1rem 1rem;
-  }
-  .trd-nav-secondary .trd-nav-mid{
-    margin-left: 0;
   }
 }
 @media (max-width: 1050px){
