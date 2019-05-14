@@ -251,7 +251,7 @@ $nav-max-width: 1600px;
       display: none;
       position: absolute;
       top: 74px;
-      right: -110px;
+      right: -195px;
       width: 360px;
       height: 58px;
       background-color: $color-nav-search-bg;
@@ -280,6 +280,15 @@ $nav-max-width: 1600px;
         &::placeholder{
           color: #aaa;
           text-align: left;
+        }
+      }
+    }
+  }
+  &-loggedin{
+    .nav{
+      &-search{
+        &-form{
+          right: -110px;
         }
       }
     }

@@ -2,7 +2,7 @@ function init_piano() {
   window.tp.push(["init", function(){
     if( $('.trd-nav-account-login, .trd-nav-account-logout') != null ) {
       if( window.tp.pianoId.isUserValid() ) {
-        $('.trd-header.nav').addClass('nav-logined');
+        $('.trd-header.trd-nav').addClass('trd-nav-loggedin');
         $('.trd-nav-account-login').addClass('hide');
         $('.trd-nav-account-logout').removeClass('hide');
         $('.trd-nav-account-logout a[href*="/#logout"]').on('click', function( event ){
