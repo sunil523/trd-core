@@ -97,7 +97,7 @@ $nav-max-width: 1600px;
         padding: 2.5rem 1rem;
       }
       &-regions{
-        margin-left: 50px;
+        margin-left: 40px;
       }
       &-mid{
         flex: 1 0 auto;
@@ -206,6 +206,7 @@ $nav-max-width: 1600px;
   }
   &-logo{
     padding-top: 8px !important;
+    padding-right: 10px;
     img{
       height: 55px;
     }
