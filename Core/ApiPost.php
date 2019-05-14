@@ -115,7 +115,7 @@ class ApiPost extends ApiConfig
       $this->crosspost_field = $this->apis[ 'ny' ][ 'crosspost_field' ];
     }else{
       $site = trim( str_replace( $this->site_root, '', $site_url ), "/" );
-      if( array_key_exists( $site, $this->api ) ){
+      if( array_key_exists( $site, $this->apis ) ){
         $this->crosspost_field = $this->apis[ $site ][ 'crosspost_field' ];
       } else {
         $this->crosspost_field = null;
@@ -197,8 +197,10 @@ class ApiPost extends ApiConfig
    */
   public function get_media_id( $image_id )
   {
+    if( empty($image_id) ) return null;
     // check if this image has crosspot ids
     $image = get_post( $image_id );
+    if( empty($image) ) return null;
     $metas = get_post_meta( $image->ID );
     $key = '_crosspost_id_'.$this->slug;
     if( array_key_exists( $key, $metas ) ){
