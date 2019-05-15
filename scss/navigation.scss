@@ -418,6 +418,11 @@ $nav-max-width: 1600px;
   }
 }
 @media (max-width: 1275px){
+  .trd-nav-primary{
+  .trd-nav-link{
+    font-size: 1.6rem;
+  }
+}
   .trd-nav-primary .trd-nav-regions{
     margin-left: 10px;
   }
