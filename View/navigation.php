@@ -6,7 +6,7 @@
         <div class="trd-nav-menu-btn"><i class="fa fas fa-bars"></i></div>
       </div>
       <div class="trd-nav-left">
-        <a class="trd-nav-logo" href="/"><img src="<?php echo \TRD\Core\Navigation::Logo(); ?>"></a>
+        <a class="trd-nav-logo" href="<?php echo site_url(); ?>"><img src="<?php echo \TRD\Core\Navigation::Logo(); ?>"></a>
       </div>
       <div class="trd-nav-mid show-right">
         <div class="trd-nav-mid-left mobile"><i class="fa fas fa-chevron-left"></i></div>
