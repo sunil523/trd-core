@@ -416,6 +416,34 @@ $nav-max-width: 1600px;
       }
     }
   }
+  &-link[href*="listings"] ~ .trd-nav-sub{
+    .trd-nav-link{
+      padding-left: 40px;
+      &::before{
+        content: '';
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 3px solid $color-nav-secondary-sub-bg;
+        box-shadow: 0 0 0 1px #B5A4A4;
+        position: absolute;
+        left: 6px;
+        top: 12px;
+      }
+      &:hover::before{
+        box-shadow: 0 0 0 1px $color-nav-secondary-highlight;
+      }
+      &[href*="type=1"]::before{
+        background-color: rgb(48, 171, 223);
+      }
+      &[href*="type=2"]::before{
+        background-color: rgb(148, 89, 255)
+      }
+      &[href*="type=3"]::before{
+        background-color: rgb(18, 157, 32);
+      }
+    }
+  }
 }
 @media only screen and (max-width: 1300px){
   .trd-nav-primary .trd-nav-regions{
