@@ -531,7 +531,7 @@ $nav-max-width: 1600px;
       height: 100vh;
       background-color: $color-nav-primary-bg;
       color: $color-nav-primary-txt;
-      z-index: 3;
+      z-index: 200;
   
       &.show{
         display: block;
@@ -574,7 +574,7 @@ $nav-max-width: 1600px;
           background-color: $color-nav-primary-bg;
           top: 0;
           width: 100%;
-          z-index: 200;
+          z-index: 1;
           .trd-nav-logo{
             margin-left: -4px;
           }
