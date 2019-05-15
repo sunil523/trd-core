@@ -20,18 +20,23 @@
 }
 
 form.newsletter{
-  background-color: #eee;
-  border: 1px solid #333;
-  border-right: 0;
-  border-radius: 20px 0 0 20px;
-  padding: 20px 40px;
-  position: fixed;
-  top: 10px;
-  bottom: 10px;
-  right: 0;
-  min-width: 320px;
-  max-width: 500px;
   transition: right ease-in-out 500ms;
+  &.side{
+    background-color: #eee;
+    border: 1px solid #333;
+    border-right: 0;
+    border-radius: 20px 0 0 20px;
+    padding: 20px 40px;
+    position: fixed;
+    top: 10px;
+    bottom: 10px;
+    right: 0;
+    min-width: 320px;
+    max-width: 500px;
+  }
+  &.page{
+    
+  }
 }
 
 .newsletter.hide{

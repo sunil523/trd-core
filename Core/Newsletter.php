@@ -10,39 +10,43 @@ class Newsletter
     $this->interests = $list->get_list_interests();
   }
 
-  public function display()
+  private function set_fields( $email='', $fname='', $lname='', $company='' )
   {
-    $title = "Please select the newsletter(s) you'd like to receive for the latest real estate news and analysis.";
-    $fields = array(
+    return array(
       array(
         'label' => 'Email Address',
         'name' => 'email',
         'type' => 'email',
-        'value' => ''
+        'value' => $email
       ),
       array(
         'label' => 'First Name',
         'name' => 'firstname',
         'type' => 'text',
-        'value' => ''
+        'value' => $fname
       ),
       array(
         'label' => 'Last Name',
         'name' => 'lastname',
         'type' => 'text',
-        'value' => ''
+        'value' => $lname
       ),
       array(
         'label' => 'Company',
         'name' => 'company',
         'type' => 'text',
-        'value' => ''
+        'value' => $company
       ),
     );
-    $this->display_style();
+  }
+
+  public function display( $place='page' )
+  {
+    $title = "Please select the newsletter(s) you'd like to receive for the latest real estate news and analysis.";
+    $fields = $this->set_fields();
+    $this->load_style();
     ?>
-    <form class="newsletter" method="post" action="">
-      <p><?php echo $title; ?></p>
+    <form class="newsletter <?php echo $place; ?>" method="post" action="">
       <?php $this->display_fields( $fields ); ?>
       <hr>
       <?php
@@ -50,13 +54,10 @@ class Newsletter
         $this->display_section( 'Weekly Newsletters', $this->interests['weekly'] );
         $this->display_section( 'TRData Updates (Weekly)', $this->interests['trdata'] );
       ?>
-      <?php 
-        /*$this->display_section( 'Which region(s)?', $this->regions );
-        $this->display_section( 'How often?', $this->frequency ); */
-      ?>
       <button type="submit">Subscribe</button>
     </form>
     <?php
+    $this->load_script();
   }
 
   private function display_fields( $fields )
@@ -94,10 +95,25 @@ class Newsletter
     }
   }
 
-  private function display_style()
+  public function load_style()
   {
-    $path = TRD_CORE_PATH.'scss/newsletter.scss';
-    $content = file_get_contents( $path );
-    echo '<style type="text/css">'.$content.'</style>';
+    $file = 'assets/css/newsletter.min.css';
+    $path = TRD_CORE_PATH.'/'.$file;
+    if( file_exists( $path ) ){
+      if( getenv('WP_ENV') == 'local' ){
+        echo sprintf('<link rel="stylesheet" href="%s%s">', TRD_CORE_URL, $file);
+      } else {
+        echo sprintf('<style type="text/css">%s</style>', file_get_contents( $path ) );
+      }
+    }
+  }
+
+  public function load_script()
+  {
+    $file = TRD_CORE_PATH.'/js/_newsletter.js';
+    if( file_exists( $file ) ){
+      $content = file_get_contents( $file );
+      echo sprintf('<script type="text/javascript">%s</script>', $content );
+    }
   }
 }
