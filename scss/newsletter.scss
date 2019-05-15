@@ -1,17 +1,19 @@
-.newsletter{
+@import 'colors';
+@import 'mixins';
 
+.newsletter{
   .widget{
     .title{
-      font-size: 1rem;
+      @include font-size(1);
     }
     form{
       input{
-        font-size: 1rem;
+        @include font-size(1);
         background-color: #f1f1f1;
         color: #333;
       }
       button{
-        font-size: 1rem;
+        @include font-size(1);
         background: #f00;
         color: #fff;
       }
@@ -19,9 +21,35 @@
   }
 }
 
-form.newsletter{
-  transition: right ease-in-out 500ms;
+.newsletter-form{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: stretch;
+  flex-wrap: wrap;
+  margin: rem-in-px(3) auto;
+  * {
+    box-sizing: border-box;
+  }
+  &-col{
+    // display: flex;
+    &.fields,
+    &.interests{
+      max-width: 400px;
+      width: 100%;
+    }
+    &.break{
+      width: 1px;
+      background-color: $color-newsletter-break;
+    }
+    &.button{
+      margin-top: rem-in-px(2);
+      flex: 2 0 100%;
+      text-align: center;
+    }
+  }
   &.side{
+    transition: right ease-in-out 500ms;
     background-color: #eee;
     border: 1px solid #333;
     border-right: 0;
@@ -34,57 +62,64 @@ form.newsletter{
     min-width: 320px;
     max-width: 500px;
   }
-  &.page{
-    
+  button{
+    display: inline-block;
+    background-color: #f00;
+    text-transform: uppercase;
+    color: #fff;
+    @include font-size(1);
+    font-weight: 700;
+    @include font-family('body');
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    max-width: 400px;
+    width: 100%;
+    padding: rem-in-px(0.5);
+  }
+
+  &.hide{
+    right: -100%;
+  }
+
+  .input-field{
+    +.input-field{
+      margin-top: rem-in-px(3);
+    }
+    label{
+      display: block;
+      @include font-size(1);
+      font-weight: 600;
+      padding-left: rem-in-px(1.2);
+      margin: 5px 0 0;
+    }
+    input{
+      display: block;
+      border-radius: 20px;
+      padding: 10px;
+      border: 1px solid #333;
+      width: 100%;
+    }
+  }
+  .interests{
+    h4{
+      margin: 0;
+      text-transform: uppercase;
+      @include font-size(1.2);
+    }
+    .checkboxes{
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .checkbox-field{
+      flex: 0 0 50%;
+      margin: 5px 0;
+      label{
+        cursor: pointer;
+        @include font-size(1);
+        text-transform: uppercase;
+      }
+    }
   }
 }
 
-.newsletter.hide{
-  right: -100%;
-}
-
-.newsletter p{
-  padding-left: 20px;
-}
-
-.input-field label,
-.newsletter h4{
-  display: block;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  padding-left: 20px;
-  margin: 5px 0 0;
-}
-.input-field input{
-  display: block;
-  border-radius: 20px;
-  padding: 10px;
-  border: 1px solid #333;
-  width: 100%;
-}
-.checkboxes{
-  display: flex;
-  flex-wrap: wrap;
-}
-.checkbox-field{
-  flex: 0 0 33.33%;
-  margin: 5px 0;
-}
-.checkbox-field input{
-}
-.checkbox-field label{
-  cursor: pointer;
-  text-transform: uppercase;
-}
-
-.newsletter button{
-  display: block;
-  background-color: #f00;
-  text-transform: uppercase;
-  color: #fff;
-  text-align: center;
-  border-radius: 20px;
-  width: 100%;
-  padding: 10px;
-  font-size: 1rem;
-}

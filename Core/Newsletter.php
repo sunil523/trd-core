@@ -46,15 +46,21 @@ class Newsletter
     $fields = $this->set_fields();
     $this->load_style();
     ?>
-    <form class="newsletter <?php echo $place; ?>" method="post" action="">
-      <?php $this->display_fields( $fields ); ?>
-      <hr>
-      <?php
-        $this->display_section( 'Daily Newsletters', $this->interests['daily'] );
-        $this->display_section( 'Weekly Newsletters', $this->interests['weekly'] );
-        $this->display_section( 'TRData Updates (Weekly)', $this->interests['trdata'] );
-      ?>
-      <button type="submit">Subscribe</button>
+    <form class="newsletter-form <?php echo $place; ?>" method="post" action="">
+      <div class="newsletter-form-col fields">
+        <?php $this->display_fields( $fields ); ?>
+      </div>
+      <div class="newsletter-form-col break"></div>
+      <div class="newsletter-form-col interests">
+        <?php
+          $this->display_section( 'Daily Newsletters', $this->interests['daily'] );
+          $this->display_section( 'Weekly Newsletters', $this->interests['weekly'] );
+          $this->display_section( 'TRData Updates (Weekly)', $this->interests['trdata'] );
+        ?>
+      </div>
+      <div class="newsletter-form-col button">
+        <button type="submit">Subscribe</button>
+      </div>
     </form>
     <?php
     $this->load_script();

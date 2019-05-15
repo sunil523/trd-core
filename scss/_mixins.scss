@@ -1,0 +1,15 @@
+
+@function rem-in-px($rem, $base: 16px) {
+  @return $base * $rem;
+}
+@mixin font-size($rem_size: 1) {
+  font-size: rem-in-px($rem_size);
+}
+
+@mixin font-family($type: 'body') {
+  @if ($type == 'body') {
+    font-family: 'Open Sans', sans-serif;
+  } @else {
+    font-family: 'Open Sans', sans-serif;
+  }
+}
