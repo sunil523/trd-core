@@ -102,21 +102,28 @@ class Navigation
     }
   }
 
-  public static function Logo()
+  public static function SiteBase( $backup_region='' )
   {
     $regions = array('chicago', 'national', 'la', 'miami', 'tristate');
     $current = __DIR__;
     $folders = explode('/', $current);
     $folders = array_splice($folders, 6);
     $region  = $folders[0];
-    $logo_path = '/assets/images/trd-ny-logo.svg';
-    if( in_array($region, $regions) ) {
-      $logo_path = sprintf('/assets/images/trd-%s-logo.svg', $region);
-      if ( file_exists(TRD_CORE_PATH.$logo_path) ){
-        return TRD_CORE_URL.$logo_path;
-      }
-    }
+    return in_array($region, $regions) ? $region : $backup_region;
+  }
+
+  public static function Logo()
+  {
+    $region = self::SiteBase( 'ny' );
+    $logo_path = sprintf('/assets/images/trd-%s-logo.svg', $region);
     return TRD_CORE_URL.$logo_path;
+  }
+
+  public static function SearchLink( $path )
+  {
+    $region = self::SiteBase();
+    $prefix = empty($region) ? '' : '/';
+    return sprintf('%s%s%s', $prefix, $region, $path);
   }
 
   public function load_style()

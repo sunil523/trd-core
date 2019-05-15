@@ -417,7 +417,7 @@ $nav-max-width: 1600px;
     }
   }
 }
-@media (max-width: 1300px){
+@media only screen and (max-width: 1300px){
   .trd-nav-primary .trd-nav-regions{
     margin-left: 10px;
   }
@@ -425,12 +425,12 @@ $nav-max-width: 1600px;
     margin-left: 250px;
   }
 }
-@media (max-width: 1275px){
+@media only screen and (max-width: 1275px){
   .trd-nav-regions .trd-nav-link{
     font-size: 1.6rem;
   }
 }
-@media (max-width: 1245px){
+@media only screen and (max-width: 1245px){
   .trd-nav-search-btn{
     padding: 2.1rem 1.5rem;
   }
@@ -438,23 +438,23 @@ $nav-max-width: 1600px;
     top: 72px;
   }
 }
-@media (max-width: 1200px){
+@media only screen and (max-width: 1200px){
   .trd-nav-regions .trd-nav-link{
     font-size: 1.4rem;
     padding: 2.5rem 0.8rem;
   }
 }
-@media (max-width: 1160px){
+@media only screen and (max-width: 1160px){
   .trd-nav-secondary .trd-nav-mid{
     margin-left: 0;
   }
 }
-@media (max-width: 1110px){
+@media only screen and (max-width: 1110px){
   .trd-nav-regions .trd-nav-link{
     font-size: 1.3rem;
   }
 }
-@media (max-width: 1090px){
+@media only screen and (max-width: 1090px){
   .trd-nav{
     *{
       transition: none;
@@ -529,7 +529,7 @@ $nav-max-width: 1600px;
           width: 100%;
         }
         &-link{
-          font-size: 16px;
+          font-size: 14px;
         }
         &-left,
         &-mobile{
@@ -546,13 +546,13 @@ $nav-max-width: 1600px;
           background-color: $color-nav-primary-bg;
           top: 0;
           width: 100%;
-          z-index: 1;
+          z-index: 200;
           .trd-nav-logo{
             margin-left: -4px;
           }
         }
         &-right{
-          margin-bottom: 10rem;
+          margin-bottom: 200px;
         }
         &-mid{
           margin-top: 70px;
@@ -572,6 +572,7 @@ $nav-max-width: 1600px;
           padding-top: 0;
           .trd-nav-link{
             margin-left: 20px;
+            font-size: 13px;
           }
         }
         &-item{
@@ -651,12 +652,12 @@ $nav-max-width: 1600px;
     }
   }
 }
-@media (max-width: 850px){
+@media only screen and (max-width: 850px){
   body {
     margin-top: 0;
   }
 }
-@media (max-width: 800px){
+@media only screen and (max-width: 800px){
   .trd-nav{
     &-primary{
       .trd-nav-mid{
@@ -679,7 +680,7 @@ $nav-max-width: 1600px;
     }
   }
 }
-@media(max-width: 670px){
+@media only screen and(max-width: 670px){
   .trd-nav-mid{
     &-left,
     &-right{
@@ -715,7 +716,7 @@ $nav-max-width: 1600px;
     }
   }
 }
-@media (max-width: 355px){
+@media only screen and (max-width: 355px){
   .trd-nav-logo{
     padding-top: 10px !important;
     img{

@@ -25,7 +25,7 @@
       <div class="trd-nav-right">
         <div class="trd-nav-search">
           <div class="trd-nav-search-btn"><i class="fa fa-search"></i></div>
-          <form class="trd-nav-search-form" autocomplete="off" method="get" action="/google-search/">
+          <form class="trd-nav-search-form" autocomplete="off" method="get" action="<?php echo \TRD\Core\Navigation::SearchLink('/google-search/'); ?>">
             <input class="trd-nav-search-input" type="search" id="nav-search-input" name="q" autocomplete="off" placeholder="search" autofocus>
           </form>
         </div>
