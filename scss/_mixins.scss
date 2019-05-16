@@ -1,0 +1,32 @@
+
+@function rem-in-px($rem, $base: 16px) {
+  @return $base * $rem;
+}
+@mixin font-size($rem_size: 1) {
+  font-size: rem-in-px($rem_size);
+}
+
+@mixin font-family($type: 'body', $weight: 400) {
+  @if ($type == 'heading') {
+    font-family: 'Oswald', 'Open Sans', sans-serif;
+    font-weight: $weight;
+  } @else if ($type == 'heading-1') {
+    font-family: 'Oswald', 'Open Sans', sans-serif;
+    font-weight: $weight;
+  } @else if ($type == 'heading-2') {
+    font-family: 'Oswald', 'Open Sans', sans-serif;
+    font-weight: $weight;
+  } @else if ($type == 'heading-3') {
+    font-family: 'Oswald', 'Open Sans', sans-serif;
+    font-weight: $weight;
+  } @else if ($type == 'heading-4') {
+    font-family: 'Oswald', 'Open Sans', sans-serif;
+    font-weight: $weight;
+  } @else if ($type == 'body') {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: $weight;
+  } @else {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: $weight;
+  }
+}
