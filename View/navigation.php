@@ -6,7 +6,7 @@
         <div class="trd-nav-menu-btn"><i class="fa fas fa-bars"></i></div>
       </div>
       <div class="trd-nav-left">
-        <a class="trd-nav-logo" href="/"><img src="<?php echo \TRD\Core\Navigation::Logo(); ?>"></a>
+        <a class="trd-nav-logo" href="<?php echo site_url(); ?>"><img src="<?php echo \TRD\Core\Navigation::Logo(); ?>"></a>
       </div>
       <div class="trd-nav-mid show-right">
         <div class="trd-nav-mid-left mobile"><i class="fa fas fa-chevron-left"></i></div>
@@ -25,7 +25,7 @@
       <div class="trd-nav-right">
         <div class="trd-nav-search">
           <div class="trd-nav-search-btn"><i class="fa fa-search"></i></div>
-          <form class="trd-nav-search-form" autocomplete="off" method="get" action="/google-search/">
+          <form class="trd-nav-search-form" autocomplete="off" method="get" action="<?php echo \TRD\Core\Navigation::SearchLink('/google-search/'); ?>">
             <input class="trd-nav-search-input" type="search" id="nav-search-input" name="q" autocomplete="off" placeholder="search" autofocus>
           </form>
         </div>
