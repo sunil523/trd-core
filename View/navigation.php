@@ -56,7 +56,7 @@
         <div class="trd-nav-menu-btn close"><i class="fa fas fa-close"></i></div>
       </div>
       <div class="trd-nav-left">
-        <a class="trd-nav-logo" href="/"><img src="<?php echo \TRD\Core\Navigation::Logo(); ?>"></a>
+        <a class="trd-nav-logo" href="<?php echo site_url(); ?>"><img src="<?php echo \TRD\Core\Navigation::Logo(); ?>"></a>
       </div>
       <div class="trd-nav-mid">
         <?php
