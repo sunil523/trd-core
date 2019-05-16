@@ -25,6 +25,8 @@ $nav-primary-height: auto;
 $nav-secondary-height: auto;
 $nav-max-width: 1600px;
 
+$nav-zindex: 130;
+
 .admin-bar .trd-nav-primary{
   top: 32px;
 }
@@ -51,7 +53,7 @@ $nav-max-width: 1600px;
   height: $nav-height;
   margin-bottom: 2rem;
   font-family: $nav-font-family;
-  z-index: 10;
+  z-index: $nav-zindex;
   box-shadow: 0 1px 5px rgba(0,0,0,0.5);
 
   *{
@@ -531,7 +533,7 @@ $nav-max-width: 1600px;
       height: 100vh;
       background-color: $color-nav-primary-bg;
       color: $color-nav-primary-txt;
-      z-index: 200;
+      z-index: 3;
   
       &.show{
         display: block;
