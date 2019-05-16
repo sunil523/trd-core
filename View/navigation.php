@@ -53,7 +53,7 @@
   <div class="trd-nav-secondary">
     <div class="trd-nav-container">
       <div class="trd-nav-mobile">
-        <div class="trd-nav-menu-btn close"><i class="fa fas fa-close"></i></div>
+        <div class="trd-nav-menu-btn close"><i class="fa fas fa-close fa-times"></i></div>
       </div>
       <div class="trd-nav-left">
         <a class="trd-nav-logo" href="<?php echo site_url(); ?>"><img src="<?php echo \TRD\Core\Navigation::Logo(); ?>"></a>
