@@ -14,15 +14,25 @@ class Lists
 
   public function get_list_regions()
   {
-    $regions = $this->get_regions();
-    $regions = $this->sanatize_regions( $regions );
+    $key = '_trd_newsletter_regions';
+    $regions = get_site_option( $key );
+    if( empty($regions) ) {
+      $regions = $this->get_regions();
+      $regions = $this->sanatize_regions( $regions );
+      update_site_option( $key, $regions );
+    }
     return $regions;
   }
 
   public function get_list_interests()
   {
-    $interests = $this->get_interests();
-    $interests = $this->sanatize_interests( $interests );
+    $key = '_trd_newsletter_interests';
+    $interests = get_site_option( $key );
+    if( empty($interests) ) {
+      $interests = $this->get_interests();
+      $interests = $this->sanatize_interests( $interests );
+      update_site_option( $key, $interests );
+    }
     return $interests;
   }
 

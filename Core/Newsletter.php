@@ -5,9 +5,20 @@ class Newsletter
 {
   public function __construct( $list_id = '6e806bb87a', $email='' ) {
     $list = new Mailchimp\Lists( $list_id, $email );
-    // $this->regions = $list->get_list_regions();
-    // $this->frequency = $list->get_frequency();
     $this->interests = $list->get_list_interests();
+
+    Ajax::Add_Action( array( __CLASS__, 'Subscribe' ) );
+  }
+
+  /**
+   * @see https://codex.wordpress.org/AJAX_in_Plugins
+   */
+  public static function Subscribe()
+  {
+    global $wpdb;
+    $security = $_POST['security'];
+    echo $security === md5( 'trd-wp-ajax' );
+    wp_die();
   }
 
   private function set_fields( $email='', $fname='', $lname='', $company='' )
