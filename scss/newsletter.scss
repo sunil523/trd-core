@@ -50,6 +50,7 @@
       }
       &-description{
         @include font-size(1.5);
+        font-weight: bold;
       }
       &-close{
         display: inline-block;
