@@ -75,7 +75,7 @@ class ApiPost extends ApiConfig
     } else {
       $error = is_wp_error( $body ) ? $body : $response;
       $this->result[ 'error' ][] = $this->slug;
-      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] %s - %s (%s)</p>', $this->slug, $code, $error->get_error_code(), $error->get_error_message(), $url );
+      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] %s (%s)</p>', $this->slug, $code, $error->get_error_message(), $url );
     }
   }
 
@@ -235,7 +235,7 @@ class ApiPost extends ApiConfig
       return $body->id;
     }else{
       $error = is_wp_error( $body ) ? $body : $response;
-      $this->result[ 'warning' ][] = sprintf( '<p><strong>%s</strong>: [%s] %s - %s</p>', $this->slug, $code, $error->get_error_code(), $error->get_error_message() );
+      $this->result[ 'warning' ][] = sprintf( '<p><strong>%s</strong>: [%s] %s</p>', $this->slug, $code, $error->get_error_message() );
       return null;
     }
   }
