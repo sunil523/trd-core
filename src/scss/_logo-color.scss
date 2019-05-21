@@ -1,0 +1,30 @@
+@import "colors";
+
+.trd-logo-color{
+  color: $color-trd-ny;
+}
+body.la{
+  .trd-logo-color{
+    color: $color-trd-la;
+  }
+}
+body.miami{
+  .trd-logo-color{
+    color: $color-trd-miami;
+  }
+}
+body.chicago{
+  .trd-logo-color{
+    color: $color-trd-chicago;
+  }
+}
+body.national{
+  .trd-logo-color{
+    color: $color-trd-national;
+  }
+}
+body.tristate{
+  .trd-logo-color{
+    color: $color-trd-tristate;
+  }
+}
