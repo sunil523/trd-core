@@ -83,7 +83,7 @@ class ApiPost extends ApiConfig
     $notices = get_option('trd_apipost_notices');
     delete_option('trd_apipost_notices');
     if(empty($notices)) return;
-    if( isset($notices['warning']) ){
+    if( !empty($notices['warning']) ){
       $notices['warning'][] = '<strong>Please copy this message and send it to ag@therealdeal.com and sp@therealdeal.com.</strong>';
     }
     foreach ($notices as $key => $values) {
