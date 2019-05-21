@@ -1,0 +1,80 @@
+.newsletter-slide{
+  position: fixed;
+  top: 0;
+  display: none;
+  @include font-family('body', 400);
+  @include font-size(1);
+  background-color: $color-newsletter-slide-bg;
+  color: $color-newsletter-slide-txt;
+  margin: 0;
+  transition: right ease-in-out 300ms;
+  z-index: 10;
+  overflow: auto;
+  height: 100vh;
+  &-container{
+    margin: rem-in-px(2) rem-in-px(1) rem-in-px(4);
+  }
+  .newsletter-form-title{
+    line-height: 1.5;
+  }
+  &.show{
+    display: block;
+    left: 0;
+  }
+  .widget.newsletter-form{
+    margin: 0;
+    margin-top: rem-in-px(1.5);
+    * {
+      box-sizing: border-box;
+    }
+    .newsletter-form-container{
+      display: block;
+    }
+    .input-field{
+      margin-top: rem-in-px(0.5);
+    }
+    .checkboxes{
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .checkbox-field{
+      width: 50%;
+      &#a1697a3052{
+        order: 2;
+        width: 100%;
+      }
+    }
+    .newsletter-form-close-btn{
+      display: inline-block;
+      margin-right: rem-in-px(1);
+      min-width: 150px;
+    }
+  }
+
+  @media only screen and (min-width: 782px) {
+    display: block;
+    top: 0px;
+    bottom: 0px;
+    left: auto;
+    right: -600px;
+    width: 500px;
+    border-radius: 20px 0 0 20px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-image: url('/wp-content/themes/therealdeal/assets/images/bg-newsletter-2048x2048.png');
+    &-container{
+      margin: rem-in-px(3) rem-in-px(1) rem-in-px(4);
+    }
+    &.show{
+      left: auto;
+      right: 0;
+    }
+  }
+  @media only screen and (min-width: 1140px) {
+    &-container{
+      margin: rem-in-px(3) rem-in-px(1) rem-in-px(2);
+    }
+  }
+}

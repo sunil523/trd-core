@@ -1,31 +1,6 @@
+@import "variables";
 @import "colors";
-
-$color-nav-highlight: #f00;
-$color-nav-primary-highlight: $color-nav-highlight;
-$color-nav-primary-bg: #f9f9f9;
-$color-nav-primary-txt: #222;
-$color-nav-primary-sub-bg: #eee;
-$color-nav-primary-sub-txt: $color-nav-primary-txt;
-$color-nav-primary-sub-sub-bg: #ddd;
-$color-nav-primary-sub-sub-txt: $color-nav-primary-txt;
-$color-nav-secondary-highlight: $color-nav-highlight;
-$color-nav-secondary-bg: #000;
-$color-nav-secondary-txt: #fff;
-$color-nav-secondary-sub-bg: #222;
-$color-nav-secondary-sub-txt: $color-nav-secondary-txt;
-$color-nav-secondary-sub-sub-bg: #222;
-$color-nav-secondary-sub-sub-txt: $color-nav-secondary-txt;
-$color-nav-search-bg: #222;
-$color-nav-search-txt: #fff;
-$color-nav-primary-highlight: $color-nav-highlight;
-$color-nav-secondary-highlight: $color-nav-highlight;
-$nav-font-family: 'Open Sans', sans-serif;
-$nav-height: auto;
-$nav-primary-height: auto;
-$nav-secondary-height: auto;
-$nav-max-width: 1600px;
-
-$nav-zindex: 10000;
+@import "mixins";
 
 .admin-bar .trd-nav-primary{
   top: 32px;

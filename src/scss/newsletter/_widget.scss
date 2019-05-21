@@ -1,9 +1,3 @@
-@import "colors";
-@import "mixins";
-
-.trd-logo-color{
-  color: #f00;
-}
 .newsletter{
   &.widget-embed{
     background-color: $color-newsletter-widget-dark-bg;

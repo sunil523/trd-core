@@ -3,18 +3,23 @@
 const
   gulp       = require('gulp'),
   del        = require('del'),
-  concat     = require('gulp-concat'),
+  browserify = require('browserify'),
+  babelify   = require('babelify'),
   csso       = require('gulp-csso'),
   imagemin   = require("gulp-imagemin"),
   newer      = require("gulp-newer"),
   rename     = require('gulp-rename'),
   sass       = require('gulp-sass'),
-  sourcemaps = require('gulp-sourcemaps')
+  sourcemaps = require('gulp-sourcemaps'),
+  uglify     = require('gulp-uglify'),
+  source      = require('vinyl-source-stream'),
+  buffer      = require('vinyl-buffer'),
+  livereload  = require('gulp-livereload')
 ;
 
 const
   dirs = {
-    src: '.',
+    src: './src',
     dest: './assets'
   },
   cssPaths = {
@@ -24,6 +29,7 @@ const
   },
   jsPaths = {
     watch: `${dirs.src}/js/**/*.js`,
+    src:   `${dirs.src}/js/trd-core.js`,
     dest:  `${dirs.dest}/js`
   },
   libsPaths = {
@@ -77,9 +83,17 @@ function css() {
 }
 
 function js() {
-  return gulp.src(jsPaths.watch, { sourcemaps: true })
-    .pipe(concat('main.min.js'))
-    .pipe(gulp.dest(jsPaths.dest, { sourcemaps: true }))
+  return browserify({entries: jsPaths.src, debug: true})
+    .transform(babelify, {"presets": ["@babel/preset-env"]})
+    .bundle()
+    .pipe(source('trd-core.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init())
+    .pipe(uglify())
+    .pipe(rename('trd-core.min.js'))
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(jsPaths.dest))
+    .pipe(livereload())
   ;
 }
 
@@ -92,6 +106,7 @@ function cleaner() {
 
 // Watch files
 function watchFiles() {
+  livereload.listen();
   gulp.watch(imgsPaths.watch, images);
   gulp.watch(cssPaths.watch, css);
   gulp.watch(jsPaths.watch, js);
