@@ -10,12 +10,15 @@
   transition: right ease-in-out 300ms;
   z-index: $nav-zindex;
   overflow: auto;
+  scroll-behavior: smooth;
   height: 100vh;
   &-container{
-    margin: rem-in-px(3) rem-in-px(1) rem-in-px(8);
+    margin: rem-in-px(3) 0 rem-in-px(8);
   }
   .newsletter-form-title{
     line-height: 1.5;
+    margin: 0 rem-in-px(1);
+    display: block;
   }
   &.show{
     display: block;
@@ -47,7 +50,7 @@
     .newsletter-form-close-btn{
       display: inline-block;
       margin-right: rem-in-px(1);
-      min-width: 150px;
+      min-width: 100px;
     }
   }
 

@@ -11,7 +11,7 @@
     text-align: center;
     border-radius: 20px;
     border: none;
-    min-width: 200px;
+    min-width: 150px;
     padding: rem-in-px(0.5);
     cursor: pointer;
     transition: all ease-in-out 200ms;
@@ -105,10 +105,10 @@
     margin: 0 rem-in-px(1);
   }
   .checkbox-field{
-    margin: 5px 0;
+    margin: rem-in-px(0.5) 0;
     label{
       cursor: pointer;
-      @include font-size(1);
+      @include font-size(0.9);
       text-transform: uppercase;
       position: relative;
       transition: all ease-in-out 200ms;
