@@ -35,6 +35,7 @@ class Newsletter
     $self = new self;
     echo '<section class="newsletter-slide">';
     echo '<div class="newsletter-slide-container">';
+    echo '<button class="newsletter-slide-close-btn"><i class="fa fa-close fa-times"></i></button>';
     $self->widget_title();
     $self->display( 'widget' );
     echo '</div>';
@@ -164,7 +165,7 @@ class Newsletter
       <div class="newsletter-form-button">
         <input type="hidden" name="newsletter" value="<?php echo $this->list_id; ?>"> 
         <?php if( $place == 'widget' ){ ?>
-          <button type="reset" class="newsletter-form-close-btn">Close</button>
+          <!-- <button type="reset" class="newsletter-form-close-btn">Close</button> -->
         <?php } ?>
         <button type="submit">Subscribe</button>
       </div>

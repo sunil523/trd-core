@@ -12,6 +12,7 @@ export default function ( options ){
 
   els = {
     $widgetSlide: $('.newsletter-slide'),
+    $widgetSlideClose: $('.newsletter-slide-close-btn'),
     $form:        $('.newsletter-form'),
     $close:       $('#newsletter-form-close-btn'),
     $btn:         $('.newsletter-form').find('button[type=submit]'),
@@ -38,14 +39,17 @@ export default function ( options ){
       els.$navlink.on( 'click', handlers.loadWidgetForm );
       els.$embed_close.on( 'click', handlers.closeFixedWidget );
       els.$subAll.on( 'change', handlers.subscribeAll );
+      els.$widgetSlideClose.on( 'click', handlers.close );
     },
 
     registerEls () {
-      els.$widgetSlide = $('.newsletter-widget');
+      els.$widgetSlide = $('.newsletter-slide');
+      els.$widgetSlideClose = $('.newsletter-slide-close-btn');
       els.$form        = $('.newsletter-form');
       els.$close       = $('#newsletter-form-close-btn');
       els.$btn         = $('.newsletter-form').find('button[type=submit]');
       els.$subAll      = $('#newsletter_subscribe_all');
+      fn.eventListener();
     },
 
     fixedEmbed () {

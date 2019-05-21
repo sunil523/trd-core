@@ -15,9 +15,22 @@
   &-container{
     margin: rem-in-px(3) 0 rem-in-px(8);
   }
+  &-close-btn{
+    display: inline-block;
+    background-color: transparent;
+    color: $color-newsletter-button;
+    @include font-size(2);
+    text-align: center;
+    border: none;
+    padding: rem-in-px(0.2) rem-in-px(0.5);
+    cursor: pointer;
+    position: absolute;
+    top: 45px;
+    right: 10px;
+  }
   .newsletter-form-title{
     line-height: 1.5;
-    margin: 0 rem-in-px(1);
+    margin: 0 rem-in-px(3) 0 rem-in-px(1);
     display: block;
   }
   &.show{
@@ -69,6 +82,9 @@
     background-image: url('/wp-content/themes/therealdeal/assets/images/bg-newsletter-2048x2048.png');
     &-container{
       margin: rem-in-px(3) rem-in-px(1) rem-in-px(4);
+    }
+    .newsletter-form-title{
+      margin: 0 rem-in-px(1);
     }
     &.show{
       left: auto;
