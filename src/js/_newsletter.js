@@ -63,9 +63,7 @@ export default function ( options ){
     showWidgetForm ( email ) {
       els.$subAll.prop( 'checked', true ).trigger( 'change' );
       $( 'header.trd-header, .admin-bar' ).addClass( 'zdown' );
-      if( $(document).width() < 782 ) {
-        $('html,body').addClass('overflow-off');
-      }
+      $('html,body').addClass('overflow-off');
       els.$widgetSlide.addClass( 'show' );
       els.$form.find( 'input[type=email]' ).val( email );
       setTimeout (() => {
