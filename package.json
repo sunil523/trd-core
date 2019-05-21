@@ -21,15 +21,26 @@
   "license": "UNLICENSED",
   "homepage": "https://therealdeal.com",
   "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/preset-env": "^7.4.4",
+    "babelify": "^10.0.0",
+    "browserify": "^16.2.3",
     "del": "^4.0.0",
     "gulp": "^4.0.0",
+    "gulp-babel": "^8.0.0-beta.2",
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^3.0.1",
     "gulp-imagemin": "^5.0.3",
+    "gulp-livereload": "^4.0.1",
     "gulp-newer": "^1.4.0",
     "gulp-rename": "^1.4.0",
     "gulp-sass": "^4.0.2",
     "gulp-sass-lint": "^1.4.0",
-    "gulp-sourcemaps": "^2.6.5"
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-uglify": "^3.0.2",
+    "gulp-uglify-es": "^1.0.4",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
   }
 }
