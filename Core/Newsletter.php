@@ -99,12 +99,13 @@ class Newsletter
 
   private function set_fields()
   {
+    $email = isset($_POST['email']) ? $_POST['email'] : '';
     return array(
       array(
         'label' => 'Email Address',
         'name' => 'email',
         'type' => 'email',
-        'value' => '',
+        'value' => $email,
         'required' => true,
       ),
       array(
