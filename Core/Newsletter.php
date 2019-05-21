@@ -170,7 +170,7 @@ class Newsletter
         <button type="submit">Subscribe</button>
       </div>
       <div class="newsletter-form-message">
-        <div class="newsletter-form-success">Thank you! now subscribed successfully.</div>
+        <div class="newsletter-form-success">Thank you! You are now subscribed successfully.</div>
         <div class="newsletter-form-error">We are having some technical difficulties. Try again later.</div>
       </div>
     </form>
