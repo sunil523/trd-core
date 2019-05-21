@@ -35,7 +35,7 @@ export default function ( options ){
 
     eventListener () {
       els.$form.on( 'submit', handlers.save );
-      els.$widget.on( 'submit', handlers.loadWidgetForm );
+      // els.$widget.on( 'submit', handlers.loadWidgetForm );
       els.$navlink.on( 'click', handlers.loadWidgetForm );
       els.$embed_close.on( 'click', handlers.closeFixedWidget );
       els.$subAll.on( 'change', handlers.subscribeAll );
