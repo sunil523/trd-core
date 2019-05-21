@@ -74,7 +74,7 @@ class ApiPost extends ApiConfig
       $this->result[ 'info' ][] = sprintf('<p><strong>%s</strong>: <a href="%s/wp-admin/post.php?post=%s&action=edit">Edit Crosspost</a></p>', $this->slug, site_url($this->api->base), $body->id );
     } else {
       $this->result[ 'error' ][] = $this->slug;
-      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] (%s)</p>', $this->slug, $code, $url );
+      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] (%s) %s</p>', $this->slug, $code, $url, json_encode($response) );
     }
   }
 
@@ -83,6 +83,9 @@ class ApiPost extends ApiConfig
     $notices = get_option('trd_apipost_notices');
     delete_option('trd_apipost_notices');
     if(empty($notices)) return;
+    if( isset($notices['warning']) ){
+      $notices['warning'][] = '<strong>Please copy this message and send it to ag@therealdeal.com and sp@therealdeal.com.</strong>';
+    }
     foreach ($notices as $key => $values) {
       if( empty($values) ) continue;
       if( $key=='success' ){
@@ -150,8 +153,8 @@ class ApiPost extends ApiConfig
     }
     // update other meta fields
     $fields['meta']['_crosspost']            = array( 1 ); // to hide the crosspost taxonomy box on crosspost.
-    $fields['meta']['_links_to']             = array( get_the_permalink( $this->post->ID ) );
-    $fields['meta']['_links_to_target']      = array( "_blank" );
+    $fields['meta']['_links_to']             = get_the_permalink( $this->post->ID );
+    $fields['meta']['_links_to_target']      = "_blank";
     $fields['meta']['second_featured_image'] = array( $sf_image_id );
     $fields['meta']['_thumbnail_id']         = array( $thumbnail_id );
     $fields['meta']['_aioseop_custom_link']  = array( get_the_permalink( $this->post->ID ) );
@@ -233,7 +236,7 @@ class ApiPost extends ApiConfig
       update_post_meta( $image->ID, $key, $body->id );
       return $body->id;
     }else{
-      $this->result[ 'warning' ][] = sprintf( '<p><strong>%s</strong>: [%s]</p>', $this->slug, $code );
+      $this->result[ 'warning' ][] = sprintf( '<p><strong>%s</strong>: [%s] (%s) %s</p>', $this->slug, $code, $url, json_encode($response) );
       return null;
     }
   }
@@ -275,10 +278,10 @@ class ApiPost extends ApiConfig
     curl_close($curl);
     $body = json_decode( $response );
     if ($err) {
-      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] %s - %s</p>', $this->slug, $body->data->status, $body->code, $body->message);
+      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] (%s) %s</p>', $this->slug, $url, $response );
       return null;
     } else if( is_wp_error($response) ) {
-      $this->result[ 'warning' ][] = sprintf( '<p><strong>%s</strong>: [%s] %s - %s</p>', $this->slug, $body->data->status, $body->code, $body->message);
+      $this->result[ 'warning' ][] = sprintf( '<p><strong>%s</strong>: [%s] (%s) %s</p>', $this->slug, $url, $response );
     } else {
       $this->result[ 'info' ][] = sprintf('<p><strong>%s</strong>: %s is uploaded. <a href="%s/wp-admin/upload.php?item=%s" target="_blank">Media ID: %s</a></p>', $this->slug, basename($image_file), site_url($this->api->base), $body->id, $body->id);
       return $body->id;
