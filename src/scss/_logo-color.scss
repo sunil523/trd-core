@@ -1,30 +1,54 @@
 @import "colors";
 
-.trd-logo-color{
-  color: $color-trd-ny;
+.trd-color{
+  color: $color-trd-ny !important;
+}
+.trd-color-btn{
+  background-color: $color-trd-ny !important;
+  color: $color-trd-ny-txt !important;
 }
 body.la{
-  .trd-logo-color{
-    color: $color-trd-la;
+  .trd-color{
+    color: $color-trd-la !important;
+  }
+  .trd-color-btn{
+    background-color: $color-trd-la !important;
+    color: $color-trd-la-txt !important;
   }
 }
 body.miami{
-  .trd-logo-color{
-    color: $color-trd-miami;
+  .trd-color{
+    color: $color-trd-miami !important;
+  }
+  .trd-color-btn{
+    background-color: $color-trd-miami !important;
+    color: $color-trd-miami-txt !important;
   }
 }
 body.chicago{
-  .trd-logo-color{
-    color: $color-trd-chicago;
+  .trd-color{
+    color: $color-trd-chicago !important;
+  }
+  .trd-color-btn{
+    background-color: $color-trd-chicago !important;
+    color: $color-trd-chicago-txt !important;
   }
 }
 body.national{
-  .trd-logo-color{
-    color: $color-trd-national;
+  .trd-color{
+    color: $color-trd-national !important;
+  }
+  .trd-color-btn{
+    background-color: $color-trd-national !important;
+    color: $color-trd-national-txt !important;
   }
 }
 body.tristate{
-  .trd-logo-color{
-    color: $color-trd-tristate;
+  .trd-color{
+    color: $color-trd-tristate !important;
+  }
+  .trd-color-btn{
+    background-color: $color-trd-tristate !important;
+    color: $color-trd-tristate-txt !important;
   }
 }

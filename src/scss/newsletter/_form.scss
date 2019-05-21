@@ -134,7 +134,7 @@
       opacity: 0;
 
       &:hover + label::before{
-        background-color: $color-newsletter-checkbox;
+        // background-color: $color-newsletter-checkbox;
       }
       &:focus + label::before{
         box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);

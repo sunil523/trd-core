@@ -8,11 +8,11 @@
   color: $color-newsletter-slide-txt;
   margin: 0;
   transition: right ease-in-out 300ms;
-  z-index: 10;
+  z-index: $nav-zindex;
   overflow: auto;
   height: 100vh;
   &-container{
-    margin: rem-in-px(2) rem-in-px(1) rem-in-px(4);
+    margin: rem-in-px(3) rem-in-px(1) rem-in-px(8);
   }
   .newsletter-form-title{
     line-height: 1.5;

@@ -20,7 +20,7 @@ class Newsletter extends \WP_Widget {
    * output the widget content on the front-end
    */
   public function widget( $args, $instance ) {
-    $title = empty( $instance['title'] ) ? 'T<span class="trd-logo-color">R</span>D News delivered straight to your inbox' : $instance['title'];
+    $title = empty( $instance['title'] ) ? 'T<span class="trd-color">R</span>D News delivered straight to your inbox' : $instance['title'];
     $classes = array('newsletter', 'widget-embed');
     if ( !empty( $instance['theme'] ) ) array_push($classes, 'widget-dark');
     if ( !empty( $instance['size'] ) ) array_push($classes, 'widget-large');
@@ -37,7 +37,7 @@ class Newsletter extends \WP_Widget {
       <?php } ?>
       <form method="post" class="widget-embed-form" action="/newsletter/">
         <input type="email" id="email" name="email" placeholder="Email Address">
-        <button type="submit">sign up</button>
+        <button type="submit" class="trd-color-btn">sign up</button>
       </form>
     </div>
     <?php

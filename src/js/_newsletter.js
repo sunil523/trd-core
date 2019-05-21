@@ -27,7 +27,6 @@ export default function ( options ){
       let timer = setInterval(() => {
         if (window.jQuery){
           fn.eventListener();
-          fn.fixedEmbed();
           clearInterval(timer);
         }
       }, 500);
@@ -60,6 +59,7 @@ export default function ( options ){
     showWidgetForm ( email ) {
       els.$subAll.prop( 'checked', true ).trigger( 'change' );
       $( 'header.trd-header, .admin-bar' ).addClass( 'zdown' );
+      $('html,body').addClass('overflow-off');
       els.$widgetSlide.addClass( 'show' );
       els.$form.find( 'input[type=email]' ).val( email );
       setTimeout (() => {
@@ -136,6 +136,7 @@ export default function ( options ){
     close ( e ) {
       els.$widgetSlide.removeClass('show');
       els.$subAll.prop('checked', true).trigger('change');
+      $('html,body').removeClass('overflow-off');
       setTimeout(() => {
         $('header.trd-header, .admin-bar').removeClass('zdown');
       }, 500);
