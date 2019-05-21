@@ -73,9 +73,8 @@ class ApiPost extends ApiConfig
       update_post_meta( $this->post->ID, $key, $body->id );
       $this->result[ 'info' ][] = sprintf('<p><strong>%s</strong>: <a href="%s/wp-admin/post.php?post=%s&action=edit">Edit Crosspost</a></p>', $this->slug, site_url($this->api->base), $body->id );
     } else {
-      $error = is_wp_error( $body ) ? $body : $response;
       $this->result[ 'error' ][] = $this->slug;
-      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] %s (%s)</p>', $this->slug, $code, $error->get_error_message(), $url );
+      $this->result[ 'warning' ][] = sprintf('<p><strong>%s</strong>: [%s] (%s)</p>', $this->slug, $code, $url );
     }
   }
 
@@ -234,8 +233,7 @@ class ApiPost extends ApiConfig
       update_post_meta( $image->ID, $key, $body->id );
       return $body->id;
     }else{
-      $error = is_wp_error( $body ) ? $body : $response;
-      $this->result[ 'warning' ][] = sprintf( '<p><strong>%s</strong>: [%s] %s</p>', $this->slug, $code, $error->get_error_message() );
+      $this->result[ 'warning' ][] = sprintf( '<p><strong>%s</strong>: [%s]</p>', $this->slug, $code );
       return null;
     }
   }
