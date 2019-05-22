@@ -20,12 +20,13 @@ class Newsletter extends \WP_Widget {
    * output the widget content on the front-end
    */
   public function widget( $args, $instance ) {
+    if( empty( $instance['name'] ) ) return '';
     $title = empty( $instance['title'] ) ? 'T<span class="trd-color">R</span>D News delivered straight to your inbox' : $instance['title'];
     $classes = array('newsletter', 'widget-embed');
     if ( !empty( $instance['theme'] ) ) array_push($classes, 'widget-dark');
     if ( !empty( $instance['size'] ) ) array_push($classes, 'widget-large');
     if ( !empty( $instance['fixed'] ) ) array_push($classes, 'widget-fixed');
-    $this->load_style();
+    // $this->load_style();
     ?>
     <div class="<?php echo implode(' ', $classes ); ?>">
       <div class="widget-embed-header">
@@ -35,7 +36,7 @@ class Newsletter extends \WP_Widget {
       <?php if( !empty( $instance['description'] ) ) { ?> 
         <p class="widget-embed-description"><?php echo $instance['description']; ?></p>
       <?php } ?>
-      <form method="post" class="widget-embed-form" action="/newsletter/">
+      <form method="post" class="widget-embed-form" action="/newsletter/" name="<?php echo $instance['name']; ?>">
         <input type="email" id="email" name="email" placeholder="Email Address">
         <button type="submit" class="trd-color-btn">sign up</button>
       </form>
@@ -47,6 +48,7 @@ class Newsletter extends \WP_Widget {
    * output the option form field in admin Widgets screen
    */
   public function form( $instance ) {
+    $name = ! empty( $instance['name'] ) ? $instance['name'] : '';
     $title = ! empty( $instance['title'] ) ? $instance['title'] : '';
     $description = ! empty( $instance['description'] ) ? $instance['description'] : '';
     ?>
@@ -60,6 +62,20 @@ class Newsletter extends \WP_Widget {
         name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" 
         type="text" 
         value="<?php echo esc_attr( $title ); ?>"
+        required
+      >
+    </p>
+    <p>
+      <label for="<?php echo esc_attr( $this->get_field_id( 'name' ) ); ?>">
+        <?php esc_attr_e( 'Name', 'trd' ); ?>
+      </label>
+      <input 
+        class="widefat" 
+        id="<?php echo esc_attr( $this->get_field_id( 'name' ) ); ?>" 
+        name="<?php echo esc_attr( $this->get_field_name( 'name' ) ); ?>" 
+        type="text" 
+        value="<?php echo esc_attr( $name ); ?>"
+        required
       >
     </p>
     <p>
@@ -83,8 +99,6 @@ class Newsletter extends \WP_Widget {
         >
         <?php esc_attr_e( 'Dark Theme', 'trd' ); ?>
       </label>
-    </p>
-    <p>
       <label for="<?php echo esc_attr( $this->get_field_id( 'size' ) ); ?>">
         <input 
           type="checkbox" 
@@ -94,8 +108,6 @@ class Newsletter extends \WP_Widget {
         >
         <?php esc_attr_e( 'Large Size', 'trd' ); ?>
       </label>
-    </p>
-    <p>
       <label for="<?php echo esc_attr( $this->get_field_id( 'fixed' ) ); ?>">
         <input 
           type="checkbox" 
@@ -114,6 +126,7 @@ class Newsletter extends \WP_Widget {
    */
   public function update( $new_instance, $old_instance ) {
     $instance = array();
+    $instance['name'] = ( !empty( $new_instance['name'] ) ) ? $new_instance['name'] : '';
     $instance['title'] = ( !empty( $new_instance['title'] ) ) ? $new_instance['title'] : '';
     $instance['description'] = ( !empty( $new_instance['description'] ) ) ? $new_instance['description'] : '';
     $instance['theme'] = !empty( $new_instance['theme'] );

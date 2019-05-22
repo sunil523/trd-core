@@ -183,7 +183,7 @@ class Feature_Posts extends \WP_Widget {
                     }
                 ?>
             </table>
-            <?php signup_form(); ?>
+            <?php signup_form('homepage_feature_posts'); ?>
         </div>
         <?php
     }

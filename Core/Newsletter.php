@@ -12,10 +12,10 @@ class Newsletter
   public static function Actions()
   {
     Ajax::Add_Action( array( __CLASS__, 'Subscribe' ) );
-    Ajax::Add_Action( array( __CLASS__, 'Widget_Form' ) );
+    Ajax::Add_Action( array( __CLASS__, 'Slide_Form' ) );
   }
 
-  public static function Widget_Form( $ajax = true )
+  public static function Slide_Form( $ajax = true )
   {
     if( $ajax ){
       global $wpdb;
@@ -23,21 +23,22 @@ class Newsletter
       if( $security !== md5( 'trd-wp-ajax' ) ){
         $message = array('success' => false, 'message' => 'You are not allowed.');
       }
-      self::Short_Form();
+      self::Slide_Display();
       wp_die();
     } else{ 
-      self::Short_Form();
+      self::Slide_Display();
     }
   }
 
-  public static function Short_Form()
+  public static function Slide_Display()
   {
     $self = new self;
+    $text = "Please select the newsletter(s) you'd like to receive for the latest real estate news and analysis.";
     echo '<section class="newsletter-slide">';
     echo '<div class="newsletter-slide-container">';
     echo '<button class="newsletter-slide-close-btn"><i class="fa fa-close fa-times"></i></button>';
-    $self->widget_title();
-    $self->display( 'widget' );
+    echo '<p class="newsletter-form-title">'.$text.'</p>';
+    $self->display( 'slide' );
     echo '</div>';
     echo '</section>';
   }
@@ -79,9 +80,10 @@ class Newsletter
       'email_address' => $data['email'],
       'interests'     => array(),
       'merge_fields'  => array(
-        'FNAME' =>   $data['firstname'],
-        'LNAME' =>   $data['lastname'],
+        'FNAME'   => $data['firstname'],
+        'LNAME'   => $data['lastname'],
         'COMPANY' => $data['company'],
+        'MERGE3'  => $data['place']
       ),
     );
     unset($data['newsletter']);
@@ -89,6 +91,7 @@ class Newsletter
     unset($data['lastname']);
     unset($data['company']);
     unset($data['email']);
+    unset($data['place']);
     foreach ($data as $key => $value) {
       $data[ $key ] = ( $value === 'true');
     }
@@ -132,13 +135,6 @@ class Newsletter
     );
   }
 
-  public function widget_title()
-  {
-    ?>
-    <p class="newsletter-form-title">Please select the newsletter(s) you'd like to receive for the latest real estate news and analysis.</p>
-    <?php
-  }
-
   public function display( $place='page' )
   {
     $fields = $this->set_fields();
@@ -148,32 +144,25 @@ class Newsletter
       <div class="newsletter-form-container">
         <div class="newsletter-form-col fields">
           <?php $this->display_fields( $fields ); ?>
+          <div class="break"></div>
+          <div class="newsletter-form-footer">
+            <button type="submit" class="newsletter-form-button newsletter-form-submit">Subscribe</button>
+            <div class="newsletter-form-success">You are now subscribed.</div>
+            <div class="newsletter-form-error">We are having some technical difficulties. Try again later.</div>
+            <p class="newsletter-form-agree">By clicking <em>Subscribe</em> you agree to our <a href="/privacy-policy/" target="_blank">Privacy Policy</a>.</p>
+          </div>
         </div>
         <div class="newsletter-form-col break"></div>
         <div class="newsletter-form-col interests">
           <?php
-            $this->display_section( '', array( array(
-              'id'    => 'subscribe_all',
-              'name'  => 'Subscribe to All',
-              'value' => 'yes'
-            ) ) );
             $this->display_section( 'Daily Newsletters', $this->interests['daily'] );
             $this->display_section( 'Weekly Newsletters', $this->interests['weekly'] );
             $this->display_section( 'TRData Updates (Weekly)', $this->interests['trdata'] );
           ?>
         </div>
       </div>
-      <div class="newsletter-form-button">
-        <input type="hidden" name="newsletter" value="<?php echo $this->list_id; ?>"> 
-        <?php if( $place == 'widget' ){ ?>
-          <!-- <button type="reset" class="newsletter-form-close-btn">Close</button> -->
-        <?php } ?>
-        <button type="submit">Subscribe</button>
-      </div>
-      <div class="newsletter-form-message">
-        <div class="newsletter-form-success">Thank you! You are now subscribed successfully.</div>
-        <div class="newsletter-form-error">We are having some technical difficulties. Try again later.</div>
-      </div>
+      <input type="hidden" name="newsletter" value="<?php echo $this->list_id; ?>"> 
+      <input type="hidden" name="place" value="website_<?php echo ($place === 'page') ? 'landing_page' : $place; ?>">
     </form>
     <?php
   }

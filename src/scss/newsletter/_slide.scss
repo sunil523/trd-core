@@ -12,7 +12,7 @@
   background-color: $color-newsletter-slide-bg;
   color: $color-newsletter-slide-txt;
   margin: 0;
-  transition: right ease-in-out 300ms;
+  transition: right 0.6s cubic-bezier(0.86, 0, 0.07, 1);
   z-index: $nav-zindex;
   overflow: auto;
   scroll-behavior: smooth;
@@ -43,14 +43,29 @@
     display: block;
     left: 0;
   }
-  .widget.newsletter-form{
+  .slide.newsletter-form{
     margin: 0;
     margin-top: rem-in-px(1.5);
     * {
       box-sizing: border-box;
     }
-    .newsletter-form-container{
-      display: block;
+    .newsletter-form{
+      &-agree{
+        margin: rem-in-px(1);
+      }
+      &-container{
+        display: block;
+      }
+      &-close-btn{
+        display: inline-block;
+        margin-right: rem-in-px(1);
+        min-width: 100px;
+      }
+      &-col{
+        &.break{
+          display: none;
+        }
+      }
     }
     .input-field{
       margin-top: rem-in-px(0.5);
@@ -66,10 +81,8 @@
         width: 100%;
       }
     }
-    .newsletter-form-close-btn{
-      display: inline-block;
-      margin-right: rem-in-px(1);
-      min-width: 100px;
+    .interests{
+      margin-top: rem-in-px(2);
     }
   }
 

@@ -13,8 +13,7 @@ const
   sourcemaps = require('gulp-sourcemaps'),
   uglify     = require('gulp-uglify'),
   source      = require('vinyl-source-stream'),
-  buffer      = require('vinyl-buffer'),
-  livereload  = require('gulp-livereload')
+  buffer      = require('vinyl-buffer')
 ;
 
 const
@@ -93,7 +92,6 @@ function js() {
     .pipe(rename('trd-core.min.js'))
     .pipe(sourcemaps.write('.'))
     .pipe(gulp.dest(jsPaths.dest))
-    .pipe(livereload())
   ;
 }
 
@@ -106,7 +104,6 @@ function cleaner() {
 
 // Watch files
 function watchFiles() {
-  livereload.listen();
   gulp.watch(imgsPaths.watch, images);
   gulp.watch(cssPaths.watch, css);
   gulp.watch(jsPaths.watch, js);

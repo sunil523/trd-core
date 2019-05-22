@@ -1,31 +1,6 @@
 .newsletter-form{
   margin: rem-in-px(3) auto;
 
-  button{
-    display: inline-block;
-    background-color: $color-newsletter-button;
-    text-transform: uppercase;
-    color: #fff;
-    @include font-family('body', 400);
-    @include font-size(1);
-    text-align: center;
-    border-radius: 20px;
-    border: none;
-    min-width: 150px;
-    padding: rem-in-px(0.5);
-    cursor: pointer;
-    transition: all ease-in-out 200ms;
-    &:hover{
-      letter-spacing: 1px;
-    }
-    &:disabled{
-      background-color: $color-newsletter-button-disabled;
-      color: #f1f1f1;
-      &:hover{
-        letter-spacing: 0;
-      }
-    }
-  }
   input{
     background-color: $color-white;
     border: none;
@@ -35,21 +10,54 @@
       box-shadow: 0 0 0 2px $color-trd-ny;
     }
   }
-  &-button,
-  &-message{
+  &-button{
+    display: inline-block;
+    background-color: $color-newsletter-button;
+    text-transform: uppercase;
+    color: #fff;
+    @include font-family('body', 400);
+    @include font-size(1);
+    text-align: center;
+    border-radius: 20px;
+    border: none;
+    min-width: 180px;
+    padding: rem-in-px(0.5);
+    cursor: pointer;
+    transition: all 200ms ease-in-out;
+    &:hover,
+    &:focus,
+    &:active{
+      letter-spacing: 1px;
+      min-width: 200px;
+      outline: none;
+    }
+    &:disabled{
+      background-color: $color-newsletter-button-disabled;
+      color: #f1f1f1;
+      &:hover{
+        letter-spacing: 0;
+      }
+    }
+  }
+  &-agree{
+    @include font-size(0.9);
+    @include font-family('body', 400);
+    a{
+      color: inherit;
+      text-decoration: underline;
+    }
+  }
+  &-footer{
+    flex: 1 0 auto;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-  }
-  &-button,
-  &-success,
-  &-error{
-    margin: rem-in-px(3) auto 0;
   }
   &-success,
   &-error{
     display: none;
-    padding: 10px 10px 11px;
+    padding: rem-in-px(0.5);
     @include font-family('body', 400);
     @include font-size(1);
     max-width: 500px;
@@ -70,6 +78,14 @@
     height: 1px;
     background-color: $color-newsletter-break;
     margin: rem-in-px(1.5) rem-in-px(1);
+    display: none;
+  }
+
+  .fields{
+    .break{
+      margin: rem-in-px(1.5) 0;
+      display: block;
+    }
   }
 
   .input-field{
@@ -98,11 +114,13 @@
       text-transform: uppercase;
       @include font-size(1.2);
       letter-spacing: 1px;
-      margin-top: rem-in-px(2);
     }
   }
   .checkboxes{
     margin: 0 rem-in-px(1);
+    +h4{
+      margin-top: rem-in-px(2);
+    }
   }
   .checkbox-field{
     margin: rem-in-px(0.5) 0;

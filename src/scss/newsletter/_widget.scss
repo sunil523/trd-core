@@ -20,15 +20,22 @@
     }
   }
   &.widget-fixed{
-    transition: all ease-in-out 300ms;
+    transition: all 300ms cubic-bezier(0.86, 0, 0.07, 1);
     position: fixed;
     top: 50%;
     transform: translateY(-50%);
     right: -500px;
-    width: 350px;
+    width: 360px;
+    z-index: 5;
     &.widget-large{
       .widget-embed-title{
         @include font-size(1.4);
+        text-align: center;
+      }
+      .widget-embed-close{
+        .fa{
+          @include font-size(2);
+        }
       }
     }
     &.show{
@@ -53,9 +60,6 @@
         top: 0;
         left: 0;
         padding: 8px 10px;
-        .fa{
-          @include font-size(2);
-        }
       }
     }
     @media only screen and (max-width: 781px) {
