@@ -51,10 +51,10 @@ export default function ( options ){
     },
 
     showSlideForm ( email ) {
+      let width = $(document).width();
       $( 'header.trd-header, .admin-bar' ).addClass( 'zdown' );
-      if( $(document).width() < 782 ){
-        $('html,body').addClass('overflow-off');
-      }
+      if( width > 782 ) $('html,body').addClass('move-over');
+      if( width < 782 ) $('html,body').addClass('overflow-off');
       els.$slideForm.addClass( 'show' );
       els.$form.find( 'input[type=email]' ).val( email );
       setTimeout (() => {
@@ -156,6 +156,7 @@ export default function ( options ){
     close ( e ) {
       handlers.fixedWidgetClose( e );
       els.$slideForm.removeClass('show');
+      $('body').removeClass('move-over');
       $('html,body').removeClass('overflow-off');
       setTimeout(() => {
         $('header.trd-header, .admin-bar').removeClass('zdown');
