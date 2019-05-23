@@ -97,7 +97,7 @@ export default function ( options ){
           data.data[ name ] = val;
         }
       });
-      fn.trackEvent('subscribe', 'newsletter_signup_form', data.data['place']);
+      fn.trackEvent('newsletter_signup_form', 'subscribe', data.data['place']);
       els.$btn.text('Subscribing...').attr('disabled', 'disabled');
       jQuery.post( trd_ajax.url, data, function( response ) {
         els.$subscribeSubmit = false;
@@ -105,10 +105,10 @@ export default function ( options ){
         $('.newsletter-form-button').hide();
         if( response.success ){
           $('.newsletter-form-success').show();
-          fn.trackEvent('subscribe', 'newsletter_signup_form', 'success');
+          fn.trackEvent('newsletter_signup_form', 'subscribe', 'success');
         } else {
           $('.newsletter-form-error').show();
-          fn.trackEvent('subscribe', 'newsletter_signup_form', 'failed');
+          fn.trackEvent('newsletter_signup_form', 'subscribe', 'failed');
         }
 
         setTimeout(() => {
@@ -149,7 +149,7 @@ export default function ( options ){
           }
         });
       }
-      fn.trackEvent( e.type, 'newsletter_sinup_open', name );
+      fn.trackEvent( 'newsletter_sinup_open', e.type, name );
       return false;
     },
 
