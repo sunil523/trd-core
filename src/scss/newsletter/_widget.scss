@@ -31,6 +31,7 @@
       .widget-embed-title{
         @include font-size(1.4);
         text-align: center;
+        padding-left: 30px;
       }
       .widget-embed-close{
         .fa{

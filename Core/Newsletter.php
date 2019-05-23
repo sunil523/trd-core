@@ -33,11 +33,10 @@ class Newsletter
   public static function Slide_Display()
   {
     $self = new self;
-    $text = "Please select the newsletter(s) you'd like to receive for the latest real estate news and analysis.";
     echo '<section class="newsletter-slide">';
     echo '<div class="newsletter-slide-container">';
     echo '<button class="newsletter-slide-close-btn"><i class="fa fa-close fa-times"></i></button>';
-    echo '<p class="newsletter-form-title">'.$text.'</p>';
+    echo '<h2 class="newsletter-form-title">Sign up for T<span class="trd-color">R</span>D news!</h2>';
     $self->display( 'slide' );
     echo '</div>';
     echo '</section>';

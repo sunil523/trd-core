@@ -18,7 +18,7 @@
   scroll-behavior: smooth;
   height: 100vh;
   &-container{
-    margin: rem-in-px(3) 0 rem-in-px(8);
+    margin: rem-in-px(2) 0 rem-in-px(8);
   }
   &-close-btn{
     display: inline-block;
@@ -36,8 +36,8 @@
   }
   .newsletter-form-title{
     line-height: 1.5;
-    margin: 0 rem-in-px(3) 0 rem-in-px(1);
     display: block;
+    text-align: center;
   }
   &.show{
     display: block;
