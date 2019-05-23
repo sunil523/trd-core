@@ -1,0 +1,16 @@
+.feature-posts{
+  display: grid;
+
+}
+
+.top-stories{
+  .newsletter.widget-embed{
+    width: 340px;
+    input{
+      width: 210px;
+    }
+    *{
+      box-sizing: border-box;
+    }
+  }
+}
