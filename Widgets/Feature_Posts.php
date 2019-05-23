@@ -183,7 +183,10 @@ class Feature_Posts extends \WP_Widget {
                     }
                 ?>
             </table>
-            <?php signup_form('homepage_feature_posts'); ?>
+            <?php
+            $nl = new \TRD\Widgets\Newsletter();
+	        $nl->widget( array(), array('name' => 'homepage_feature_posts', 'theme' => true ) );
+            ?>
         </div>
         <?php
     }
