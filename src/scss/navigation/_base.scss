@@ -387,18 +387,20 @@
     }
   }
   &-link[href*="listings"] ~ .trd-nav-sub{
+    padding-top: 0;
     .trd-nav-link{
       padding-left: 40px;
+      padding-right: 12px;
       &::before{
         content: '';
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
         border: 3px solid $color-nav-secondary-sub-bg;
         box-shadow: 0 0 0 1px #B5A4A4;
         position: absolute;
-        left: 6px;
-        top: 12px;
+        left: 10px;
+        top: 15px;
       }
       &:hover::before{
         box-shadow: 0 0 0 1px $color-nav-secondary-highlight;
