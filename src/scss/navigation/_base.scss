@@ -1,5 +1,10 @@
-.admin-bar .trd-nav-primary{
-  top: 32px;
+body{
+  margin-top: 75px;
+}
+.admin-bar{
+  .trd-nav-primary{
+    top: 32px;
+  }
 }
 
 .trd-nav-container{
@@ -10,6 +15,42 @@
   height: 100%;
   margin: 0 auto;
   flex-wrap: wrap;
+}
+
+.is-fixed{
+  .trd-nav-primary{
+    position: fixed;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    .trd-nav{
+      &-logo{
+        img{
+          height: 40px;
+        }
+      }
+      &-link{
+        padding: rem-in-px(1) rem-in-px(0.5);
+      }
+      &-link{
+        @include font-size(0.8);
+      }
+    }
+  }
+  .trd-nav-account{
+    .trd-nav-link{
+      @include font-size(0.8);
+    }
+  }
+  .trd-nav-search{
+    &-btn{
+      padding: rem-in-px(1) rem-in-px(0.5);
+      .fa{
+        @include font-size(1.5);
+      }
+    }
+    &-form{
+      top: 57px;
+    }
+  }
 }
 
 .trd-nav{
@@ -55,12 +96,16 @@
   }
 
   &-primary{
-    height: $nav-primary-height;
-    position: sticky;
+    position: fixed;
+    width: 100%;
+    left: 0;
     top: 0;
     background-color: $color-nav-primary-bg;
     color: $color-nav-primary-txt;
     z-index: 2;
+    *{
+      transition: padding 0.6s $transition-easing, font-size 0.6s $transition-easing;
+    }
     .trd-nav{
       &-link{
         font-size: 1.8rem;
@@ -177,7 +222,10 @@
   &-logo{
     padding-top: 8px !important;
     padding-left: 10px;
+    min-width: 246px;
+    text-align: center;
     img{
+      transition: height 0.6s $transition-easing;
       height: 55px;
     }
   }
@@ -211,21 +259,21 @@
       }
     }
     &-btn{
-      padding: 2.2rem 1.5rem;
+      padding: rem-in-px(1.5) rem-in-px(1) rem-in-px(1.8);
       cursor: pointer;
       .fa{
-        font-size: 3rem;
+        @include font-size(1.3);
       }
     }
     &-form{
       display: none;
       position: absolute;
-      top: 74px;
-      right: -193px;
+      top: 75px;
+      right: -210px;
       width: 360px;
       height: 58px;
       background-color: $color-nav-search-bg;
-      transition: none;
+      transition: top 0.6s $transition-easing;
     }
     &-input{
       background-color: transparent;
@@ -255,7 +303,7 @@
     }
   }
   &-loggedin{
-    .nav{
+    .trd-nav{
       &-search{
         &-form{
           right: -110px;
@@ -266,10 +314,10 @@
   &-mobile{
     display: none;
     .trd-nav-menu-btn{
-      padding: 2rem 1.5rem;
+      padding: rem-in-px(1) rem-in-px(1);
       cursor: pointer;
       .fa{
-        font-size: 3rem;
+        @include font-size(1.3);
       }
     }
   }
@@ -429,9 +477,6 @@
   }
 }
 @media only screen and (max-width: 1245px){
-  .trd-nav-search-btn{
-    padding: 2.1rem 1.5rem;
-  }
   .trd-nav-search-form{
     top: 72px;
   }
@@ -453,6 +498,17 @@
   }
 }
 @media only screen and (max-width: 1090px){
+  body{
+    margin-top: 125px;
+  }
+  .is-fixed{
+    .trd-nav-menu-btn{
+      padding: rem-in-px(0.5) rem-in-px(1);
+    }
+    .trd-nav-search-form{
+      height: 50px;
+    }
+  }
   .trd-nav{
     *{
       transition: none;
@@ -460,9 +516,6 @@
 
     &-search{
       position: initial;
-      &-btn{
-        padding: 2rem 1.5rem;
-      }
       &-form{
         left: 0;
         right: 0;
@@ -648,11 +701,6 @@
     .trd-nav-secondary .trd-nav-left{
       top: 32px;
     }
-  }
-}
-@media only screen and (max-width: 850px){
-  body {
-    margin-top: 0;
   }
 }
 @media only screen and (max-width: 800px){

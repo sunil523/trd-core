@@ -25,6 +25,11 @@ export default function ( options ){
           clearInterval( nav_timer );
         }
       }, 500);
+      fn.eventListener();
+    },
+
+    eventListener () {
+      $(window).on('scroll', handlers.navFixed );
     },
 
     
@@ -115,6 +120,18 @@ export default function ( options ){
         });
       }
       return window.nav_item_width;
+    }
+  };
+
+  handlers = {
+    navFixed ( e ) {
+      let fixedNavTop = 74;
+      let scrollTop = $(window).scrollTop();
+      if( scrollTop > fixedNavTop ) {
+        $('.trd-nav').addClass('is-fixed');
+      } else {
+        $('.trd-nav').removeClass('is-fixed');
+      }
     }
   };
 
