@@ -2,7 +2,9 @@ export default function ( options ){
 
   const defaults = {
     messageTimeout:  5000, // 5 seconds
-    fixedEmbedTimer: 3000  // 3 seconds
+    fixedEmbedTimer: 3000, // 3 seconds
+    navPosition: $('.trd-nav').offset().top,
+    prevScrollpos: 125
   };
 
   let els;
@@ -125,13 +127,19 @@ export default function ( options ){
 
   handlers = {
     navFixed ( e ) {
-      let fixedNavTop = 74;
+      let width = $(document).width();
       let scrollTop = $(window).scrollTop();
-      if( scrollTop > fixedNavTop ) {
-        $('.trd-nav').addClass('is-fixed');
+      if( scrollTop >= o.navPosition ) {
+        $('body').addClass('is-sticky');
       } else {
-        $('.trd-nav').removeClass('is-fixed');
+        $('body').removeClass('is-sticky');
       }
+      if (o.prevScrollpos < scrollTop && scrollTop >= o.navPosition) {
+        $("body").addClass('is-move-out');
+      } else {
+        $("body").removeClass('is-move-out');
+      }
+      o.prevScrollpos = scrollTop;
     }
   };
 
