@@ -13,32 +13,34 @@ body.is-sticky{
     left: 0;
     top: 0;
     box-shadow: 0 1px 5px rgba(0,0,0,0.5);
-    &-logo{
+  }
+  @media only screen and (min-width: 1091px) {
+    .trd-nav-logo{
       img{
         height: 40px;
       }
     }
-  }
-  .trd-nav-primary{
-    .trd-nav-link{
-      padding: rem-in-px(1) rem-in-px(0.5);
-      @include font-size(0.8);
-    }
-  }
-  .trd-nav-account{
-    .trd-nav-link{
-      @include font-size(0.8);
-    }
-  }
-  .trd-nav-search{
-    &-btn{
-      padding: rem-in-px(1) rem-in-px(0.5);
-      .fa{
-        @include font-size(1.5);
+    .trd-nav-primary{
+      .trd-nav-link{
+        padding: rem-in-px(1) rem-in-px(0.5);
+        @include font-size(0.8);
       }
     }
-    &-form{
-      top: 57px;
+    .trd-nav-account{
+      .trd-nav-link{
+        @include font-size(0.8);
+      }
+    }
+    .trd-nav-search{
+      &-btn{
+        padding: rem-in-px(1) rem-in-px(0.5);
+        .fa{
+          @include font-size(1.5);
+        }
+      }
+      &-form{
+        top: 57px;
+      }
     }
   }
 }

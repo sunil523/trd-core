@@ -129,7 +129,7 @@ export default function ( options ){
     navFixed ( e ) {
       let width = $(document).width();
       let scrollTop = $(window).scrollTop();
-      if( scrollTop >= o.navPosition ) {
+      if( scrollTop > o.navPosition ) {
         $('body').addClass('is-sticky');
       } else {
         $('body').removeClass('is-sticky');
