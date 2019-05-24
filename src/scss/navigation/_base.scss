@@ -1,10 +1,12 @@
 body{
   margin-top: 75px;
 }
-.admin-bar{
-  .trd-nav-primary{
-    top: 32px;
-  }
+body.admin-bar .trd-nav-primary{
+  top: 32px;
+}
+body.move-over .trd-nav-primary{
+  left: -$newsletter-open-move;
+  right: $newsletter-open-move;
 }
 
 .trd-nav-container{
@@ -103,6 +105,7 @@ body{
     background-color: $color-nav-primary-bg;
     color: $color-nav-primary-txt;
     z-index: 2;
+    transition: all 0.6s $transition-easing;
     *{
       transition: padding 0.6s $transition-easing, font-size 0.6s $transition-easing;
     }
