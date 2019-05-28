@@ -324,6 +324,7 @@
         -webkit-font-smoothing: antialiased;
         font-family: "Font Awesome 5 Brands", "Font Awesome 5 Free";
         font-size: 30px;
+        line-height: 30px;
       }
       &[href*="newsletter"]::before{
         content: '\f0e0';
