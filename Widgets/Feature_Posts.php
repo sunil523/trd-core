@@ -163,7 +163,12 @@ class Feature_Posts extends \WP_Widget {
 		// get the image size
 		$image = wp_get_attachment_image_src( $image_id, $size, false );
 		if( ! empty( $image ) ) {
-			$image['alt'] = get_post_meta( $image_id, '_wp_attachment_image_alt', true );
+			$image = array(
+				'url'    => $image[0],
+				'width'  => $image[1],
+				'height' => $image[2],
+				'alt'    => get_post_meta( $image_id, '_wp_attachment_image_alt', true ),
+			);
 			$image_caption = wp_get_attachment_caption( $image_id );
 			return $this->image_setup( $image, $image_caption );
 		}
