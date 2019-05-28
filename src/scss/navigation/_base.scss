@@ -19,7 +19,7 @@
   width: 100%;
   display: block;
   height: $nav-height;
-  margin-bottom: 2rem;
+  margin-bottom: 20px;
   font-family: $nav-font-family;
   z-index: $nav-zindex;
   box-shadow: 0 1px 5px rgba(0,0,0,0.5);
@@ -38,12 +38,12 @@
 
   &-link{
     color: inherit;
-    padding: 2rem 1rem;
+    padding: 20px 10px;
     text-transform: uppercase;
     display: block;
     font-weight: bold;
     position: relative;
-    font-size: 1.3rem;
+    font-size: 13px;
     cursor: pointer;
     &:visited{
       color: inherit;
@@ -63,8 +63,8 @@
     z-index: 2;
     .trd-nav{
       &-link{
-        font-size: 1.8rem;
-        padding: 2.5rem 1rem;
+        font-size: 18px;
+        padding: 25px 10px;
       }
       &-regions{
         margin-left: 40px;
@@ -211,17 +211,17 @@
       }
     }
     &-btn{
-      padding: 2.2rem 1.5rem;
+      padding: 22px 15px;
       cursor: pointer;
       .fa{
-        font-size: 3rem;
+        font-size: 30px;
       }
     }
     &-form{
       display: none;
       position: absolute;
       top: 74px;
-      right: -193px;
+      right: -210px;
       width: 360px;
       height: 58px;
       background-color: $color-nav-search-bg;
@@ -232,7 +232,7 @@
       border-radius: 0;
       border: none;
       display: block;
-      padding: 1.5rem 1rem;
+      padding: 15px 10px;
       font-size: 16px;
       // text-transform: uppercase;
       color: $color-nav-search-txt;
@@ -266,10 +266,10 @@
   &-mobile{
     display: none;
     .trd-nav-menu-btn{
-      padding: 2rem 1.5rem;
+      padding: 20px 15px;
       cursor: pointer;
       .fa{
-        font-size: 3rem;
+        font-size: 30px;
       }
     }
   }
@@ -289,11 +289,11 @@
     top: $nav-secondary-height;
     width: max-content;
     min-width: 150px;
-    padding-top: 1rem;
+    padding-top: 10px;
     transition: all ease-in-out 300ms;
     .trd-nav-link{
       display: block;
-      padding: 1.5rem 1rem;
+      padding: 15px 10px;
     }
   }
 
@@ -303,7 +303,7 @@
     }
     .trd-nav-link{
       color: $color-nav-primary-txt !important;
-      font-size: 1.3rem;
+      font-size: 13px;
       &:hover{
         color: $color-nav-highlight !important;
       }
@@ -312,7 +312,7 @@
   &-social{
     .trd-nav-link{
       position: relative;
-      padding: 1.3rem 1.5rem;
+      padding: 13px 15px;
       color: $color-nav-secondary-sub-txt;
       font-weight: normal;
       font-size: 0 !important;
@@ -323,7 +323,7 @@
         text-rendering: auto;
         -webkit-font-smoothing: antialiased;
         font-family: "Font Awesome 5 Brands", "Font Awesome 5 Free";
-        font-size: 3rem;
+        font-size: 30px;
       }
       &[href*="newsletter"]::before{
         content: '\f0e0';
@@ -370,7 +370,7 @@
     position: relative;
     &.sub > .trd-nav-link{
       position: relative;
-      padding-right: 2rem;
+      padding-right: 20px;
       &::after{
         display: inline-block;
         font-style: normal;
@@ -425,12 +425,12 @@
 }
 @media only screen and (max-width: 1275px){
   .trd-nav-regions .trd-nav-link{
-    font-size: 1.6rem;
+    font-size: 16px;
   }
 }
 @media only screen and (max-width: 1245px){
   .trd-nav-search-btn{
-    padding: 2.1rem 1.5rem;
+    padding: 21px 15px;
   }
   .trd-nav-search-form{
     top: 72px;
@@ -438,8 +438,8 @@
 }
 @media only screen and (max-width: 1200px){
   .trd-nav-regions .trd-nav-link{
-    font-size: 1.4rem;
-    padding: 2.5rem 0.8rem;
+    font-size: 14px;
+    padding: 25px 8px;
   }
 }
 @media only screen and (max-width: 1160px){
@@ -449,7 +449,7 @@
 }
 @media only screen and (max-width: 1110px){
   .trd-nav-regions .trd-nav-link{
-    font-size: 1.3rem;
+    font-size: 13px;
   }
 }
 @media only screen and (max-width: 1090px){
@@ -461,7 +461,7 @@
     &-search{
       position: initial;
       &-btn{
-        padding: 2rem 1.5rem;
+        padding: 20px 15px;
       }
       &-form{
         left: 0;
@@ -484,7 +484,7 @@
     &-account{
       .trd-nav{
         &-link{
-          padding-right: 2.5rem;
+          padding-right: 25px;
         }
         &-sub{
           right: 0;
@@ -616,8 +616,8 @@
       display: flex;
     }
     .trd-nav-link{
-      font-size: 1.6rem;
-      padding: 1.2rem 1rem;
+      font-size: 16px;
+      padding: 12px 10px;
     }
     .trd-nav-left{
       order: 1;
@@ -688,18 +688,18 @@
       z-index: 1;
       cursor: pointer;
       .fa{
-        font-size: 2.5rem;
+        font-size: 25px;
         color: #ddd;
       }
     }
     &-left{
       left: 0;
-      padding: 1rem 0.5rem 1rem 1.5rem;
+      padding: 10px 5px 10px 15px;
       animation: nav-left-more infinite 1.5s;
     }
     &-right{
       right: 0;
-      padding: 1rem 1.5rem 1rem 0.5rem;
+      padding: 10px 15px 10px 5px;
       animation: nav-right-more infinite 1.5s;
     }
     &.show-left{
@@ -725,22 +725,22 @@
 
 @keyframes nav-left-more{
   0%,100%{
-    padding-left: 1.5rem;
-    padding-right: 0.5rem;
+    padding-left: 15px;
+    padding-right: 5px;
   }
   25%,30%{
-    padding-left: 0.5rem;
-    padding-right: 1.5rem;
+    padding-left: 5px;
+    padding-right: 15px;
   }
 }
 
 @keyframes nav-right-more{
   0%,100%{
-    padding-left: 0.5rem;
-    padding-right: 1.5rem;
+    padding-left: 5px;
+    padding-right: 15px;
   }
   25%,30%{
-    padding-left: 1.5rem;
-    padding-right: 0.5rem;
+    padding-left: 15px;
+    padding-right: 5px;
   }
 }
