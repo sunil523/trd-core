@@ -99,7 +99,7 @@ export default function ( options ){
           data.data[ name ] = val;
         }
       });
-      fn.trackEvent('newsletter_signup', 'subscribe', data.data['place'], 'submit');
+      fn.trackEvent('newsletter_signup', 'subscribe_submit', data.data['place'], 1);
       els.$btn.text('Subscribing...').attr('disabled', 'disabled');
       jQuery.post( trd_ajax.url, data, function( response ) {
         els.$subscribeSubmit = false;
@@ -107,10 +107,10 @@ export default function ( options ){
         $('.newsletter-form-button').hide();
         if( response.success ){
           $('.newsletter-form-success').show();
-          fn.trackEvent('newsletter_signup', 'subscribe', data.data['place'], 'success');
+          fn.trackEvent('newsletter_signup', 'subscribe_success', data.data['place'], 1);
         } else {
           $('.newsletter-form-error').show();
-          fn.trackEvent('newsletter_signup', 'subscribe', data.data['place'], 'failed');
+          fn.trackEvent('newsletter_signup', 'subscribe_failed', data.data['place'], '');
         }
 
         setTimeout(() => {
@@ -151,7 +151,7 @@ export default function ( options ){
           }
         });
       }
-      fn.trackEvent( 'newsletter_signup', 'open', name, e.type );
+      fn.trackEvent( 'newsletter_signup', 'open_'+e.type, name, 1 );
       return false;
     },
 
