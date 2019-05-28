@@ -1,16 +1,106 @@
 .feature-posts{
-  display: grid;
 
-}
-
-.top-stories{
-  .newsletter.widget-embed{
-    width: 340px;
-    input{
-      width: 210px;
+  * {
+    box-sizing: border-box;
+  }
+  figure{
+    margin: 0;
+    display: block;
+    text-align: center;
+    a{
+      display: inline-block;
     }
-    *{
-      box-sizing: border-box;
+    img{
+      background-color: #f1f1f1;
+    }
+    figcaption{
+      display: none;
+      font-family: 'sinanova-regularregular', 'Open Sans', sans-serif;
+      font-style: italic;
+      color: #333;
+    }
+  }
+  
+  &-cover{
+    &-title{
+      display: block;
+      color: #000;
+      margin-bottom: 10px;
+      font-size: 35px;
+      font-family: 'Open Sans', sans-serif;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+      text-align: center;
+      &:hover,
+      &:focus,
+      &:active,
+      &:visited{
+        color: #000;
+        text-decoration: underline;
+      }
+    }
+    figure{
+      a,
+      img,
+      figcaption{
+        max-width: 690px;
+        width: 100%;
+        display: inline-block;
+      }
+    }
+  }
+  &-top,
+  .newsletter{
+    display: none;
+  }
+
+  @media only screen and (min-width: 1091px){
+    display: grid;
+    grid-template-columns: 690px auto;
+    grid-template-rows: auto;
+    grid-gap: 10px;
+    .newsletter{
+      display: block;
+    }
+    &-cover{
+      grid-row: span 5;
+      &-title{
+        font-size: 35px;
+        text-align: left;
+      }
+      figcaption{
+        text-align: left;
+      }
+    }
+    &-top{
+      grid-row: span 1;
+      display: flex;
+      flex-direction: row;
+      &-title{
+        order: 1;
+        display: block;
+        color: #000;
+        font-size: 15px;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        line-height: 1.2;
+        margin-left: 5px;
+        &:hover,
+        &:focus,
+        &:active,
+        &:visited{
+          color: #000;
+          text-decoration: underline;
+        }
+      }
+      figure{
+        order: 0;
+      }
+      img{
+        width: 140px;
+        height: 100px;
+      }
     }
   }
 }
