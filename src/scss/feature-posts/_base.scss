@@ -51,6 +51,7 @@
       img,
       figcaption{
         max-width: 690px;
+        max-height: 430px;
         width: 100%;
         display: inline-block;
       }
@@ -102,10 +103,11 @@
       }
       figure{
         order: 0;
-      }
-      img{
-        width: 140px;
-        height: 100px;
+        a,
+        img{
+          width: 140px;
+          height: 100px;
+        }
       }
     }
   }
