@@ -2,6 +2,7 @@
 
   * {
     box-sizing: border-box;
+    transition: all 0.6s ease-in-out;
   }
   figure{
     margin: 0;
@@ -32,7 +33,7 @@
       display: block;
       color: #000;
       margin-bottom: 10px;
-      font-size: 35px;
+      font-size: 18px;
       font-family: 'Open Sans', sans-serif;
       font-weight: bold;
       letter-spacing: 0.5px;
@@ -50,11 +51,19 @@
       a,
       img,
       figcaption{
-        max-width: 690px;
-        max-height: 430px;
         width: 100%;
         height: auto;
         display: inline-block;
+      }
+      a{
+        position: relative;
+        height: 0;
+        padding-top: 62%;
+      }
+      img{
+        position: absolute;
+        top: 0;
+        left: 0;
       }
     }
   }
@@ -63,9 +72,17 @@
     display: none;
   }
 
-  @media only screen and (min-width: 1091px){
+  @media only screen and (min-width: 600px){
+    &-cover{
+      &-title{
+        font-size: 24px;
+      }
+    }
+  }
+
+  @media only screen and (min-width: 960px){
     display: grid;
-    grid-template-columns: 690px auto;
+    grid-template-columns: auto 330px;
     grid-template-rows: auto;
     grid-gap: 10px;
     .newsletter{
@@ -74,7 +91,7 @@
     &-cover{
       grid-row: span 5;
       &-title{
-        font-size: 35px;
+        font-size: 28px;
         text-align: left;
       }
       figcaption{
@@ -106,6 +123,23 @@
         order: 0;
         a,
         img{
+          width: 118px;
+          height: 85px;
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 1140px){
+    grid-template-columns: 690px auto;
+    &-cover{
+      &-title{
+        font-size: 32px;
+      }
+    }
+    &-top{
+      figure{
+        a,img{
           width: 140px;
           height: 100px;
         }

@@ -205,7 +205,7 @@ class Feature_Posts extends \WP_Widget {
 				esc_url( $image['url'] ),
 				esc_attr( $image['alt'] ),
 				$image['width'],
-				$image['height']
+				'auto'
 			)
 		);
 	}
