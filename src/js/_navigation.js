@@ -2,7 +2,10 @@ export default function ( options ){
 
   const defaults = {
     messageTimeout:  5000, // 5 seconds
-    fixedEmbedTimer: 3000  // 3 seconds
+    fixedEmbedTimer: 3000, // 3 seconds
+    navPosition: $('.trd-nav').offset().top,
+    prevScrollposInit: 130,
+    prevScrollpos: 130
   };
 
   let els;
@@ -25,6 +28,11 @@ export default function ( options ){
           clearInterval( nav_timer );
         }
       }, 500);
+      fn.eventListener();
+    },
+
+    eventListener () {
+      $(window).on('scroll', handlers.navFixed );
     },
 
     
@@ -115,6 +123,28 @@ export default function ( options ){
         });
       }
       return window.nav_item_width;
+    }
+  };
+
+  handlers = {
+    navFixed ( e ) {
+      let width = $(document).width();
+      let scrollTop = $(window).scrollTop();
+      if( scrollTop > o.navPosition ) {
+        $('body').addClass('is-sticky');
+      } else {
+        $('body').removeClass('is-sticky');
+      }
+      if(scrollTop >= o.navPosition) {
+        if (o.prevScrollpos < scrollTop) {
+          $("body").addClass('is-move-out');
+        } else {
+          $("body").removeClass('is-move-out');
+        }
+        if(o.prevScrollposInit < scrollTop ){
+          o.prevScrollpos = scrollTop;
+        }
+      }
     }
   };
 
