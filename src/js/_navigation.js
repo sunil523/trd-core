@@ -4,6 +4,7 @@ export default function ( options ){
     messageTimeout:  5000, // 5 seconds
     fixedEmbedTimer: 3000, // 3 seconds
     navPosition: $('.trd-nav').offset().top,
+    prevScrollposInit: 130,
     prevScrollpos: 130
   };
 
@@ -135,11 +136,15 @@ export default function ( options ){
         $('body').removeClass('is-sticky');
       }
       console.log(o.prevScrollpos, scrollTop, o.navPosition, o.prevScrollpos < scrollTop, scrollTop >= o.navPosition);
-      if (o.prevScrollpos < scrollTop && scrollTop >= o.navPosition) {
-        $("body").addClass('is-move-out');
-        o.prevScrollpos = scrollTop;
-      } else {
-        $("body").removeClass('is-move-out');
+      if(scrollTop >= o.navPosition) {
+        if (o.prevScrollpos < scrollTop) {
+          $("body").addClass('is-move-out');
+        } else {
+          $("body").removeClass('is-move-out');
+        }
+        if(o.prevScrollposInit < scrollTop ){
+          o.prevScrollpos = scrollTop;
+        }
       }
     }
   };
