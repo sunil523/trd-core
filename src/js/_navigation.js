@@ -135,7 +135,6 @@ export default function ( options ){
       } else {
         $('body').removeClass('is-sticky');
       }
-      console.log(o.prevScrollpos, scrollTop, o.navPosition, o.prevScrollpos < scrollTop, scrollTop >= o.navPosition);
       if(scrollTop >= o.navPosition) {
         if (o.prevScrollpos < scrollTop) {
           $("body").addClass('is-move-out');
