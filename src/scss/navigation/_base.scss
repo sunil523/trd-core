@@ -447,18 +447,20 @@ body.is-move-out{
     }
   }
   &-link[href*="listings"] ~ .trd-nav-sub{
+    padding-top: 0;
     .trd-nav-link{
-      padding-left: 40px;
+      padding-left: 50px;
+      padding-right: 20px;
       &::before{
         content: '';
-        width: 20px;
-        height: 20px;
+        width: 18px;
+        height: 18px;
         border-radius: 50%;
         border: 3px solid $color-nav-secondary-sub-bg;
         box-shadow: 0 0 0 1px #B5A4A4;
         position: absolute;
-        left: 6px;
-        top: 12px;
+        left: 15px;
+        top: 13px;
       }
       &:hover::before{
         box-shadow: 0 0 0 1px $color-nav-secondary-highlight;
@@ -550,6 +552,15 @@ body.is-move-out{
   .trd-nav{
     *{
       transition: none;
+    }
+
+    &-link[href*="listings"] ~ .trd-nav-sub{
+      .trd-nav-link{
+        &::before{
+          border-color: #fff;
+          top: 7px;
+        }
+      }
     }
 
     &-search{
