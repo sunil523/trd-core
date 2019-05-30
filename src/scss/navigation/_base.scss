@@ -15,6 +15,9 @@ body.is-sticky{
     top: 0;
     box-shadow: 0 1px 5px rgba(0,0,0,0.5);
     transition: top 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+    &-secondary{
+      // transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+    }
   }
   @media only screen and (min-width: 1091px) {
     .trd-nav-logo{
@@ -507,7 +510,7 @@ body.is-move-out{
 }
 @media only screen and (max-width: 1090px){
   body.is-sticky{
-    padding-top: 150px;
+    padding-top: 121px;
     .trd-nav-menu-btn{
       padding: rem-in-px(1);
     }

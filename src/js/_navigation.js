@@ -4,7 +4,7 @@ export default function ( options ){
     messageTimeout:  5000, // 5 seconds
     fixedEmbedTimer: 3000, // 3 seconds
     navPosition: $('.trd-nav').offset().top,
-    prevScrollpos: 125
+    prevScrollpos: 130
   };
 
   let els;
@@ -134,12 +134,13 @@ export default function ( options ){
       } else {
         $('body').removeClass('is-sticky');
       }
+      console.log(o.prevScrollpos, scrollTop, o.navPosition, o.prevScrollpos < scrollTop, scrollTop >= o.navPosition);
       if (o.prevScrollpos < scrollTop && scrollTop >= o.navPosition) {
         $("body").addClass('is-move-out');
+        o.prevScrollpos = scrollTop;
       } else {
         $("body").removeClass('is-move-out');
       }
-      o.prevScrollpos = scrollTop;
     }
   };
 
