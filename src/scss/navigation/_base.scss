@@ -1,4 +1,5 @@
-body.admin-bar .trd-nav-primary{
+body.admin-bar .trd-nav,
+body.admin-bar.is-sticky .trd-nav{
   top: 32px;
 }
 body.move-over .trd-nav-primary{
@@ -13,6 +14,7 @@ body.is-sticky{
     left: 0;
     top: 0;
     box-shadow: 0 1px 5px rgba(0,0,0,0.5);
+    transition: top 0.6s cubic-bezier(0.86, 0, 0.07, 1);
   }
   @media only screen and (min-width: 1091px) {
     .trd-nav-logo{
@@ -505,17 +507,37 @@ body.is-move-out{
 }
 @media only screen and (max-width: 1090px){
   body.is-sticky{
-    padding-top: 121px;
+    padding-top: 150px;
     .trd-nav-menu-btn{
-      padding: rem-in-px(0.5) rem-in-px(1);
+      padding: rem-in-px(1);
     }
-    .trd-nav-search-form{
-      height: 50px;
+    .trd-nav-logo{
+      img{
+        height: 45px;
+      }
+    }
+    .trd-nav-search{
+      &-form{
+        height: 50px;
+        top: 55px;
+        transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+      }
+      &-btn{
+        padding: rem-in-px(1);
+      }
+    }
+    .trd-nav-primary{
+      .trd-nav-link{
+        font-size: 14px;
+        padding: 10px;
+        transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+      }
     }
   }
+  body.admin-bar.is-move-out,
   body.is-move-out{
     .trd-nav{
-      top: -121px;
+      top: -150px;
     }
   }
   .trd-nav{
@@ -529,8 +551,8 @@ body.is-move-out{
         left: 0;
         right: 0;
         width: 100%;
-        height: 46px;
-        top: 70px;
+        height: 47px;
+        top: 75px;
         z-index: 2;
       }
     }
@@ -736,6 +758,13 @@ body.is-move-out{
   }
 }
 @media only screen and(max-width: 670px){
+  body.is-sticky{
+    .trd-nav-mid-left,
+    .trd-nav-mid-right{
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
+  }
   .trd-nav-mid{
     &-left,
     &-right{
