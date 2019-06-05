@@ -1,5 +1,5 @@
 @function rem-in-px($rem, $base: 16px) {
-  @return $base * $rem;
+  @return ceil( $base * $rem );
 }
 @mixin font-size($rem_size: 1) {
   font-size: rem-in-px($rem_size);
