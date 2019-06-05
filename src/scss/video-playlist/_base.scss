@@ -1,5 +1,5 @@
 .video-playlist{
-  width: 100%;
+  width: 97%;
   display: none;
   * {
     box-sizing: border-box;
@@ -7,6 +7,9 @@
   }
   figure{
     margin: 0;
+    a,img{
+      display: block;
+    }
   }
   
   &-cover{
@@ -61,7 +64,7 @@
 
   &.dark{
     background-color: #111;
-    padding: 10px 0;
+    padding: 15px;
     color: #fff;
     .video-playlist{
       &-cover,
@@ -80,7 +83,7 @@
   }
 
 
-  .trd-video figure{
+  .trd-video figure>a{
     position: relative;
     &::before,
     &::after{

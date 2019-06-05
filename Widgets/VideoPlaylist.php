@@ -36,7 +36,7 @@ class VideoPlaylist extends \WP_Widget
     );
     $videos = get_posts( $args );
     if( empty( $videos ) ) return;
-    echo '<section class="video-playlist">';
+    echo '<section class="video-playlist dark">';
     // Display Cover
     $category = get_term_by( 'slug', 'trd-video', 'category' );
     $link  = esc_url( get_category_link( $category ) );
