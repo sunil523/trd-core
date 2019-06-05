@@ -15,8 +15,12 @@ body.is-sticky{
     top: 0;
     box-shadow: 0 1px 5px rgba(0,0,0,0.5);
     transition: top 0.6s cubic-bezier(0.86, 0, 0.07, 1);
-    &-secondary{
-      // transition: all 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+    &-mobile,
+    &-menu-btn,
+    &-search-btn{
+      .fa{
+        font-size: 25px;
+      }
     }
   }
   @media only screen and (min-width: 1091px) {
@@ -33,7 +37,15 @@ body.is-sticky{
     }
     .trd-nav-account{
       .trd-nav-link{
+        padding: rem-in-px(1.15) rem-in-px(0.5);
         @include font-size(0.8);
+      }
+    }
+    .trd-nav-item{
+      &.sub{
+        &>.trd-nav-link{
+          padding-right: 20px;
+        }
       }
     }
     .trd-nav-search{
@@ -139,6 +151,7 @@ body.is-move-out{
             }
             > .trd-nav-sub{
               display: block !important;
+              z-index: 1;
             }
           }
         }
@@ -201,6 +214,7 @@ body.is-move-out{
             }
             > .trd-nav-sub{
               display: block !important;
+              z-index: 1;
             }
           }
         }
@@ -233,7 +247,7 @@ body.is-move-out{
   &-logo{
     padding-top: 8px !important;
     padding-left: 10px;
-    min-width: 246px;
+    min-width: 244px;
     text-align: center;
     img{
       transition: height 0.6s $transition-easing;
@@ -262,6 +276,7 @@ body.is-move-out{
       .trd-nav-search{
         &-form{
           display: block;
+          z-index: 1;
         }
         &-btn{
           background-color: $color-nav-search-bg;
@@ -363,6 +378,7 @@ body.is-move-out{
     .trd-nav-link{
       color: $color-nav-primary-txt !important;
       font-size: 13px;
+      padding: 28px 10px;
       &:hover{
         color: $color-nav-highlight !important;
       }
@@ -566,7 +582,7 @@ body.is-move-out{
     &-search{
       position: initial;
       &-btn{
-        padding: 20px 15px;
+        padding: 23px 15px;
       }
       &-form{
         left: 0;
@@ -658,7 +674,7 @@ body.is-move-out{
           margin-bottom: 200px;
         }
         &-mid{
-          margin-top: 70px;
+          margin-top: 90px;
           flex-direction: column;
           flex: none;
           .trd-nav{
