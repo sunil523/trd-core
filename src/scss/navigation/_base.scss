@@ -204,6 +204,7 @@ body.is-move-out{
         width: 100%;
         > .trd-nav-item{
           margin-right: 10px;
+          order: 1;
         }
       }
       &-item{
@@ -646,6 +647,9 @@ body.is-move-out{
         }
         &-item{
           width: 100%;
+          &.mobile-order-0{
+            order: 0;
+          }
         }
         &-link{
           font-size: 14px;

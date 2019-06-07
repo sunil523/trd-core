@@ -16,6 +16,7 @@ class Nav_Walker extends \Walker_Nav_Menu
     $indent = ( $depth ) ? str_repeat( $t, $depth ) : '';
     $class_names = array('trd-nav-item');
     if( in_array('menu-item-has-children', $item->classes) ) array_push($class_names, 'sub');
+    if( in_array('mobile-order-0', $item->classes) ) array_push($class_names, 'mobile-order-0');
     $item->current ? array_push($class_names, 'current') : '';
     $class_names = $class_names ? ' class="' . esc_attr( implode(" ", $class_names) ) . '"' : '';
     $output .= $indent . '<div' . $class_names . '>';
