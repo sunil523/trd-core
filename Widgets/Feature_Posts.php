@@ -32,11 +32,13 @@ class Feature_Posts extends \WP_Widget {
 		if( empty( $instance ) || empty( $instance[ 'post_ids' ] ) ) return;
 		// Display
 		$post_ids = $instance[ 'post_ids' ];
+		$video_tags = array('videos', 'video', 'trd-videos', 'trd-video');
 		echo '<section class="feature-posts">';
 		for ( $i = 0, $n = count( $post_ids ); $i < $n; $i++ ) {
 			$post_id = $post_ids[ $i ];
 			$link    = get_the_permalink( $post_id );
 			$title   = get_post_meta( $post_id, 'Featured Image Headline', true );
+			$video   = ( has_category( $video_tags, $post_id ) || has_tag( $video_tags, $post_id ) );
 			// get the original title
 			if( empty( $title ) ) $title = get_the_title( $post_id );
 			// change image and it's class
@@ -50,7 +52,7 @@ class Feature_Posts extends \WP_Widget {
 				$class    = 'top';
 			}
 			// Display
-			$this->display_story( $title, $image, $link, $class );
+			$this->display_story( $title, $image, $link, $video, $class );
 		}
 		$nl = new \TRD\Widgets\Newsletter();
 		$nl->widget( array(), array('name' => 'homepage_feature_posts', 'theme' => true ) );
@@ -143,10 +145,11 @@ class Feature_Posts extends \WP_Widget {
 	 * Display cover story for given post
 	 * @return void
 	 */
-	private function display_story( $title, $image, $link, $class='top' )
+	private function display_story( $title, $image, $link, $video, $class='top' )
 	{
+		$video_class = $video ? 'trd-video' : '';
 		?>
-		<div class="feature-posts-<?php echo $class; ?>">
+		<div class="feature-posts-<?php echo $class.' '.$video_class; ?>">
 			<?php echo sprintf( '<a class="feature-posts-%s-title" href="%s">%s</a>', $class, $link, $title ); ?>
 			<figure><?php 
 				echo sprintf( '<a href="%s">%s</a>', $link, $image['tag'] );
