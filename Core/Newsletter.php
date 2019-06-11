@@ -82,7 +82,7 @@ class Newsletter
         'FNAME'   => $data['firstname'],
         'LNAME'   => $data['lastname'],
         'COMPANY' => $data['company'],
-        'MERGE3'  => $data['place']
+        'ELERTBANN' => $data['place']
       ),
     );
     unset($data['newsletter']);
