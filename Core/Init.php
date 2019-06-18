@@ -79,6 +79,7 @@ class Init
       case 'prod':
         $gtm_auth    = '2Dc6nz6-xSl7lnGU4UY2OA';
         $gtm_preview = 'env-2';
+        $gtm_debug   = '';
         break;
 
       case 'staging':
