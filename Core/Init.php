@@ -139,8 +139,8 @@ class Init
     <meta name="google-site-verification" content="wZ1M2SOQpdwMUVsTJeEADjbuNm8mWBkAVR9R_3Fz30Q">
     <meta name="COUNTRY"                  content="<?php echo $geoip_country_code; ?>">
     <meta name="propeller"                content="12fda498640901b80f36005a35bbd396">
-    <meta name="theme-color"              content="#ffffff">
-    <meta name="msapplication-TileColor"  content="#da532c">
+    <meta name="theme-color"              content="#EC1C24">
+    <meta name="msapplication-TileColor"  content="#EC1C24">
     <meta name="msapplication-TileImage"  content="<?php echo $favicons_path; ?>/mstile-144x144.png">
     <link rel="manifest"         href="<?php echo $favicons_path; ?>/manifest.json">
     <link rel="mask-icon"        href="<?php echo $favicons_path; ?>/safari-pinned-tab.svg"        color="#5bbad5">
