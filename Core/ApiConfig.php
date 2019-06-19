@@ -56,7 +56,7 @@ class ApiConfig
       ),
       'tristate' => array(
         'root' => sprintf('%s/tristate/%s', $this->site_root, $this->api_url),
-        'crosspost_field' => 'A3_trd_tristate',
+        'crosspost_field' => 'A3_tri_state',
         'base' => '/tristate',
       ),
     );
