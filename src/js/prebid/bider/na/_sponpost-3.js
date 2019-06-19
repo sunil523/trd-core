@@ -1,0 +1,1 @@
+export const PREBID_BIDER_SPONPOST_3 = [];
