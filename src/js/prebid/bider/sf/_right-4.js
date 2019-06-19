@@ -1,60 +1,47 @@
-export const PREBID_BIDER_RIGHT_2 = [
+export const PREBID_BIDER_RIGHT_3 = [
   {
     bidder: "rubicon",
     params: {
       accountId: "20242",
-      siteId: "242050",
-      zoneId: "1194090"
+      siteId: "242060",
+      zoneId: "1194188"
     },
     device: "desktop"
   }, {
     bidder: "rubicon",
     params: {
       accountId: "20242",
-      siteId: "242056",
-      zoneId: "1194148"
+      siteId: "242062",
+      zoneId: "1194212"
     },
     device: "mobile"
   }, {
     bidder: "appnexus",
     params: {
-      placementId: "14913896"
+      placementId: "14913932"
     }
   }, {
     bidder: "sovrn",
     params: {
-      tagid: "599282"
+      tagid: "599312"
     },
     size: [300, 250]
-  }, {
-    bidder: "sovrn",
-    params: {
-      tagid: "599281"
-    },
-    size: [300, 600]
   }, {
     bidder: "indexExchange",
     params: {
-      siteId: "341316"
+      siteId: "341330"
     }
   }, {
     bidder: "aol",
     params: {
-      placement: "5042910",
+      placement: "5042836",
       network: "11625.1"
     },
     size: [300, 250]
   }, {
-    bidder: "aol",
-    params: {
-      placement: "5042841",
-      network: "11625.1"
-    },
-    size: [300, 600]
-  }, {
     bidder: "openx",
     params: {
-      unit: "540639229",
+      unit: "540639235",
       delDomain: "therealdeal2-d.openx.net"
     }
   }, {

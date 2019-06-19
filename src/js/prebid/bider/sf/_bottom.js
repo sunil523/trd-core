@@ -1,10 +1,10 @@
-export const PREBID_BIDER_FOOTER = [
+export const PREBID_BIDER_BOTTOM = [
   {
     bidder: "rubicon",
     params: {
       accountId: "20242",
       siteId: "242060",
-      zoneId: "1194198"
+      zoneId: "1194202"
     },
     device: "desktop"
   }, {
@@ -12,78 +12,39 @@ export const PREBID_BIDER_FOOTER = [
     params: {
       accountId: "20242",
       siteId: "242062",
-      zoneId: "1194222"
+      zoneId: "1194226"
     },
     device: "mobile"
   }, {
     bidder: "appnexus",
     params: {
-      placementId: "14913937"
+      placementId: "14913939"
     }
   }, {
     bidder: "sovrn",
     params: {
-      tagid: "599326"
+      tagid: "599328"
     },
-    size: [320, 50]
-  }, {
-    bidder: "sovrn",
-    params: {
-      tagid: "599325"
-    },
-    size: [728, 90]
-  }, {
-    bidder: "sovrn",
-    params: {
-      tagid: "599323"
-    },
-    size: [970, 250]
-  }, {
-    bidder: "sovrn",
-    params: {
-      tagid: "599324"
-    },
-    size: [970, 90]
+    size: [300, 250]
   }, {
     bidder: "indexExchange",
     params: {
-      siteId: "341335"
+      siteId: "341337"
     }
   }, {
     bidder: "aol",
     params: {
-      placement: "5042938",
+      placement: "5042930",
       network: "11625.1"
     },
-    size: [300, 50]
+    size: [300, 250]
   }, {
     bidder: "aol",
     params: {
-      placement: "5042866",
+      placement: "5042898",
       network: "11625.1"
     },
-    size: [320, 50]
-  }, {
-    bidder: "aol",
-    params: {
-      placement: "5042909",
-      network: "11625.1"
-    },
-    size: [728, 90]
-  }, {
-    bidder: "aol",
-    params: {
-      placement: "5042817",
-      network: "11625.1"
-    },
-    size: [970, 250]
-  }, {
-    bidder: "aol",
-    params: {
-      placement: "5042861",
-      network: "11625.1"
-    },
-    size: [970, 90]
+    size: [550, 480]
   }, {
     bidder: "openx",
     params: {
