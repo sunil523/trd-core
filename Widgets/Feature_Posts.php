@@ -32,6 +32,7 @@ class Feature_Posts extends \WP_Widget {
 		if( empty( $instance ) || empty( $instance[ 'post_ids' ] ) ) return;
 		// Display
 		$post_ids = $instance[ 'post_ids' ];
+		update_option( 'trd_feature_posts', $post_ids, true );
 		$video_tags = array('videos', 'video', 'trd-videos', 'trd-video');
 		echo '<section class="feature-posts">';
 		for ( $i = 0, $n = count( $post_ids ); $i < $n; $i++ ) {
