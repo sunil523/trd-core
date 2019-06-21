@@ -115,7 +115,7 @@ class Navigation
   public static function Logo()
   {
     $region = self::SiteBase( 'ny' );
-    $logo_path = sprintf('/assets/images/trd-%s-logo.svg', $region);
+    $logo_path = sprintf('assets/images/trd-%s-logo.svg', $region);
     return TRD_CORE_URL.$logo_path;
   }
 

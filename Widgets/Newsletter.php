@@ -137,7 +137,7 @@ class Newsletter extends \WP_Widget {
 
   public function load_style()
   {
-    $file = '/assets/css/newsletter.min.css';
+    $file = 'assets/css/newsletter.min.css';
     $path = TRD_CORE_PATH.$file;
     if( file_exists( $path ) ){
       if( getenv('WP_ENV') == 'local' ){

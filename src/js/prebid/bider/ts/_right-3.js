@@ -1,1 +1,0 @@
-export const PREBID_BIDER_RIGHT_3 = [];
