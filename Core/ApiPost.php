@@ -153,8 +153,13 @@ class ApiPost extends ApiConfig
     }
     // update other meta fields
     $fields['meta']['_crosspost']            = array( 1 ); // to hide the crosspost taxonomy box on crosspost.
-    $fields['meta']['_links_to']             = get_the_permalink( $this->post->ID );
-    $fields['meta']['_links_to_target']      = "_blank";
+    /** 
+     * @changelog
+     * @note we are not setting this fields since they redirect user to their original post. We want user to stay on the crosspost website.
+     * @date 2019-06-24
+     */
+    // $fields['meta']['_links_to']             = get_the_permalink( $this->post->ID );
+    // $fields['meta']['_links_to_target']      = "_blank";
     $fields['meta']['second_featured_image'] = array( $sf_image_id );
     $fields['meta']['_thumbnail_id']         = array( $thumbnail_id );
     $fields['meta']['_aioseop_custom_link']  = array( get_the_permalink( $this->post->ID ) );
