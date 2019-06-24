@@ -18,6 +18,7 @@ export default function( options ){
     PREBID_TIMEOUT:   1000,
     FAILSAFE_TIMEOUT: 3000,
     adUnits:          [],
+    _adUnits:         [],
     debug:            false
   };
 
@@ -31,6 +32,10 @@ export default function( options ){
       fn.updateTest();
       fn.updateBreakpointWidth();
       fn.updateAdUnits();
+      window.googletag = window.googletag || {};
+      window.googletag.cmd = window.googletag.cmd || {};
+      window.pbjs = window.pbjs || {};
+      window.pbjs.que = window.pbjs.que || {};
     },
 
     run () {
@@ -61,12 +66,15 @@ export default function( options ){
     },
 
     updateAdUnits () {
-      o.adUnits = [];
+      o._adUnits = [];
       let positions = PREBID_POSITIONS;
       let bidders   = PREBID_BIDDERS;
+      console.log(o);
       /** Loop over positions */
       for ( const position in positions ) {
-        if ( positions.hasOwnProperty( position ) ) {
+        if(o.adUnits.includes( position ) ) console.log( position + 'found in adunit' );
+        if(positions.hasOwnProperty( position ) ) console.log( position + 'found postion' );
+        if ( o.adUnits.includes( position ) && positions.hasOwnProperty( position ) ) {
           // get position element
           const element = positions[ position ];
           // setup ad unit element
@@ -80,7 +88,7 @@ export default function( options ){
           bids: bidders[ o.topLevel ][ positions ]
           };
           // push the ad unit element to master ad units;
-          o.adUnits.push( adUnit );
+          o._adUnits.push( adUnit );
         }
       }
     },
@@ -100,16 +108,16 @@ export default function( options ){
       window.pbjs.que.push(() => {
 
         if( o.debug ) {
-          pbjs.setConfig({
+          window.pbjs.setConfig({
             debug: true,
             cache: {
               url: false
             },
           });
         }
-
-        pbjs.addAdUnits(o.adUnits);
-        pbjs.requestBids({
+        console.log(o._adUnits);
+        window.pbjs.addAdUnits(o._adUnits);
+        window.pbjs.requestBids({
           timeout:         o.PREBID_TIMEOUT,
           bidsBackHandler: ( bidResponses ) => {
             fn.initAdserver();
@@ -165,8 +173,7 @@ export default function( options ){
     }
   };
 
-  this.fn = {
-    run: fn.run
-  };
+  this.run = fn.run;
 
+  fn.init();
 };
