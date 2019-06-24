@@ -1,1 +1,9 @@
-@import "footer/base";
+.trd-footer{
+  &-container{
+
+  }
+  &-links{
+    display: flex;
+    justify-content: space-around;
+  }
+}
