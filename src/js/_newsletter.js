@@ -64,15 +64,21 @@ export default function ( options ){
     },
 
     trackEvent ( category, action, label, value ) {
-      var dataObject = {
-        'event': category,
-        'trd.action': action,
-        'trd.category': category,
-        'trd.label': label,
-        'trd.value': value
-      };
       if(typeof dataLayer != 'undefined'){
-        dataLayer.push(dataObject);
+        dataLayer.push({
+          'event': category,
+          'trd.action': action,
+          'trd.category': category,
+          'trd.label': label,
+          'trd.value': value
+        });
+      }
+      if( typeof fbq != 'undefined'){
+        fbq('trackCustom', category, {
+          'trd.action': action,
+          'trd.label': label,
+          'trd.value': value
+        });
       }
     }
   };
