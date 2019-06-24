@@ -26,12 +26,19 @@
   + .trd-article-list{
     border-top: 1px solid #ccc;
   }
+  &.mobile{
+    @media (min-width: 768px){
+      display: none;
+    }
+  }
   .trd-article{
     &-image{
-      max-width: 200px;
-      width: 100%;
       &-wrap{
         padding-top: 71%;
+        width: 150px;
+        @media (min-width: 768px){
+          width: 200px;
+        }
       }
     }
     &-body{
@@ -54,8 +61,12 @@
       font-size: 14px;
     }
     &-excerpt{
+      display: none;
       font-size: 17px;
       line-height: 1.27;
+      @media (min-width: 600px) {
+        display: block;
+      }
     }
   }
 }

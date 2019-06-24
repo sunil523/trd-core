@@ -12,7 +12,7 @@ class ArticleList extends Article{
   public function display()
   {
     ?>
-    <a class="trd-article trd-article-list<?php echo has_tag('trd-video') ? 'trd-video' : ''; ?>" href="<?php the_permalink(); ?>">
+    <a class="trd-article trd-article-list <?php echo has_tag('trd-video') ? 'trd-video' : ''; ?>" href="<?php the_permalink(); ?>">
       <div class="trd-article-image">
         <span class="trd-article-image-wrap"><?php echo $this->get_image_tag( get_post_thumbnail_id(), 'blogroll' ); ?></span>
       </div>

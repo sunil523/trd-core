@@ -1,6 +1,5 @@
 .trd-article-lists{
   &-content{
-    padding-right: 10px;
     &-title{
       font-family: 'Open Sans', sans-serif;
       font-size: 24px;
@@ -16,6 +15,7 @@
       border-right: 1px solid #ddd;
       max-width: 690px;
       width: 100%;
+      padding-right: 10px;
     }
     &-sidebar{
       display: block;
@@ -41,6 +41,9 @@
       }
       .box .heading2 a {
         color:#090909;
+      }
+      .widget-border{
+        border: none;
       }
     }
   }
