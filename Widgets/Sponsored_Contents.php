@@ -127,7 +127,7 @@ class Sponsored_Contents extends \WP_Widget {
 	private function build_options( $options, $value = '' )
 	{
 		if ( empty( $options ) ) echo '<option value="" disabled>--no post found--</option>';
-		echo '<option value="" disabled>--Select a Post--</option>';
+		echo '<option value="">No Post</option>';
 		foreach ( $options as $post ) {
 			$selected = ( $value == $post->ID ) ? 'selected' : '';
 			echo sprintf( '<option value="%s" %s>%s</option>', $post->ID, $selected, $post->post_title );
