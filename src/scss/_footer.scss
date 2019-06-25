@@ -1,0 +1,45 @@
+.trd-footer{
+  background-color: #000;
+  &-container{
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+  &-links{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 auto;
+    padding: 20px 0 12px;
+    a{
+      padding: 5px 5px;
+      color: #eee;
+      text-transform: uppercase;
+      font-family: 'Open Sans', sans-serif;
+
+      &:hover,
+      &:focus,
+      &:active,
+      &:visited{
+        color: #fff;
+      }
+    }
+  }
+
+  &-copyright {
+    font-size: 14px;
+    font-family: 'sinanova-regularregular';
+    color:#aaa;
+    margin:0 auto;
+    padding: 12px 0 32px;
+    text-align:center;
+    border-top: 1px solid #333;
+    max-width: 1024px;
+    p {
+      margin: 5px 0;
+    }
+  }
+}

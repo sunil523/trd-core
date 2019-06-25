@@ -27,7 +27,7 @@ class Init
   {
     wp_enqueue_style(
       'trd-core-style',
-      TRD_CORE_URL.'/assets/css/trd-core.min.css',
+      TRD_CORE_URL.'assets/css/trd-core.min.css',
       false,
       filemtime( TRD_CORE_PATH.'assets/css/trd-core.min.css' )
     );
@@ -38,7 +38,7 @@ class Init
   {
     wp_enqueue_script(
       'trd-core-script',
-      TRD_CORE_URL.'/assets/js/trd-core.min.js',
+      TRD_CORE_URL.'assets/js/trd-core.min.js',
       array('jquery'),
       filemtime( TRD_CORE_PATH.'assets/js/trd-core.min.js' ),
       true
