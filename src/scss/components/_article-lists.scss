@@ -1,6 +1,10 @@
 .trd-article-lists{
   margin-bottom: 16px;
   &-content{
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+    grid-gap: 0px;
     &-title{
       font-family: 'Open Sans', sans-serif;
       font-size: 24px;
@@ -17,10 +21,6 @@
       max-width: 690px;
       width: 100%;
       padding-right: 10px;
-      display: grid;
-      grid-template-columns: 100%;
-      grid-template-rows: auto;
-      grid-gap: 0px;
     }
     &-sidebar{
       display: block;

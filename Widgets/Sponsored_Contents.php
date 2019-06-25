@@ -38,6 +38,7 @@ class Sponsored_Contents extends \WP_Widget {
 		$post_orders = $instance[ 'post_orders' ];
 		for ( $i = 0, $n = count( $post_ids ); $i < $n; $i++ ) {
 			$post_id = $post_ids[ $i ];
+			if( empty( $post_id ) ) continue;
 			$post = get_post( $post_id );
 			$post_order = $post_orders[ $i ];
 			$article = new \TRD\Components\ArticleList( array('sponsored'), array( 'data-order' => $post_order ) );
@@ -127,7 +128,8 @@ class Sponsored_Contents extends \WP_Widget {
 	private function build_options( $options, $value = '' )
 	{
 		if ( empty( $options ) ) echo '<option value="" disabled>--no post found--</option>';
-		echo '<option value="">No Post</option>';
+		echo '<option value="" disabled>--Select your content--</option>';
+		echo '<option value="">--No content--</option>';
 		foreach ( $options as $post ) {
 			$selected = ( $value == $post->ID ) ? 'selected' : '';
 			echo sprintf( '<option value="%s" %s>%s</option>', $post->ID, $selected, $post->post_title );
