@@ -74,12 +74,12 @@ class Init
   {
     $gtm_id = 'GTM-K694XL6';
     $gtm_cookies_win = 'x';
+    $gtm_debug = (isset($_GET['gtm_debug']) && $_GET['gtm_debug']=='x') ? 'x' : '';
     switch ( getenv( 'WP_ENV' ) ) {
       case 'live':
       case 'prod':
         $gtm_auth    = '2Dc6nz6-xSl7lnGU4UY2OA';
         $gtm_preview = 'env-2';
-        $gtm_debug   = '';
         break;
 
       case 'staging':
@@ -88,13 +88,11 @@ class Init
       case 'beta2':
         $gtm_auth    = 'wWiDaS0gGQ38MIzxist3Jg';
         $gtm_preview = 'env-33';
-        $gtm_debug   = 'x';
         break;
       case 'local':
       default:
         $gtm_auth    = 'zdLKPv48E9tIt3DVRTJgzw';
         $gtm_preview = 'env-34';
-        $gtm_debug   = 'x';
         break;
     }
     if( $type === 'head' ){
