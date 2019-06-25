@@ -35,34 +35,6 @@
       display: none;
     }
   }
-  &.sponsored{
-    background-color: #f1f1f1;
-    border: 1px solid #888;
-
-    @for $i from 1 through 14 {
-      &[data-order="#{$i}"] {
-        grid-row-start: #{$i};
-      }
-    }
-
-    .trd-article{
-      &-title{
-        position: relative;
-        &::before{
-          content: "SPONSORED";
-          position: relative;
-          top: -3px;
-          background-color: $color-trd-ny;
-          color: $color-trd-ny-txt;
-          padding: 2px 4px;
-          margin-right: 3px;
-          font-size: 0.5em;
-          text-transform: uppercase;
-          text-align: center;
-        }
-      }
-    }
-  }
   .trd-article{
     &-image{
       &-wrap{
@@ -98,6 +70,39 @@
       line-height: 1.27;
       @media (min-width: 600px) {
         display: block;
+      }
+    }
+  }
+}
+.trd-article-list{
+  &.sponsored{
+    background-color: #f1f1f1;
+    border: 1px solid #888;
+
+    @for $i from 1 through 14 {
+      &[data-order="#{$i}"] {
+        grid-row-start: #{$i};
+      }
+    }
+
+    .trd-article{
+      &-title{
+        position: relative;
+        &::before{
+          content: "SPONSORED";
+          position: relative;
+          top: -3px;
+          background-color: $color-trd-ny;
+          color: $color-trd-ny-txt;
+          padding: 2px 4px;
+          margin-right: 3px;
+          font-size: 0.5em;
+          text-transform: uppercase;
+          text-align: center;
+        }
+      }
+      &-meta{
+        display: none;
       }
     }
   }
