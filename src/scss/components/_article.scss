@@ -1,0 +1,24 @@
+.trd-article{
+  box-sizing: border-box;
+  *{
+    box-sizing: border-box;
+  }
+  &-image{
+    &-wrap{
+      height: 0;
+      position: relative;
+      display: block;
+      overflow: hidden;
+      img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+    }
+  }
+  &-body{}
+  &-title{}
+  &-meta{}
+  &-excerpt{}
+}
