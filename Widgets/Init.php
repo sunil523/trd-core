@@ -25,7 +25,15 @@ class Init
                 'after_widget'  => '</div>',
                 'before_title'  => '',
                 'after_title'   => '',
-            ) 
+            ),
+            array(
+                'id'            => 'trd_sponsored_content',
+                'name'          => 'TRD: Sponsored Content',
+                'before_widget' => '<div>',
+                'after_widget'  => '</div>',
+                'before_title'  => '',
+                'after_title'   => '',
+            ),
         );
 
         foreach ( $areas as $area ) {

@@ -1,10 +1,10 @@
 <?php
 namespace TRD\Widgets;
 
-class Feature_Posts extends \WP_Widget {
+class Sponsored_Contents extends \WP_Widget {
 
 	private $posts      = array(); // cache the posts we query
-	private $count      = 5;       // total post for the widget
+	private $count      = 4;       // total post for the widget
 	private $limit      = 100;     // total post to get from query
 	private $placeholder_image_url = '';
 
@@ -14,13 +14,14 @@ class Feature_Posts extends \WP_Widget {
 	public function __construct()
 	{
 		parent::__construct(
-			'trd_weidgets_feature_posts',
-			'TRD: Feature Posts',
+			'trd_weidgets_sponsored_contents',
+			'TRD: Sponsored Contents',
 			array(
-				'description' => 'Feature posts on the page.',
+				'description' => 'Feature sponsored content on the homepage.',
 			)
 		);
 		$this->posts = $this->get_posts();
+		$this->orders = $this->get_orders();
 		$this->placeholder_image_url = esc_url( TRD_CORE_URL.'assets/images/placeholder.svg' );
 	}
 
@@ -29,35 +30,20 @@ class Feature_Posts extends \WP_Widget {
 	 */
 	public function widget( $args, $instance )
 	{
+		global $post;
 		if( empty( $instance ) || empty( $instance[ 'post_ids' ] ) ) return;
+		if( empty( $instance ) || empty( $instance[ 'post_orders' ] ) ) return;
 		// Display
 		$post_ids = $instance[ 'post_ids' ];
-		update_option( 'trd_feature_posts', $post_ids, true );
-		$video_tags = array('videos', 'video', 'trd-videos', 'trd-video');
-		echo '<section class="feature-posts">';
+		$post_orders = $instance[ 'post_orders' ];
 		for ( $i = 0, $n = count( $post_ids ); $i < $n; $i++ ) {
 			$post_id = $post_ids[ $i ];
-			$link    = get_the_permalink( $post_id );
-			$title   = get_post_meta( $post_id, 'Featured Image Headline', true );
-			$video   = ( has_category( $video_tags, $post_id ) || has_tag( $video_tags, $post_id ) );
-			// get the original title
-			if( empty( $title ) ) $title = get_the_title( $post_id );
-			// change image and it's class
-			if ( $i === 0 ) {
-				$image_id = get_post_meta( $post_id, 'second_featured_image', true );
-				$image    = $this->get_image( $image_id, 'feature-story-cover' );
-				$class    = 'cover';
-			} else {
-				$image_id = get_post_thumbnail_id( $post_id );
-				$image    = $this->get_image( $image_id, 'feature-story-top' );
-				$class    = 'top';
-			}
-			// Display
-			$this->display_story( $title, $image, $link, $video, $class );
+			if( empty( $post_id ) ) continue;
+			$post = get_post( $post_id );
+			$post_order = $post_orders[ $i ];
+			$article = new \TRD\Components\ArticleList( array('sponsored'), array( 'data-order' => $post_order ) );
+			$article->display();
 		}
-		$nl = new \TRD\Widgets\Newsletter();
-		$nl->widget( array(), array('name' => 'homepage_feature_posts', 'theme' => true ) );
-		echo '</section>';
 	}
 
 	/**
@@ -66,27 +52,27 @@ class Feature_Posts extends \WP_Widget {
 	public function form( $instance )
 	{
 			$post_ids = ! empty( $instance['post_ids'] ) ? $instance['post_ids'] : array();
+			$post_orders = ! empty( $instance['post_orders'] ) ? $instance['post_orders'] : array();
 			for ( $i=0; $i<$this->count; $i++ ) {
 					?>
 					<p>
 					<label for="<?php echo esc_attr( $this->get_field_id( 'post_ids_'.$i ) ); ?>">
-					<?php esc_attr_e( 'Post #'.($i+1), 'trd' ); ?>
+					<?php esc_attr_e( 'Sponsored Content #'.($i+1), 'trd' ); ?>
 					</label>
-
 					<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'post_ids'.$i ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_ids' ) ); ?>[]" required>
 							<?php $this->build_options( $this->posts, $post_ids[ $i ] ); ?>
 					</select>
 					</p>
+					<p>
+					<label for="<?php echo esc_attr( $this->get_field_id( 'post_orders_'.$i ) ); ?>">
+					<?php esc_attr_e( 'Sponsored Order #'.($i+1), 'trd' ); ?>
+					</label>
+					<select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'post_orders'.$i ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'post_orders' ) ); ?>[]" required>
+							<?php $this->build_options( $this->orders, $post_orders[ $i ] ); ?>
+					</select>
+					</p>
 					<?php
 			}
-			?>
-			<!-- <p>
-					<label for="<?php echo esc_attr( $this->get_field_id( 'newsletter' ) ); ?>">
-							<input class="widefat" type="checkbox" id="<?php echo esc_attr( $this->get_field_id( 'newsletter' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'newsletter' ) ); ?>" <?php echo $instance['newsletter'] ? 'checked' : ''; ?>>
-							<?php esc_attr_e( 'Display newsletter form?', 'trd' ); ?>
-					</label>
-			</p> -->
-			<?php
 	}
 
 /**
@@ -95,8 +81,8 @@ class Feature_Posts extends \WP_Widget {
 	public function update( $new_instance, $old_instance )
 	{
 			$instance = array();
-			$instance['post_ids']   = empty( $new_instance['post_ids'] ) ? array() : $new_instance['post_ids'];
-			$instance['newsletter'] = empty( $new_instance['newsletter'] ) ? false : true;
+			$instance['post_ids']    = empty( $new_instance['post_ids'] ) ? array() : $new_instance['post_ids'];
+			$instance['post_orders'] = empty( $new_instance['post_orders'] ) ? array() : $new_instance['post_orders'];
 			return $instance;
 	}
 
@@ -114,18 +100,25 @@ class Feature_Posts extends \WP_Widget {
 					'posts_per_page'   => $this->limit,
 					'orderby'          => 'date',
 					'order'            => 'DESC',
-					'post_type'        => 'post',
+					'post_type'        => 'page',
 					'post_status'      => 'publish',
 					'suppress_filters' => true,
-					// 'date_query' => array(
-					//     array(
-					//         'before'    => date( 'Y-m-d', strtotime('-2 days') ),
-					//         'after'     => date('Y-m-d'),
-					//         'inclusive' => true,
-					//     ),
-					// ),
+					'meta_key'         => '_wp_page_template',
+    			'meta_value'       => array('page-sponsored-content.php', 'page-sponsored.php')
 			);
 			return get_posts( $args );
+	}
+
+	public function get_orders()
+	{
+		$orders = array();
+		for ($i=1; $i <= 14; $i++) { 
+			$order             = new \stdClass;
+			$order->ID         = $i;
+			$order->post_title = $i;
+			array_push( $orders, $order );
+		}
+		return $orders;
 	}
 
 	/**
@@ -135,7 +128,8 @@ class Feature_Posts extends \WP_Widget {
 	private function build_options( $options, $value = '' )
 	{
 		if ( empty( $options ) ) echo '<option value="" disabled>--no post found--</option>';
-		echo '<option value="" disabled>--Select a Post--</option>';
+		echo '<option value="" disabled>--Select your content--</option>';
+		echo '<option value="">--No content--</option>';
 		foreach ( $options as $post ) {
 			$selected = ( $value == $post->ID ) ? 'selected' : '';
 			echo sprintf( '<option value="%s" %s>%s</option>', $post->ID, $selected, $post->post_title );
