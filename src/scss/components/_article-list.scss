@@ -7,7 +7,9 @@
   color: #000;
   font-family: 'Open Sans', sans-serif;
   text-decoration: none;
-  padding: 20px 0 10px;
+  padding: 20px 10px 10px;
+  transition: background-color 300ms ease-in-out;
+  order: 14;
   &:hover,
   &:focus,
   &:active,
@@ -17,18 +19,48 @@
   }
   &:hover,
   &:focus{
-    .trd-article{
-      &-title{
-        text-decoration: underline;
-      }
+    background-color: #f1f1f1;
+    &.sponsored{
+      background-color: #dfdfdf;
     }
   }
   + .trd-article-list{
     border-top: 1px solid #ccc;
   }
+  + .trd-article-pagination{
+    order: 15;
+  }
   &.mobile{
     @media (min-width: 768px){
       display: none;
+    }
+  }
+  &.sponsored{
+    background-color: #f1f1f1;
+    border: 1px solid #888;
+
+    @for $i from 1 through 14 {
+      &[data-order="#{$i}"] {
+        grid-row-start: #{$i};
+      }
+    }
+
+    .trd-article{
+      &-title{
+        position: relative;
+        &::before{
+          content: "SPONSORED";
+          position: relative;
+          top: -3px;
+          background-color: $color-trd-ny;
+          color: $color-trd-ny-txt;
+          padding: 2px 4px;
+          margin-right: 3px;
+          font-size: 0.5em;
+          text-transform: uppercase;
+          text-align: center;
+        }
+      }
     }
   }
   .trd-article{
@@ -42,11 +74,11 @@
       }
     }
     &-body{
-      padding: 0 10px 5px;
+      padding: 0 0 5px 10px;
     }
     &-title{
       font-family: 'Open Sans', sans-serif;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: bold;
       line-height: 1.2;
       margin: 0;

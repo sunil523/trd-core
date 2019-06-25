@@ -3,16 +3,24 @@ namespace TRD\Components;
 
 class ArticleList extends Article{
 
-  public function __construct()
+  public function __construct( $classes = array(), $attrs = array() )
   {
     $this->template_name = 'article-list';
+    $this->classes = array_merge( array('trd-article', 'trd-article-list'), $classes );
+    $this->attrs   = $attrs;
     parent::__construct();
   }
 
   public function display()
   {
+    if( has_tag('trd-video') ) array_push( $this->classes, 'trd-video' );
+    $attrs = '';
+    foreach ($this->attrs as $key => $value) {
+      if( in_array( $key, array( 'class', 'href' ) ) ) continue;
+      $attrs .= sprintf( ' %s="%s"', $key, $value );
+    }
     ?>
-    <a class="trd-article trd-article-list <?php echo has_tag('trd-video') ? 'trd-video' : ''; ?>" href="<?php the_permalink(); ?>">
+    <a class="<?php echo implode( ' ', $this->classes ); ?>" href="<?php the_permalink(); ?>"<?php echo $attrs; ?>>
       <div class="trd-article-image">
         <span class="trd-article-image-wrap"><?php echo $this->get_image_tag( get_post_thumbnail_id(), 'blogroll' ); ?></span>
       </div>
