@@ -94,11 +94,11 @@
     right: -600px;
     width: 500px;
     border-radius: 20px 0 0 20px;
-    // background-size: cover;
-    // background-repeat: no-repeat;
-    // background-attachment: fixed;
-    // background-position: 50% 50%;
-    // background-image: url('/wp-content/themes/therealdeal/assets/images/bg-newsletter-2048x2048.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: 50% 50%;
+    background-image: url('/wp-content/themes/therealdeal/assets/images/newsletter-bg-2000x903.jpg');
     &-container{
       margin: rem-in-px(3) rem-in-px(1) rem-in-px(4);
     }
