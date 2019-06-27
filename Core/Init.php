@@ -37,17 +37,9 @@ class Init
     wp_enqueue_script(
       'trd-core-script',
       TRD_CORE_URL.'assets/js/trd-core.min.js',
-      array('jquery'),
+      array('jquery', 'trd-parent-script'),
       filemtime( TRD_CORE_PATH.'assets/js/trd-core.min.js' ),
-      true
-    );
-    wp_localize_script(
-      'trd-core-script',
-      'trd_ajax',
-      array(
-        'url'      => admin_url( 'admin-ajax.php' ),
-        'security' => md5( 'trd-wp-ajax' )
-      )
+      false
     );
   }
 }
