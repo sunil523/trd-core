@@ -3,7 +3,7 @@ export default function ( options ){
   const defaults = {
     messageTimeout:  5000, // 5 seconds
     fixedEmbedTimer: 3000, // 3 seconds
-    navPosition: $('.trd-nav').offset().top,
+    navPosition: 0,
     prevScrollposInit: 130,
     prevScrollpos: 130
   };
@@ -25,6 +25,7 @@ export default function ( options ){
       let nav_timer = setInterval(() => {
         if ( typeof window.jQuery === 'function' ){
           fn.trd_nav();
+          o.navPosition = $('.trd-nav').offset().top;
           clearInterval( nav_timer );
         }
       }, 500);

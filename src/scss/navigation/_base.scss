@@ -2,6 +2,10 @@ body.admin-bar .trd-nav,
 body.admin-bar.is-sticky .trd-nav{
   top: 32px;
 }
+
+body.admin-bar.is-sticky{
+  padding-top: 142px;
+}
 body.move-over .trd-nav-primary{
   left: -$newsletter-open-move;
   right: $newsletter-open-move;
