@@ -26,7 +26,11 @@ class Display_Ad extends \WP_Widget {
         $style = empty($instance['style']) ? '' : $instance['style'];
         ?>
         <div id="<?php echo $ad_id; ?>" style="<?php echo $style; ?>">
-        <script type="text/javascript">doDisplay("<?php echo $ad_id; ?>");</script>
+        <script type="text/javascript">
+            googletag.cmd.push( function() {
+                googletag.display( "<?php echo $ad_id; ?>" );
+            } );
+        </script>
         </div>
         <?php
     }
