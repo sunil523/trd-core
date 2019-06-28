@@ -15,6 +15,7 @@ class Display_Ad extends \WP_Widget {
                 'description' => 'Display Ad without any code.',
             )
         );
+		$this->orders = $this->get_orders();
     }
 	
 	/**
@@ -24,8 +25,9 @@ class Display_Ad extends \WP_Widget {
         if(empty($instance['ad_id'])) return '';
         $ad_id = $instance['ad_id'];
         $style = empty($instance['style']) ? '' : $instance['style'];
+        $order = empty($instance['order']) ? '' : $instance['order'];
         ?>
-        <div id="<?php echo $ad_id; ?>" style="<?php echo $style; ?>">
+        <div id="<?php echo $ad_id; ?>" style="<?php echo $style; ?>" data-order="<?php echo $order; ?>">
         <script type="text/javascript">
             googletag.cmd.push( function() {
                 googletag.display( "<?php echo $ad_id; ?>" );
@@ -41,6 +43,7 @@ class Display_Ad extends \WP_Widget {
 	public function form( $instance ) {
         $ad_id = ! empty( $instance['ad_id'] ) ? $instance['ad_id'] : '';
         $style = ! empty( $instance['style'] ) ? $instance['style'] : '';
+        $order = ! empty( $instance['order'] ) ? $instance['order'] : '';
         ?>
         <p>
         <label for="<?php echo esc_attr( $this->get_field_id( 'ad_id' ) ); ?>">
@@ -69,6 +72,14 @@ class Display_Ad extends \WP_Widget {
             value="<?php echo esc_attr( $style ); ?>"
         >
         </p>
+        <p>
+            <label for="<?php echo esc_attr( $this->get_field_id( 'order_'.$i ) ); ?>">
+                <?php esc_attr_e( 'Order #'.($i+1), 'trd' ); ?>
+            </label>
+            <select class="widefat" id="<?php echo esc_attr( $this->get_field_id( 'order'.$i ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'order' ) ); ?>[]" required>
+                <?php $this->build_options( $this->orders, $order[ $i ] ); ?>
+            </select>
+        </p>
         <?php
     }
 
@@ -77,10 +88,38 @@ class Display_Ad extends \WP_Widget {
      */
 	public function update( $new_instance, $old_instance ) {
         $instance = array();
-        $instance['ad_id'] = ( ! empty( $new_instance['ad_id'] ) ) ? strip_tags( $new_instance['ad_id'] ) : '';
-        $instance['style'] = ( ! empty( $new_instance['style'] ) ) ? strip_tags( $new_instance['style'] ) : '';
+        $instance['style'] = empty( $new_instance['style'] ) ? '' : strip_tags( $new_instance['style'] );
+        $instance['ad_id'] = empty( $new_instance['ad_id'] ) ? '' : strip_tags( $new_instance['ad_id'] );
+        $instance['order'] = empty( $new_instance['order'] ) ? '' : $new_instance['order'];
         return $instance;
     }
+
+    public function get_orders()
+	{
+		$orders = array();
+		for ($i=1; $i <= 14; $i++) { 
+			$order             = new \stdClass;
+			$order->ID         = $i;
+			$order->post_title = $i;
+			array_push( $orders, $order );
+		}
+		return $orders;
+    }
+    
+    /**
+	 * Build option tag for select tags
+	 * @return void
+	 */
+	private function build_options( $options, $value = '' )
+	{
+		if ( empty( $options ) ) echo '<option value="" disabled>--no post found--</option>';
+		echo '<option value="" disabled>--Select your content--</option>';
+		echo '<option value="">--No content--</option>';
+		foreach ( $options as $post ) {
+			$selected = ( $value == $post->ID ) ? 'selected' : '';
+			echo sprintf( '<option value="%s" %s>%s</option>', $post->ID, $selected, $post->post_title );
+		}
+	}
 }
 
 ?>

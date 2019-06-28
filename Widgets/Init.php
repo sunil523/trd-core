@@ -34,6 +34,22 @@ class Init
                 'before_title'  => '',
                 'after_title'   => '',
             ),
+            array(
+                'id'            => 'trd_homepage_blogroll_1',
+                'name'          => 'TRD: Homepage Blogroll 1',
+                'before_widget' => '',
+                'after_widget'  => '',
+                'before_title'  => '',
+                'after_title'   => '',
+            ),
+            array(
+                'id'            => 'trd_homepage_blogroll_2',
+                'name'          => 'TRD: Homepage Blogroll 2',
+                'before_widget' => '',
+                'after_widget'  => '',
+                'before_title'  => '',
+                'after_title'   => '',
+            ),
         );
 
         foreach ( $areas as $area ) {
