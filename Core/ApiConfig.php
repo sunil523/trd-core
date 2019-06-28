@@ -32,32 +32,32 @@ class ApiConfig
       'ny' => array(
         'root' => sprintf('%s/%s', $this->site_root, $this->api_url),
         'crosspost_field' => 'A3_trd_ny',
-        'base' => '',
+        'base' => sprintf('%s', $this->site_root),
       ),
       'la' => array(
         'root' => sprintf('%s/la/%s', $this->site_root, $this->api_url),
         'crosspost_field' => 'A3_trd_la',
-        'base' => '/la',
+        'base' => sprintf('%s/la', $this->site_root),
       ),
       'chicago' => array(
         'root' => sprintf('%s/chicago/%s', $this->site_root, $this->api_url),
         'crosspost_field' => 'A3_trd_chicago',
-        'base' => '/chicago',
+        'base' => sprintf('%s/chicago', $this->site_root),
       ),
       'miami' => array(
         'root' => sprintf('%s/miami/%s', $this->site_root, $this->api_url),
         'crosspost_field' => 'A3_trd_miami',
-        'base' => '/miami',
+        'base' => sprintf('%s/miami', $this->site_root),
       ),
       'national' => array(
         'root' => sprintf('%s/national/%s', $this->site_root, $this->api_url),
         'crosspost_field' => 'A3_trd_national',
-        'base' => '/national',
+        'base' => sprintf('%s/national', $this->site_root),
       ),
       'tristate' => array(
         'root' => sprintf('%s/tristate/%s', $this->site_root, $this->api_url),
         'crosspost_field' => 'A3_tri_state',
-        'base' => '/tristate',
+        'base' => sprintf('%s/tristate', $this->site_root),
       ),
     );
   }
