@@ -37,7 +37,7 @@ class Init
     wp_enqueue_script(
       'trd-core-script',
       TRD_CORE_URL.'assets/js/trd-core.min.js',
-      array('jquery', 'trd-parent-script'),
+      array('jquery'),
       filemtime( TRD_CORE_PATH.'assets/js/trd-core.min.js' ),
       false
     );
