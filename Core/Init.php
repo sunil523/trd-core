@@ -16,8 +16,8 @@ class Init
 
   public function actions()
   {
-    add_action( 'wp_enqueue_scripts', array( __CLASS__, 'Styles' ), 5 );
-    add_action( 'wp_enqueue_scripts', array( __CLASS__, 'Scripts' ), 5 );
+    add_action( 'wp_enqueue_scripts', array( __CLASS__, 'Styles' ), 0 );
+    add_action( 'wp_enqueue_scripts', array( __CLASS__, 'Scripts' ), 0 );
     Newsletter::Actions();
   }
 
@@ -40,6 +40,14 @@ class Init
       array('jquery'),
       filemtime( TRD_CORE_PATH.'assets/js/trd-core.min.js' ),
       false
+    );
+    wp_localize_script(
+      'trd-core-script',
+      'trd_ajax',
+      array(
+        'url'      => admin_url( 'admin-ajax.php' ),
+        'security' => md5( 'trd-wp-ajax' )
+      )
     );
   }
 }

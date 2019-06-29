@@ -9,3 +9,44 @@ html,body{
     overflow: initial;
   }
 }
+
+html,body{
+  scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+body{
+  display: flex;
+  flex-direction: column;
+}
+main{
+  flex: 1 0 auto;
+}
+.overflow-off{
+  overflow: hidden;
+}
+@media only screen and (min-width: 782px){
+  .overflow-off{
+    overflow: initial;
+  }
+}
+.trd{
+  &-container{
+    max-width: 1024px;
+    width: 100%;
+    box-sizing: border-box;
+    margin: 0 auto;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .trd-mobile-only{
+    display: none !important;
+  }
+}
+.trd-ad-center{
+  justify-content: center;
+  align-items: center;
+}

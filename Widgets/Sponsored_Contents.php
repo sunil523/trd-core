@@ -41,7 +41,7 @@ class Sponsored_Contents extends \WP_Widget {
 			if( empty( $post_id ) ) continue;
 			$post = get_post( $post_id );
 			$post_order = $post_orders[ $i ];
-			$article = new \TRD\Core\Components\ArticleList( array('sponsored'), array( 'data-order' => $post_order ) );
+			$article = new \TRD\Components\ArticleList( array('sponsored'), array( 'data-order' => $post_order ) );
 			$article->display();
 		}
 	}
