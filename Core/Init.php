@@ -16,8 +16,8 @@ class Init
 
   public function actions()
   {
-    add_action( 'wp_enqueue_scripts', array( __CLASS__, 'Styles' ), 0 );
-    add_action( 'wp_enqueue_scripts', array( __CLASS__, 'Scripts' ), 0 );
+    add_action( 'wp_enqueue_scripts', array( __CLASS__, 'Styles' ), 5 );
+    add_action( 'wp_enqueue_scripts', array( __CLASS__, 'Scripts' ), 5 );
     Newsletter::Actions();
   }
 
@@ -39,7 +39,7 @@ class Init
       TRD_CORE_URL.'assets/js/trd-core.min.js',
       array('jquery'),
       filemtime( TRD_CORE_PATH.'assets/js/trd-core.min.js' ),
-      false
+      true
     );
     wp_localize_script(
       'trd-core-script',
