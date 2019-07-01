@@ -35,7 +35,9 @@
   + .trd-article-pagination{
     order: 15;
   }
-  
+}
+
+.trd-article-list{
   .trd-article{
     &-image{
       &-wrap{
@@ -75,6 +77,7 @@
     }
   }
 }
+
 .trd-article-list{
   &.sponsored{
     background-color: #f1f1f1;

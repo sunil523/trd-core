@@ -13,6 +13,10 @@
   }
   &-sidebar{
     display: none;
+    .is-pined{
+      position: sticky;
+      top: 115px;
+    }
   }
   @media (min-width: 850px) {
     display: flex;
@@ -56,4 +60,15 @@
       }
     }
   }
+}
+
+body.is-move-out .trd-article-lists-sidebar .is-pined{
+  top: 60px;
+}
+
+body.admin-bar .trd-article-lists-sidebar .is-pined{
+  top: 150px;
+}
+body.admin-bar.is-move-out .trd-article-lists-sidebar .is-pined{
+  top: 92px;
 }
